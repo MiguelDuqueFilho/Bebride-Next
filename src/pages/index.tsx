@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import Menu from '../components/Menu';
+
 import {
   Container,
   ContainerContent,
@@ -25,7 +26,7 @@ const Home: React.FC = () => {
             <LogoHome src="/images/logoHome_2.svg" />
           </ContainerLogo>
           <Btn href="#" className="btn">
-            Read more
+            Vamos Juntos?
           </Btn>
         </ContainerContent>
       </Container>

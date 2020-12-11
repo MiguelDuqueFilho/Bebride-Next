@@ -17,7 +17,7 @@ export default createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     background: ${props => props.theme.color.background};
     color: ${props => props.theme.color.text};
-    overflow: hidden;
+    /* overflow: hidden; */
 
   }
 `;

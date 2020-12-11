@@ -4,18 +4,18 @@ export const ContainerMenu = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 12;
 `;
 
 export const Toggler = styled.input`
   position: absolute;
   top: 0.5rem;
   left: 0.5rem;
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   opacity: 0;
-  z-index: 3;
+  z-index: 13;
   cursor: pointer;
 `;
 
@@ -23,24 +23,24 @@ export const Hamburger = styled.div`
   position: absolute;
   top: 0.5rem;
   left: 0.5rem;
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
-  background-color: #111;
+  background-color: ${props => props.theme.color.buttonHover};
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   transition: 0.4s;
-  z-index: 2;
+  z-index: 12;
 
   > div {
     position: absolute;
     width: 50%;
     height: 3px;
     border-radius: 1.5px;
-    background-color: #fff44f;
+    background-color: ${props => props.theme.color.white};
     transition: 0.4s;
   }
 
@@ -51,17 +51,17 @@ export const Hamburger = styled.div`
     width: 100%;
     height: 3px;
     border-radius: 1.5px;
-    background-color: #fff44f;
+    background-color: ${props => props.theme.color.white};
     transition: 0.4s;
   }
 
   > div:before {
-    top: -10px;
+    top: -8px;
     transition: 0.4s;
   }
 
   > div:after {
-    top: 10px;
+    top: 8px;
     transition: 0.4s;
   }
 
@@ -98,8 +98,14 @@ export const MenuItens = styled.div`
   top: 50%;
   left: 50%;
   transform: translateX(-150%) translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.9);
-  transition: 0.6s;
+  -webkit-transform: translate3d(-150%, -50%, 0);
+  background: linear-gradient(
+    -45deg,
+    ${props => props.theme.color.gradiente} 50%,
+    ${props => props.theme.color.primary} 100%
+  );
+
+  transition: 1.5s;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,6 +123,7 @@ export const MenuItens = styled.div`
 
   &.checked {
     transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate3d(-50%, -50%, 0);
   }
 
   &.checked > div {
@@ -139,6 +146,6 @@ export const MenuItens = styled.div`
   }
 
   > div > ul > li > a:hover {
-    color: #fff44f;
+    color: ${props => props.theme.color.black};
   }
 `;

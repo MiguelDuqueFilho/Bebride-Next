@@ -13,18 +13,19 @@ export const Container = styled.div`
 
   h1 {
     font-family: 'romantisch';
+    /* font-family: 'Dancing Script', cursive; */
     font-size: 54px;
     color: ${props => props.theme.color.primary};
-    margin-top: 40px;
+    margin-top: 30px;
   }
 
   p {
     font-family: 'Dancing Script', cursive;
-    font-size: 1.2rem;
-    font-weight: 100;
+    font-size: 1.4rem;
+    font-weight: 200;
     line-height: 32px;
-    color: ${props => props.theme.color.white};
-    margin-top: 24px;
+    color: ${props => props.theme.color.title};
+    margin-top: 14px;
   }
 
   &:before {
@@ -34,7 +35,7 @@ export const Container = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); // alterar
+    background-color: ${props => props.theme.color.background};
   }
 `;
 
@@ -47,28 +48,33 @@ export const ContainerContent = styled.div`
 
 export const ContainerLogo = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 60%;
 `;
 
 export const LogoHome = styled.img`
-  width: 30%;
+  width: 45%;
+  height: 80%;
+  padding: 30px;
+  border: 1px solid ${props => props.theme.color.gray};
 `;
 
 export const Btn = styled.a`
   padding: 0.75rem 1.75rem;
   margin-top: 0.8rem;
-  font-size: 1.1.rem;
-  font-weight: 550;
-  color: #fff44f;
-  background-color: #111;
+  font-family: 'romantisch';
+  /* font-family: 'Dancing Script', cursive; */
+  font-size: 1.4.rem;
+  font-weight: 700;
+  color: ${props => props.theme.color.white};
+  border-radius: 49px;
+  background-color: ${props => props.theme.color.button};
   text-decoration: none;
   transition: 0.3s;
   display: inline-block;
-  text-transform: uppercase;
 
   &:hover {
-    opacity: 0.7;
+    background-color: ${props => props.theme.color.buttonHover};
   }
 `;

@@ -1,4 +1,6 @@
-import { Container } from 'next/app';
+import Link from 'next/link';
+import React, { useState } from 'react';
+
 import {
   ContainerMenu,
   Toggler,
@@ -6,13 +8,13 @@ import {
   MenuData,
   MenuItens
 } from './styles';
-import { useState } from 'react';
 
 const Menu: React.FC = () => {
   const [toggle, setToggle] = useState(false);
   const handeChangeMenu = () => {
     setToggle(!toggle);
   };
+
   return (
     <ContainerMenu className="menu-container">
       <Toggler type="checkbox" className="toggler" onChange={handeChangeMenu} />
@@ -24,16 +26,25 @@ const Menu: React.FC = () => {
           <div>
             <ul>
               <li>
-                <a href="#">Home</a>
+                <Link href="/">
+                  <a>Home</a>
+                </Link>
               </li>
               <li>
-                <a href="#">Services</a>
+                <Link href="/services">
+                  <a>Serviços</a>
+                </Link>
               </li>
               <li>
-                <a href="#">About</a>
+                <Link href="/login">
+                  <a>Login/Registro</a>
+                </Link>
               </li>
               <li>
-                <a href="#">Contact</a>
+                <a href="#">Sobre</a>
+              </li>
+              <li>
+                <a href="#">Contato</a>
               </li>
             </ul>
           </div>

@@ -11,12 +11,13 @@ const themeDefault = {
     button: '#C8BAF6',
     buttonHover: '#bba8f3',
     gradiente: '#cabae0',
-
-    text: '#fcfafe',
     primary: '#c7bfe6',
     secundary: '#8257e6',
-    blue: '#007bff',
+
     indigo: '#6610f2',
+
+    text: '#fcfafe',
+    blue: '#007bff',
     purple: '#6f42c1',
     pink: '#e83e8c',
     red: '#dc3545',
@@ -27,7 +28,7 @@ const themeDefault = {
     cyan: '#17a2b8',
     gray: '#6c757d',
     graydark: '#343a40',
-    secondary: '#6c757d',
+    // secondary: '#6c757d',
     success: '#28a745',
     info: '#17a2b8',
     warning: '#ffc107',
