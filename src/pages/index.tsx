@@ -1,7 +1,13 @@
 import Head from 'next/head';
 
-import LogoWedding from '../assets/images/LogoLogin.svg';
-import { Container } from '../styles/pages/home';
+import Menu from '../components/Menu';
+import {
+  Container,
+  ContainerContent,
+  ContainerLogo,
+  LogoHome,
+  Btn
+} from '../styles/pages/home';
 
 const Home: React.FC = () => {
   return (
@@ -9,10 +15,19 @@ const Home: React.FC = () => {
       <Head>
         <title>BeBride Assessoria</title>
       </Head>
+      <Menu />
       <Container>
-        <h1>BeBride</h1>
-        <p>Vem casar com a gente.</p>
-        <LogoWedding />
+        <ContainerContent className="content">
+          <h1>Be Bride</h1>
+          <p>Vem casar com a gente.</p>
+          <ContainerLogo>
+            <LogoHome src="/images/logoHome.svg" />
+            <LogoHome src="/images/logoHome_2.svg" />
+          </ContainerLogo>
+          <Btn href="#" className="btn">
+            Read more
+          </Btn>
+        </ContainerContent>
       </Container>
     </>
   );

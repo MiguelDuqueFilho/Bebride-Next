@@ -13,7 +13,11 @@ export const Container = styled.div`
     width: 2000px;
     height: 2000px;
     border-radius: 50%;
-    background: linear-gradient(-45deg, #4481eb 0%, #04befe 100%);
+    background: linear-gradient(
+      -45deg,
+      ${props => props.theme.color.gradiente} 0%,
+      ${props => props.theme.color.primary} 100%
+    );
     top: -10%;
     right: 48%;
     transform: translatey(-50%);
