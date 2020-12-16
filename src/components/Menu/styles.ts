@@ -149,3 +149,75 @@ export const MenuItens = styled.div`
     color: ${props => props.theme.color.black};
   }
 `;
+
+export const ThemeSelect = styled.input`
+  position: absolute;
+  top: 0.5rem;
+  left: calc(100vw - 0.5rem - 45px);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 0;
+  opacity: 1;
+  z-index: 12;
+  cursor: pointer;
+  background-color: ${props => props.theme.color.buttonHover};
+`;
+
+export const ThemeSelected = styled.div`
+  position: absolute;
+  top: 0.5rem;
+  left: calc(100vw - 0.5rem - 45px);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 0;
+  opacity: 1;
+  z-index: 13;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: 0.4s;
+  z-index: 13;
+  background-color: ${props => props.theme.color.buttonHover};
+
+  > div {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+    background-color: ${props => props.theme.color.white};
+    transition: 0.4s;
+    z-index: 13;
+  }
+
+  > div + div {
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+    background-color: ${props => props.theme.color.buttonHover};
+    transition: 0.4s;
+    z-index: 15;
+  }
+
+  /*
+  > div:nth-child(2):before,
+  > div:nth-child(2):after {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    left: calc(100vw - 1rem - 45px);
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+    background-color: ${props => props.theme.color.blue};
+    color: red;
+    transition: 0.4s;
+    z-index: 15;
+  } */
+`;

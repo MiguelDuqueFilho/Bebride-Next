@@ -8,7 +8,9 @@ import {
   Toggler,
   Hamburger,
   MenuData,
-  MenuItens
+  MenuItens,
+  ThemeSelect,
+  ThemeSelected
 } from './styles';
 
 const Menu: React.FC = () => {
@@ -17,6 +19,7 @@ const Menu: React.FC = () => {
   const handeChangeMenu = () => {
     setToggle(!toggle);
   };
+
   const handeClickMenu = (e: React.MouseEvent) => {
     setToggle(false);
   };
@@ -27,6 +30,11 @@ const Menu: React.FC = () => {
       <Hamburger className={`hamburger ${toggle ? 'checked' : ''}`}>
         <div></div>
       </Hamburger>
+      <ThemeSelect className="theme-select" onChange={() => {}} />
+      <ThemeSelected className={`theme-selected`}>
+        <div></div>
+        <div></div>
+      </ThemeSelected>
       <MenuData className={`menu ${toggle ? 'checked' : ''}`}>
         <MenuItens className={`${toggle ? 'checked' : ''}`}>
           <div>
