@@ -57,7 +57,7 @@ export const LogoHome = styled.img`
   width: 45%;
   height: 80%;
   padding: 30px;
-  border: 1px solid ${props => props.theme.color.gray};
+  /* border: 1px solid ${props => props.theme.color.gray}; */
 `;
 
 export const Btn = styled.a`
@@ -65,8 +65,8 @@ export const Btn = styled.a`
   margin-top: 0.8rem;
   font-family: 'romantisch';
   /* font-family: 'Dancing Script', cursive; */
-  font-size: 1.4.rem;
-  font-weight: 700;
+  font-size: 1.6rem;
+  font-weight: 400;
   color: ${props => props.theme.color.white};
   border-radius: 49px;
   background-color: ${props => props.theme.color.button};

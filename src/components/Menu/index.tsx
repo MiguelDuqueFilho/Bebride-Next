@@ -1,4 +1,6 @@
+import { route } from 'next/dist/next-server/server/router';
 import Link from 'next/link';
+
 import React, { useState } from 'react';
 
 import {
@@ -11,8 +13,12 @@ import {
 
 const Menu: React.FC = () => {
   const [toggle, setToggle] = useState(false);
+
   const handeChangeMenu = () => {
     setToggle(!toggle);
+  };
+  const handeClickMenu = (e: React.MouseEvent) => {
+    setToggle(false);
   };
 
   return (
@@ -27,24 +33,28 @@ const Menu: React.FC = () => {
             <ul>
               <li>
                 <Link href="/">
-                  <a>Home</a>
+                  <a onClick={handeClickMenu}>Home</a>
                 </Link>
               </li>
               <li>
                 <Link href="/services">
-                  <a>Serviços</a>
+                  <a onClick={handeClickMenu}>Serviços</a>
                 </Link>
               </li>
               <li>
                 <Link href="/login">
-                  <a>Login/Registro</a>
+                  <a onClick={handeClickMenu}>Login/Registro</a>
                 </Link>
               </li>
               <li>
-                <a href="#">Sobre</a>
+                <a onClick={handeClickMenu} href="#">
+                  Sobre
+                </a>
               </li>
               <li>
-                <a href="#">Contato</a>
+                <a onClick={handeClickMenu} href="#">
+                  Contato
+                </a>
               </li>
             </ul>
           </div>

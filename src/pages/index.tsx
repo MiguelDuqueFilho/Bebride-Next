@@ -13,20 +13,16 @@ import {
 const Home: React.FC = () => {
   return (
     <>
-      <Head>
-        <title>BeBride Assessoria</title>
-      </Head>
-      <Menu />
       <Container>
         <ContainerContent className="content">
-          <h1>Be Bride</h1>
+          <h1>be bride</h1>
           <p>Vem casar com a gente.</p>
           <ContainerLogo>
             <LogoHome src="/images/logoHome.svg" />
             <LogoHome src="/images/logoHome_2.svg" />
           </ContainerLogo>
           <Btn href="#" className="btn">
-            Vamos Juntos?
+            #vamosjuntas?
           </Btn>
         </ContainerContent>
       </Container>

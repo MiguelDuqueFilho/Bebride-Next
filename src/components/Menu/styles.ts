@@ -92,7 +92,7 @@ export const MenuData = styled.div`
 
 export const MenuItens = styled.div`
   position: absolute;
-  width: 1660px;
+  width: 2400px;
   height: 1600px;
   border-radius: 50%;
   top: 50%;
@@ -140,7 +140,7 @@ export const MenuItens = styled.div`
     display: inline-block;
     font-size: 1.2rem;
     font-weight: 550;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     color: #fff;
     transition: 0.3s;
   }

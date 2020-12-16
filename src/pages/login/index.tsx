@@ -1,5 +1,3 @@
-import Menu from '../../components/Menu';
-
 import {
   Container,
   FormContainer,
@@ -48,7 +46,6 @@ const SignInOut: React.FC = () => {
 
   return (
     <>
-      <Menu />
       <Container className={mode}>
         <FormContainer className="forms-container">
           <SigninUp className={`signin-sign-out ${mode}`}>
