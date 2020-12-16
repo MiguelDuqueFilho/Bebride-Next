@@ -2,6 +2,7 @@ import { route } from 'next/dist/next-server/server/router';
 import Link from 'next/link';
 
 import React, { useState } from 'react';
+import { Theme } from '../../styles/styled';
 
 import {
   ContainerMenu,
@@ -13,8 +14,13 @@ import {
   ThemeSelected
 } from './styles';
 
-const Menu: React.FC = () => {
+type themeProps = {
+  darkTheme: Function;
+};
+
+function Menu({ darkTheme }: themeProps) {
   const [toggle, setToggle] = useState(false);
+  const [themeSetDark, setThemeSetDark] = useState(() => darkTheme());
 
   const handeChangeMenu = () => {
     setToggle(!toggle);
@@ -24,14 +30,24 @@ const Menu: React.FC = () => {
     setToggle(false);
   };
 
+  const handeClickTheme = (e: React.MouseEvent) => {
+    darkTheme(!themeSetDark);
+    setThemeSetDark(!themeSetDark);
+  };
+
   return (
     <ContainerMenu className="menu-container">
       <Toggler type="checkbox" className="toggler" onChange={handeChangeMenu} />
       <Hamburger className={`hamburger ${toggle ? 'checked' : ''}`}>
         <div></div>
       </Hamburger>
-      <ThemeSelect className="theme-select" onChange={() => {}} />
-      <ThemeSelected className={`theme-selected`}>
+      <ThemeSelect className="theme-select" />
+      <ThemeSelected
+        className={`theme-selected ${themeSetDark ? 'dark' : ''}`}
+        onClick={handeClickTheme}
+      >
+        <div></div>
+        <div></div>
         <div></div>
         <div></div>
       </ThemeSelected>
@@ -70,6 +86,6 @@ const Menu: React.FC = () => {
       </MenuData>
     </ContainerMenu>
   );
-};
+}
 
 export default Menu;

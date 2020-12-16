@@ -40,7 +40,7 @@ const themeLight = {
   }
 };
 
-const themeDefault = {
+export const themeDefault = {
   color: {
     background: '#fff',
     white: '#fff',
@@ -82,14 +82,28 @@ const themeDefault = {
   }
 };
 
-const themeBlack = {
+export const themeDark = {
   color: {
-    background: '#121214',
-    text: '#e1e1e6',
+    background: '#000',
+    white: '#fff',
+    black: '#000',
+    title: '#444',
+    input: '#333',
+    inputIcon: '#acacac',
+    inputBackgroud: '#f0f0f0',
+    inputPlaceHolder: '#aaa',
+    button: '#C8BAF6',
+    buttonHover: '#bba8f3',
+    gradiente: '#cabae0',
     primary: '#c7bfe6',
     secundary: '#8257e6',
-    blue: '#007bff',
+
+    background2: '#8971a3',
+
     indigo: '#6610f2',
+
+    text: '#fcfafe',
+    blue: '#007bff',
     purple: '#6f42c1',
     pink: '#e83e8c',
     red: '#dc3545',
@@ -98,10 +112,9 @@ const themeBlack = {
     green: '#28a745',
     teal: '#20c997',
     cyan: '#17a2b8',
-    white: '#fff',
     gray: '#6c757d',
     graydark: '#343a40',
-    secondary: '#6c757d',
+    // secondary: '#6c757d',
     success: '#28a745',
     info: '#17a2b8',
     warning: '#ffc107',
@@ -190,7 +203,3 @@ const themeInstagram = {
     black_back_1: '#000000'
   }
 };
-
-const theme = themeDefault;
-
-export default theme;

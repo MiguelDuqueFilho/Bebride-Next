@@ -185,39 +185,55 @@ export const ThemeSelected = styled.div`
 
   > div {
     position: absolute;
-    width: 60%;
-    height: 60%;
-    border-radius: 50%;
+    width: 50%;
+    height: 50%;
+    /* border-radius: 50%; */
     background-color: ${props => props.theme.color.white};
     transition: 0.4s;
     z-index: 13;
   }
 
+  &:not(.dark) > div {
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+  }
+
   > div + div {
     position: absolute;
-    top: 0.5rem;
+    width: 50%;
+    height: 50%;
+    transform: rotate(45deg);
+    /* border-radius: 50%; */
+    background-color: ${props => props.theme.color.white};
+    transition: 0.4s;
+    z-index: 13;
+  }
+  > div + div + div {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    /* border-radius: 50%; */
+    background-color: ${props => props.theme.color.white};
+    transition: 0.4s;
+    z-index: 13;
+  }
+
+  > div + div + div + div {
+    position: absolute;
+    top: 0.4rem;
     left: 1rem;
     width: 60%;
     height: 60%;
     border-radius: 50%;
     background-color: ${props => props.theme.color.buttonHover};
     transition: 0.4s;
+    opacity: 1;
     z-index: 15;
   }
 
-  /*
-  > div:nth-child(2):before,
-  > div:nth-child(2):after {
-    content: '';
-    position: absolute;
-    top: 1rem;
-    left: calc(100vw - 1rem - 45px);
-    width: 60%;
-    height: 60%;
-    border-radius: 50%;
-    background-color: ${props => props.theme.color.blue};
-    color: red;
+  &.dark > div + div + div + div {
+    opacity: 0;
     transition: 0.4s;
-    z-index: 15;
-  } */
+  }
 `;
