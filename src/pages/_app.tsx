@@ -1,28 +1,30 @@
-import React, { useState } from 'react';
-import { AppProps } from 'next/app';
-import Menu from '../components/Menu';
-import { ThemeProvider } from 'styled-components';
-import GlobalStyle from '../styles/global';
-import { themeDefault, themeDark } from '../styles/theme';
+import React, { useEffect } from 'react';
+import {} from 'next';
+
 import Head from 'next/head';
+import { AppProps } from 'next/app';
+import { ThemeProvider } from 'styled-components';
+
+import GlobalStyle from '../styles/global';
+import Menu from '../components/Menu';
+import Theme from '../components/Theme';
+import { themeLight, themeDark } from '../styles/theme';
+import usePersistedState from '../utils/usePersistedState';
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
-  const [themeSelDark, setThemeSelDark] = useState(false);
+  const [theme, setTheme] = usePersistedState('theme', themeLight);
 
-  const handleSetTheme = (dark: boolean) => {
-    setThemeSelDark(dark);
-  };
-
-  const handleTheme = () => {
-    return themeSelDark ? themeDark : themeDefault;
+  const toggleTheme = () => {
+    setTheme(theme.title === 'light' ? themeDark : themeLight);
   };
 
   return (
-    <ThemeProvider theme={handleTheme}>
+    <ThemeProvider theme={theme}>
       <Head>
         <title>BeBride Assessoria</title>
       </Head>
-      <Menu darkTheme={handleSetTheme} />
+      <Menu />
+      <Theme toggleTheme={toggleTheme} themeTitle={theme.title} />
       <Component {...pageProps} />
       <GlobalStyle />
     </ThemeProvider>

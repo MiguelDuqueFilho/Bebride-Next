@@ -1,7 +1,3 @@
-import Head from 'next/head';
-
-import Menu from '../components/Menu';
-
 import {
   Container,
   ContainerContent,

@@ -1,26 +1,17 @@
-import { route } from 'next/dist/next-server/server/router';
 import Link from 'next/link';
 
 import React, { useState } from 'react';
-import { Theme } from '../../styles/styled';
 
 import {
   ContainerMenu,
   Toggler,
   Hamburger,
   MenuData,
-  MenuItens,
-  ThemeSelect,
-  ThemeSelected
+  MenuItens
 } from './styles';
 
-type themeProps = {
-  darkTheme: Function;
-};
-
-function Menu({ darkTheme }: themeProps) {
+function Menu() {
   const [toggle, setToggle] = useState(false);
-  const [themeSetDark, setThemeSetDark] = useState(() => darkTheme());
 
   const handeChangeMenu = () => {
     setToggle(!toggle);
@@ -30,27 +21,13 @@ function Menu({ darkTheme }: themeProps) {
     setToggle(false);
   };
 
-  const handeClickTheme = (e: React.MouseEvent) => {
-    darkTheme(!themeSetDark);
-    setThemeSetDark(!themeSetDark);
-  };
-
   return (
     <ContainerMenu className="menu-container">
       <Toggler type="checkbox" className="toggler" onChange={handeChangeMenu} />
       <Hamburger className={`hamburger ${toggle ? 'checked' : ''}`}>
         <div></div>
       </Hamburger>
-      <ThemeSelect className="theme-select" />
-      <ThemeSelected
-        className={`theme-selected ${themeSetDark ? 'dark' : ''}`}
-        onClick={handeClickTheme}
-      >
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </ThemeSelected>
+
       <MenuData className={`menu ${toggle ? 'checked' : ''}`}>
         <MenuItens className={`${toggle ? 'checked' : ''}`}>
           <div>
