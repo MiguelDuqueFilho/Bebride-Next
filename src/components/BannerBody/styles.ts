@@ -10,6 +10,13 @@ export const Container = styled.div`
   align-items: center;
   text-align: center;
   flex-direction: row;
+  @media (max-width: 959px) {
+    flex-direction: column-reverse;
+  }
+
+  @media (max-width: 570px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const ContainerContent = styled.div`
@@ -25,6 +32,15 @@ export const ContainerContent = styled.div`
     font-size: 6rem;
     font-weight: 900;
     color: ${props => props.theme.color.primary};
+    @media (max-width: 959px) {
+      font-size: 4rem;
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 570px) {
+      font-size: 3rem;
+      justify-content: flex-end;
+    }
   }
 
   p {
@@ -32,6 +48,15 @@ export const ContainerContent = styled.div`
     font-size: 2rem;
     color: ${props => props.theme.color.title};
     margin: 30px;
+
+    @media (max-width: 959px) {
+      font-size: 1.7rem;
+      margin: 20px 0;
+    }
+    @media (max-width: 570px) {
+      font-size: 1.4rem;
+      margin: 10px 0;
+    }
   }
 `;
 
@@ -43,6 +68,12 @@ export const ContainerLogo = styled.div`
   border-radius: 0 0 0 40vw;
   background: ${props => props.theme.color.gradientStart};
 
+  @media (max-width: 959px) {
+    width: 100vw;
+  }
+  @media (max-width: 570px) {
+    width: 100vw;
+  }
   background: linear-gradient(
     -45deg,
     '${props => props.theme.color.gradientStart}' 0%,
@@ -60,15 +91,16 @@ export const ContainerLogo = styled.div`
     '${props => props.theme.color.gradientStart}' 0%,
     '${props => props.theme.color.gradientEnd}' 100%
   );
-
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="${props =>
-    props.theme.color.gradientStart}", endColorstr="${props =>
-    props.theme.color.gradientEnd}", GradientType=1 );
-  /* height: 60%; */
 `;
 
 export const LogoHome = styled.img`
   width: 50vw;
+  @media (max-width: 959px) {
+    width: 60vw;
+  }
+  @media (max-width: 570px) {
+    width: 80vw;
+  }
 `;
 
 export const Btn = styled.a`

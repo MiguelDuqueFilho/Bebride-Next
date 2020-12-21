@@ -25,10 +25,12 @@ export const Container = styled.div`
 
 export const Logo = styled.img`
   align-self: center;
-  height: 14em;
+  height: 16em;
 `;
 
-export const ContainerContent = styled.div``;
+export const ContainerContent = styled.div`
+  margin-top: 2rem;
+`;
 
 export const ContainerText = styled.div`
   width: 100%;
@@ -70,15 +72,16 @@ export const ContainerTeam = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-content: center;
-  margin: 6rem;
+  margin: 1rem 6rem;
 
   @media (max-width: 959px) {
-    margin: 4rem 3rem;
+    margin: 1rem 3rem;
     flex-direction: column;
   }
 
   @media (max-width: 570px) {
-    margin: 2rem 1rem;
+    margin: 1rem 1rem;
+    flex-direction: column;
   }
 `;
 
@@ -88,9 +91,14 @@ export const ContainerTeamImag = styled.div`
   justify-content: center;
   align-items: center;
   flex: 0 0 50%;
-  max-width: 50%;
+  max-width: 100%;
   @media (max-width: 959px) {
-    flex: 0 0 100%;
+    flex: 0 0 50%;
+    max-width: 80%;
+    align-self: center;
+  }
+  @media (max-width: 570px) {
+    flex: 0 0 50%;
     max-width: 100%;
   }
 `;
@@ -98,7 +106,7 @@ export const ContainerTeamImag = styled.div`
 export const ContainerTeamText = styled.div`
   flex: 0 0 50%;
   max-width: 50%;
-  margin-top: 2rem !important;
+  margin-top: 2rem;
   @media (max-width: 959px) {
     flex: 0 0 100%;
     max-width: 100%;
@@ -113,15 +121,24 @@ export const ImageTeam = styled.img`
 export const TeamDescr = styled.p`
   color: ${props => props.theme.color.text};
   text-align: justify;
-  font-size: 20px;
-  margin: 2rem;
+  font-size: 24px;
+  margin: 1rem;
+
+  @media (max-width: 959px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 570px) {
+    font-size: 18px;
+  }
 `;
 
 export const TeamSocial = styled.div`
   display: flex;
-  justify-content: auto;
+  justify-content: space-around;
   align-items: center;
   flex-direction: row;
+  width: 40%;
   margin-top: 2rem;
   color: ${props => props.theme.color.text};
   text-align: center;
