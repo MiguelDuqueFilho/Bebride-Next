@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../../assets/images/Bebride_Hand1.png';
 import team from '../../assets/images/bruna-tamires.png';
 
-import { FaHeart } from 'react-icons/fa';
+import { FaHeart, FaFacebook, FaInstagram } from 'react-icons/fa';
 
 import {
   Container,
@@ -13,9 +13,9 @@ import {
   ContainerTeamImag,
   ContainerTeamText,
   ImageTeam,
-  CardTitle,
   TeamDescr,
-  TeamSocial
+  TeamSocial,
+  SocialIcon
 } from './styles';
 
 const Team: React.FC = () => {
@@ -38,20 +38,13 @@ const Team: React.FC = () => {
               alt="team"
               className="rounded-circle img-fluid"
             />
-
-            <TeamSocial className="team-social text-center mt-3">
-              <a
-                href="https://www.facebook.com/bebridecasamentos"
-                className="btn btn-link btn-just-icon"
-              >
-                <i className="fa fa-facebook-square"></i>
-              </a>
-              <a
-                href="https://www.instagram.com/bebridecasamentos"
-                className="btn btn-link btn-just-icon"
-              >
-                <i className="fa fa-instagram"></i>
-              </a>
+            <TeamSocial>
+              <SocialIcon href="https://www.facebook.com/bebridecasamentos">
+                <FaFacebook />
+              </SocialIcon>
+              <SocialIcon href="https://www.instagram.com/bebridecasamentos">
+                <FaInstagram />
+              </SocialIcon>
             </TeamSocial>
           </ContainerTeamImag>
           <ContainerTeamText className="col-md-9 mt-5 mt-3">
