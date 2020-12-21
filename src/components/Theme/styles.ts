@@ -18,7 +18,7 @@ export const ThemeSelect = styled.input`
   opacity: 1;
   z-index: 12;
   cursor: pointer;
-  background-color: ${props => props.theme.color.buttonHover};
+  background-color: ${props => props.theme.color.toggle};
 `;
 
 export const ThemeSelected = styled.div`
@@ -38,7 +38,7 @@ export const ThemeSelected = styled.div`
   flex-direction: column;
   transition: 0.4s;
   z-index: 13;
-  background-color: ${props => props.theme.color.buttonHover};
+  background-color: ${props => props.theme.color.toggle};
 
   > div {
     position: absolute;
@@ -83,7 +83,7 @@ export const ThemeSelected = styled.div`
     width: 60%;
     height: 60%;
     border-radius: 50%;
-    background-color: ${props => props.theme.color.buttonHover};
+    background-color: ${props => props.theme.color.toggle};
     transition: 0.4s;
     opacity: 1;
     z-index: 15;

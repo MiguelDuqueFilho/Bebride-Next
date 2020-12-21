@@ -1,28 +1,20 @@
-import {
-  Container,
-  ContainerContent,
-  ContainerLogo,
-  LogoHome,
-  Btn
-} from '../styles/pages/home';
+import { Container } from '../styles/pages/home';
+
+import BannerBody from '../components/BannerBody';
+import Team from '../components/Team';
+import Plans from '../components/Plans';
+import Depositions from '../components/Depositions';
+import Final from '../components/Final';
 
 const Home: React.FC = () => {
   return (
-    <>
-      <Container>
-        <ContainerContent className="content">
-          <h1>be bride</h1>
-          <p>Vem casar com a gente.</p>
-          <ContainerLogo>
-            <LogoHome src="/images/logoHome.svg" />
-            <LogoHome src="/images/logoHome_2.svg" />
-          </ContainerLogo>
-          <Btn href="#" className="btn">
-            #vamosjuntas?
-          </Btn>
-        </ContainerContent>
-      </Container>
-    </>
+    <Container>
+      <BannerBody />
+      <Team />
+      <Plans />
+      <Depositions />
+      <Final />
+    </Container>
   );
 };
 

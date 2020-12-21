@@ -17,7 +17,6 @@ function Theme({ toggleTheme, themeTitle }: themeProps) {
   };
 
   useEffect(() => {
-    // if (themeTitle === theme) return;
     setTheme(themeTitle === 'light' ? 'light' : 'dark');
   }, [themeTitle]);
 

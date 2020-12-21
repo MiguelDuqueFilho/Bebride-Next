@@ -13,11 +13,31 @@ export const Container = styled.div`
     width: 2000px;
     height: 2000px;
     border-radius: 50%;
+
+    background: ${props => props.theme.color.gradientStart};
+
     background: linear-gradient(
       -45deg,
-      ${props => props.theme.color.gradiente} 0%,
-      ${props => props.theme.color.primary} 100%
+      '${props => props.theme.color.gradientStart}' 0%,
+      '${props => props.theme.color.gradientEnd}' 100%
     );
+
+    background: -moz-linear-gradient(
+      -45deg,
+      '${props => props.theme.color.gradientStart}' 0%,
+      '${props => props.theme.color.gradientEnd}' 100%
+    );
+
+    background: -webkit-linear-gradient(
+      -45deg,
+      '${props => props.theme.color.gradientStart}' 0%,
+      '${props => props.theme.color.gradientEnd}' 100%
+    );
+
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="${props =>
+      props.theme.color.gradientStart}", endColorstr="${props =>
+      props.theme.color.gradientEnd}", GradientType=1 );
+
     top: -10%;
     right: 48%;
     transform: translatey(-50%);
@@ -215,6 +235,7 @@ export const BtnTransparent = styled(Button)`
 `;
 
 export const SocialText = styled.p`
+  color: ${props => props.theme.color.title};
   padding: 0.7rem 0;
   font-size: 1rem;
 `;
@@ -227,22 +248,24 @@ export const SocialMedia = styled.p`
 export const SocialIcon = styled.a`
   height: 46px;
   width: 46px;
-  border: 1px solid ${props => props.theme.color.input};
+
   margin: 0 0.45rem;
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  color: ${props => props.theme.color.input};
   font-size: 1.1rem;
   border-radius: 50%;
   transition: 0.3s;
 
+  color: ${props => props.theme.color.socialText};
+  border: 2px solid ${props => props.theme.color.socialText};
+  border-color: ${props => props.theme.color.socialText};
+
   :hover {
-    color: ${props => props.theme.color.buttonHover};
-    border-color: ${props => props.theme.color.buttonHover};
-    color: #4481eb;
-    border-color: #4481eb;
+    color: ${props => props.theme.color.socialTextHover};
+    border: 2px solid ${props => props.theme.color.socialTextHover};
+    border-color: ${props => props.theme.color.socialTextHover};
   }
 `;
 

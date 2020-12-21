@@ -1,0 +1,83 @@
+import React from 'react';
+import logo from '../../assets/images/Bebride_Hand1.png';
+import team from '../../assets/images/bruna-tamires.png';
+
+import { FaHeart } from 'react-icons/fa';
+
+import {
+  Container,
+  Logo,
+  ContainerContent,
+  ContainerText,
+  ContainerTeam,
+  ContainerTeamImag,
+  ContainerTeamText,
+  ImageTeam,
+  CardTitle,
+  TeamDescr,
+  TeamSocial
+} from './styles';
+
+const Team: React.FC = () => {
+  return (
+    <Container>
+      <Logo src={logo} alt="logo BeBride" className="logo" />
+      <ContainerContent className="row col-12 mr-auto ml-auto">
+        <ContainerText className="team-block ">
+          <h2 className="team title">
+            <p>
+              Nós gostamos de pessoas e gostamos de histórias de amor...
+              <FaHeart size={28} className="icon-heart" />
+            </p>
+          </h2>
+        </ContainerText>
+        <ContainerTeam className="row col-12 mr-auto ml-auto">
+          <ContainerTeamImag className="col-md-3 team-content ">
+            <ImageTeam
+              src={team}
+              alt="team"
+              className="rounded-circle img-fluid"
+            />
+
+            <TeamSocial className="team-social text-center mt-3">
+              <a
+                href="https://www.facebook.com/bebridecasamentos"
+                className="btn btn-link btn-just-icon"
+              >
+                <i className="fa fa-facebook-square"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/bebridecasamentos"
+                className="btn btn-link btn-just-icon"
+              >
+                <i className="fa fa-instagram"></i>
+              </a>
+            </TeamSocial>
+          </ContainerTeamImag>
+          <ContainerTeamText className="col-md-9 mt-5 mt-3">
+            <TeamDescr className="team-descr">
+              Olá, somos Bruna e Tamires, unimos essa paixão e nossa amizade aos
+              nossos ideais, trazendo à tona uma empresa que se posiciona e
+              levanta bandeiras. E é nisso que ganhamos reconhecimento e valor.
+            </TeamDescr>
+            <TeamDescr className="team-descr">
+              Cada casal é mais do que um cliente, levamos como amigos para
+              vida, quem nos segue nas redes sociais já sabe, não é difícil ver
+              nossos noivos em nossos próprios lares. Gostamos de criar laços,
+              proporcionar uma experiência única a quem nos escolhe para
+              organizar e assessorar um dos dias mais importantes de sua vida.
+            </TeamDescr>
+            <TeamDescr className="team-descr">
+              Gratidão e amor é o que nos move. Nossa missão é fazer a diferença
+              na vida das pessoas, seja as ajudando a realizar seus sonhos,
+              planejando e organizando seus casamentos ou incentivando seus
+              negócios, dando prioridade em indicar mulheres como fornecedoras.
+            </TeamDescr>
+          </ContainerTeamText>
+        </ContainerTeam>
+      </ContainerContent>
+    </Container>
+  );
+};
+
+export default Team;

@@ -38,8 +38,8 @@ function Menu() {
                 </Link>
               </li>
               <li>
-                <Link href="/services">
-                  <a onClick={handeClickMenu}>Serviços</a>
+                <Link href="/pagesample">
+                  <a onClick={handeClickMenu}>Page Sample</a>
                 </Link>
               </li>
               <li>

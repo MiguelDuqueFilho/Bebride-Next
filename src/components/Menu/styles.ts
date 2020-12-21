@@ -26,7 +26,7 @@ export const Hamburger = styled.div`
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  background-color: ${props => props.theme.color.buttonHover};
+  background-color: ${props => props.theme.color.toggle};
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -100,9 +100,9 @@ export const MenuItens = styled.div`
   transform: translateX(-150%) translateY(-50%);
   -webkit-transform: translate3d(-150%, -50%, 0);
   background: linear-gradient(
-    -45deg,
-    ${props => props.theme.color.gradiente} 50%,
-    ${props => props.theme.color.primary} 100%
+    135deg,
+    ${props => props.theme.color.gradientStart} 0%,
+    ${props => props.theme.color.gradientEnd} 100%
   );
 
   transition: 1.5s;
@@ -148,18 +148,4 @@ export const MenuItens = styled.div`
   > div > ul > li > a:hover {
     color: ${props => props.theme.color.black};
   }
-`;
-
-export const ThemeSelect = styled.input`
-  position: absolute;
-  top: 0.5rem;
-  left: calc(100vw - 0.5rem - 45px);
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  border: 0;
-  opacity: 1;
-  z-index: 12;
-  cursor: pointer;
-  background-color: ${props => props.theme.color.buttonHover};
 `;

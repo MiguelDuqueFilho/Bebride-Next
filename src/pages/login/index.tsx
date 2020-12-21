@@ -135,10 +135,7 @@ const SignInOut: React.FC = () => {
                 onClick={handleClickRegister}
               />
             </PanelContentLeft>
-            <ImageLeft
-              className={`image ${mode}`}
-              src="/images/LogoLogin.svg"
-            />
+            <ImageLeft className={`image ${mode}`} src="/images/love.svg" />
           </PanelLeft>
           <PanelRight className={`panel right-panel ${mode}`}>
             <PanelContentRight className={`content ${mode}`}>
@@ -151,10 +148,7 @@ const SignInOut: React.FC = () => {
                 onClick={handleClickLogin}
               />
             </PanelContentRight>
-            <ImageRight
-              className={`image ${mode}`}
-              src="/images/logoRegister.svg"
-            />
+            <ImageRight className={`image ${mode}`} src="/images/login.svg" />
           </PanelRight>
         </PanelsContainer>
       </Container>

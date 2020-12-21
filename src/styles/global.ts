@@ -1,10 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
 
   @font-face {
     font-family: 'romantisch';
-    src: url('/romantisch.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    src: url('/romantisch-Regular.ttf') format('truetype');
   }
 
   * {
@@ -14,10 +17,6 @@ export default createGlobalStyle`
   }
 
   body, input {
-    font-family: 'Roboto', sans-serif;
-    background: ${props => props.theme.color.background};
-    color: ${props => props.theme.color.text};
-    /* overflow: hidden; */
-
+    font-family: 'Cormorant Garamond', serif;
   }
 `;

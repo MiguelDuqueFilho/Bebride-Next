@@ -1,65 +1,99 @@
+const themeNovo = {
+  color: {
+    primarymenos2: '#e5e2f4',
+    primarymenos1: '#d8d3ee',
+    primary: '#C7BFE6',
+    primarymais1: '#bfb6e2',
+    primarymais2: '#b2a7dd',
+    primarymais3: '#a598d7',
+    primarymais4: '#9889d1',
+    primarymais5: '#8b7bcc',
+    primarymais6: '#7e6cc6',
+    primarymais7: '#715dc0',
+    primarymais8: '#644fba',
+    primarymais9: '#5a45b0',
+    primarymais10: '#533fa2',
+
+    primaryDark4: '#1e173b',
+    primaryDark5: '#261d46', //fim
+    primaryDark6: '#2d2255',
+    primaryDark7: '#352865',
+    primaryDark8: '#3c2e74',
+    primaryDark9: '#443384',
+    primaryDark10: '#4b3993', //inicio
+
+    secundary: '#E78F8E'
+  }
+};
+
 export const themeLight = {
   title: 'light',
   color: {
-    background: '#fff',
+    background: '#ffffff',
+    toggle: '#533fa2',
+    primary: '#c7bfe6',
+    title: '#444',
+    text: '#333',
+    socialText: '#acacac',
+    socialTextHover: '#644fba',
+    gradientStart: '#a598d7',
+    gradientEnd: '#7a6ab9',
+    button: '#7e6cc6',
+    buttonHover: '#644fba',
+    buttonText: '#FAFAFA',
+
+    light: '#fcfafe',
     white: '#fff',
     black: '#000',
-    title: '#444',
+
+    backgroundTitle: '#E78F8E',
     input: '#333',
     inputIcon: '#acacac',
     inputBackgroud: '#f0f0f0',
-    inputPlaceHolder: '#aaa',
-    button: '#C8BAF6',
-    buttonHover: '#bba8f3',
-    gradiente: '#cabae0',
-    primary: '#c7bfe6',
-    secundary: '#8257e6',
-
-    background2: '#8971a3',
-
-    indigo: '#6610f2',
-
-    text: '#fcfafe',
-    blue: '#007bff',
-    purple: '#6f42c1',
-    pink: '#e83e8c',
-    red: '#dc3545',
-    orange: '#fd7e14',
-    yellow: '#ffc107',
-    green: '#28a745',
-    teal: '#20c997',
-    cyan: '#17a2b8',
-    gray: '#6c757d',
-    graydark: '#343a40',
-    // secondary: '#6c757d',
-    success: '#28a745',
-    info: '#17a2b8',
-    warning: '#ffc107',
-    danger: '#dc3545',
-    light: '#f8f9fa',
-    dark: '#343a40'
+    inputPlaceHolder: '#aaa'
   }
 };
 
 export const themeDark = {
   title: 'dark',
   color: {
-    background: '#222',
+    background: '#2E2B37',
+    toggle: '#2d2255',
+    primary: '#c7bfe6',
+    title: '#FFFDFF',
+    text: '#FAFAFA',
+    socialText: '#acacac',
+    socialTextHover: '#644fba',
+    gradientStart: '#4b3993',
+    gradientEnd: '#1e1736',
+    button: '#443384',
+    buttonHover: '#644fba',
+    buttonText: '#FAFAFA',
+
+    light: '#fcfafe',
     white: '#fff',
     black: '#000',
-    title: '#444',
+
+    backgroundTitle: '#585566',
+    input: '#333',
+    inputIcon: '#acacac',
+    inputBackgroud: '#f0f0f0',
+    inputPlaceHolder: '#aaa'
+  }
+};
+
+const outros = {
+  color: {
+    // Não testadas
+
     input: '#333',
     inputIcon: '#acacac',
     inputBackgroud: '#f0f0f0',
     inputPlaceHolder: '#aaa',
-    button: '#C8BAF6',
-    buttonHover: '#bba8f3',
-    gradiente: '#cabae0',
-    primary: '#c7bfe6',
+
     secundary: '#8257e6',
 
     background2: '#8971a3',
-
     indigo: '#6610f2',
 
     text: '#fcfafe',
@@ -73,7 +107,7 @@ export const themeDark = {
     teal: '#20c997',
     cyan: '#17a2b8',
     gray: '#6c757d',
-    graydark: '#343a40',
+    graydark: '#333',
     // secondary: '#6c757d',
     success: '#28a745',
     info: '#17a2b8',
@@ -81,56 +115,6 @@ export const themeDark = {
     danger: '#dc3545',
     light: '#f8f9fa',
     dark: '#343a40'
-  }
-};
-
-const themeTriade = {
-  color: {
-    background_A: '#787099',
-    background_B: '#e6c3a8',
-    background_C: '#c7bfe6',
-    background_D: '#a8e6a9',
-    background_E: '#779978'
-  }
-};
-
-const themeQuadrado = {
-  color: {
-    background_A: '#b4a8e6',
-    background_B: '#e6b1a8',
-    background_C: '#c7bfe6',
-    background_D: '#e6dfa8',
-    background_E: '#b3e6d1'
-  }
-};
-
-const themeComposto = {
-  color: {
-    background_A: '#a682b3',
-    background_B: '#6d3780',
-    background_C: '#c7bfe6',
-    background_D: '#e9d487',
-    background_E: '#b3a482'
-  }
-};
-
-const themeSombras = {
-  color: {
-    background_A: '#8f8aa6',
-    background_B: '#585566',
-    background_C: '#c7bfe6',
-    background_D: '#d1c9f2',
-    background_E: '#b0a9cc'
-  }
-};
-
-const themeMonocromatico = {
-  color: {
-    background_A: '#585566',
-    background_B: '#787099',
-    background_C: '#403666',
-    background_D: '#9a94b3',
-    background_E: '#c7bfe6'
   }
 };
 
