@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   position: relative;
   width: 100vw;
-  height: 90vh;
+  height: 100vh;
   background-color: ${props => props.theme.color.background};
   display: flex;
   justify-content: stretch;
@@ -27,35 +27,36 @@ export const ContainerContent = styled.div`
   align-items: center;
   flex-direction: column;
 
-  h1 {
-    font-family: 'romantisch';
-    font-size: 6rem;
-    font-weight: 900;
-    color: ${props => props.theme.color.primary};
-    @media (max-width: 959px) {
-      font-size: 4rem;
-      justify-content: flex-end;
-    }
-
-    @media (max-width: 570px) {
-      font-size: 3rem;
-      justify-content: flex-end;
-    }
-  }
-
-  p {
+  > p {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
+    font-size: 1.8rem;
+    font-weight: 700;
     color: ${props => props.theme.color.title};
-    margin: 30px;
 
     @media (max-width: 959px) {
+      width: 100vw;
       font-size: 1.7rem;
       margin: 20px 0;
     }
     @media (max-width: 570px) {
+      width: 100vw;
       font-size: 1.4rem;
       margin: 10px 0;
+    }
+  }
+  > span {
+    margin-bottom: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: ${props => props.theme.color.title};
+    @media (max-width: 959px) {
+      font-size: 1.2rem;
+      justify-content: flex-end;
+    }
+    @media (max-width: 570px) {
+      font-size: 1rem;
+      justify-content: flex-end;
     }
   }
 `;
@@ -70,9 +71,11 @@ export const ContainerLogo = styled.div`
 
   @media (max-width: 959px) {
     width: 100vw;
+    height: 100%;
   }
   @media (max-width: 570px) {
     width: 100vw;
+    height: 100%;
   }
   background: linear-gradient(
     -45deg,
@@ -96,18 +99,32 @@ export const ContainerLogo = styled.div`
 export const LogoHome = styled.img`
   width: 50vw;
   @media (max-width: 959px) {
-    width: 60vw;
+    width: 50vw;
+    height: 100%;
   }
   @media (max-width: 570px) {
-    width: 80vw;
+    width: 40vw;
+    width: 100vw;
   }
 `;
 
-export const Btn = styled.a`
+export const LogoImage = styled.img`
+  width: 20vw;
+  @media (max-width: 959px) {
+    width: 30vw;
+  }
+  @media (max-width: 570px) {
+    width: 40vw;
+  }
+`;
+export const ContainerWhatsApp = styled.div`
+  width: 100vw;
+`;
+
+export const ButtonWhatsApp = styled.a`
   padding: 0.75rem 1.75rem;
   margin-top: 3rem;
   font-family: 'romantisch';
-  /* font-family: 'Dancing Script', cursive; */
   font-size: 1.6rem;
   font-weight: 400;
   color: ${props => props.theme.color.buttonText};
@@ -116,6 +133,13 @@ export const Btn = styled.a`
   text-decoration: none;
   transition: 0.3s;
   display: inline-block;
+  cursor: pointer;
+
+  > svg {
+    margin-top: 3px;
+    margin-right: 1rem;
+    vertical-align: top;
+  }
 
   &:hover {
     background-color: ${props => props.theme.color.buttonHover};

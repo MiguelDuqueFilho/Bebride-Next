@@ -23,11 +23,6 @@ export const Container = styled.div`
   }
 `;
 
-export const Logo = styled.img`
-  align-self: center;
-  height: 16em;
-`;
-
 export const ContainerContent = styled.div`
   margin-top: 2rem;
 `;
@@ -114,8 +109,10 @@ export const ContainerTeamText = styled.div`
 `;
 
 export const ImageTeam = styled.img`
-  max-width: 60%;
+  max-width: 100%;
   height: auto;
+  border-radius: 12px;
+  box-shadow: ${props => props.theme.color.boxShadow};
 `;
 
 export const TeamDescr = styled.p`

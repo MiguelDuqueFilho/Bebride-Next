@@ -41,6 +41,8 @@ export const themeLight = {
     button: '#7e6cc6',
     buttonHover: '#644fba',
     buttonText: '#FAFAFA',
+    boxShadow:
+      '0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)',
 
     light: '#fcfafe',
     white: '#fff',
@@ -69,6 +71,8 @@ export const themeDark = {
     button: '#443384',
     buttonHover: '#644fba',
     buttonText: '#FAFAFA',
+    boxShadow:
+      '0 16px 24px 2px rgba(255, 255, 255, 0.12), 0 6px 30px 5px rgba(255, 255, 255,  0.10), 0 8px 10px -5px rgba(255, 255, 255,  0.2)',
 
     light: '#fcfafe',
     white: '#fff',

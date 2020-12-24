@@ -1,12 +1,11 @@
 import React from 'react';
-import logo from '../../assets/images/Bebride_Hand1.png';
-import team from '../../assets/images/bruna-tamires.png';
+
+import team from '../../assets/images/team-bebride2.jpg';
 
 import { FaHeart, FaFacebook, FaInstagram } from 'react-icons/fa';
 
 import {
   Container,
-  Logo,
   ContainerContent,
   ContainerText,
   ContainerTeam,
@@ -21,7 +20,6 @@ import {
 const Team: React.FC = () => {
   return (
     <Container>
-      <Logo src={logo} alt="logo BeBride" className="logo" />
       <ContainerContent className="row col-12 mr-auto ml-auto">
         <ContainerText className="team-block ">
           <h2 className="team title">
