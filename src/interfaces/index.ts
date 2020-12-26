@@ -6,3 +6,19 @@ export type PlanType = {
   url: string;
   show: boolean;
 };
+
+export type DepositionItem = {
+  id: number;
+  eventId: number;
+  depositionTitle: string;
+  depositionDescription: string;
+  depositionFilename: string;
+  uploadId: number;
+  depositionShow: boolean;
+  updatedAt: string;
+  Events: [
+    {
+      eventName: string;
+    }
+  ];
+};

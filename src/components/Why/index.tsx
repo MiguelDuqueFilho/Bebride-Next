@@ -1,33 +1,37 @@
 import React from 'react';
 
+import teamadesivo from '../../assets/images/team-adesivo.png';
+
 import {
   Container,
   ContainerContent,
   ContainerWhyTitle,
-  ContainerWhyText
+  ContainerWhyText,
+  ContainerTeam2Imag,
+  ImageTeam2
 } from './styles';
 
 import {
   FaHeart,
   FaProjectDiagram,
   FaTasks,
-  FaFemale,
+  FaVenus,
   FaMoneyBill
 } from 'react-icons/fa';
 
 const Why: React.FC = () => {
   return (
     <Container>
+      <ContainerWhyTitle className="why-block ">
+        <h2>
+          Por que nos contratar?{' '}
+          <FaHeart size={28} className="text-primary align-baseline " />
+        </h2>
+        <span>
+          (MOTIVOS PARA TER A GENTE COMO MELHORES AMIGAS, OPS... ASSESSORAS!)
+        </span>
+      </ContainerWhyTitle>
       <ContainerContent className="row">
-        <ContainerWhyTitle className="why-block ">
-          <h2>
-            Por que nos contratar?{' '}
-            <FaHeart size={28} className="text-primary align-baseline " />
-          </h2>
-          <span>
-            (MOTIVOS PARA TER A GENTE COMO MELHORES AMIGAS, OPS... ASSESSORAS!)
-          </span>
-        </ContainerWhyTitle>
         <ContainerWhyText>
           <p className="why-descr">
             <FaTasks />
@@ -50,7 +54,7 @@ const Why: React.FC = () => {
             uma das coisas que mais gostamos de fazer!
           </p>
           <p className="why-descr">
-            <FaFemale />É importante dizer que damos prioridade à indicação de
+            <FaVenus />É importante dizer que damos prioridade à indicação de
             mulheres como fornecedores do seu Grande Dia. Uma das nossas missões
             é fortalecer o empreendedorismo feminino.
           </p>
@@ -59,6 +63,9 @@ const Why: React.FC = () => {
             Conseguimos melhores preços junto aos fornecedores.
           </p>
         </ContainerWhyText>
+        <ContainerTeam2Imag>
+          <ImageTeam2 src={teamadesivo} alt="team" />
+        </ContainerTeam2Imag>
       </ContainerContent>
     </Container>
   );

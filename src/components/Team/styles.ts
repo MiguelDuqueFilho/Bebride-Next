@@ -112,7 +112,7 @@ export const ImageTeam = styled.img`
   max-width: 100%;
   height: auto;
   border-radius: 12px;
-  box-shadow: ${props => props.theme.color.boxShadow};
+  /* box-shadow: ${props => props.theme.color.boxShadow}; */
 `;
 
 export const TeamDescr = styled.p`
@@ -127,44 +127,5 @@ export const TeamDescr = styled.p`
 
   @media (max-width: 570px) {
     font-size: 18px;
-  }
-`;
-
-export const TeamSocial = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: row;
-  width: 40%;
-  margin-top: 2rem;
-  color: ${props => props.theme.color.text};
-  text-align: center;
-  > i {
-    color: ${props => props.theme.color.text};
-    font-size: 32px;
-  }
-`;
-
-export const SocialIcon = styled.a`
-  height: 46px;
-  width: 46px;
-
-  margin: 0 0.45rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  font-size: 1.1rem;
-  border-radius: 50%;
-  transition: 0.3s;
-
-  color: ${props => props.theme.color.socialText};
-  border: 2px solid ${props => props.theme.color.socialText};
-  border-color: ${props => props.theme.color.socialText};
-
-  :hover {
-    color: ${props => props.theme.color.socialTextHover};
-    border: 2px solid ${props => props.theme.color.socialTextHover};
-    border-color: ${props => props.theme.color.socialTextHover};
   }
 `;

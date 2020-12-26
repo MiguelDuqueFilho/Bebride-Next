@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   background-color: ${props => props.theme.color.background};
   display: flex;
   justify-content: stretch;
@@ -28,34 +28,39 @@ export const ContainerContent = styled.div`
   flex-direction: column;
 
   > p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-family: 'romantisch';
+    font-size: 5.6em;
+    margin-bottom: -40px;
     color: ${props => props.theme.color.title};
 
     @media (max-width: 959px) {
       width: 100vw;
-      font-size: 1.7rem;
-      margin: 20px 0;
+      font-size: 4rem;
+      margin: -30px 0;
     }
     @media (max-width: 570px) {
       width: 100vw;
-      font-size: 1.4rem;
-      margin: 10px 0;
+      font-size: 3rem;
+      margin: -30px 0;
     }
   }
   > span {
-    margin-bottom: 20px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
+    font-family: Times New Roman;
+    font-size: 0.95em;
+    font-style: normal;
     font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 0.13em;
+    text-align: left;
+    margin-bottom: 20px;
+
     color: ${props => props.theme.color.title};
     @media (max-width: 959px) {
-      font-size: 1.2rem;
+      font-size: 0.78rem;
       justify-content: flex-end;
     }
     @media (max-width: 570px) {
-      font-size: 1rem;
+      font-size: 0.5rem;
       justify-content: flex-end;
     }
   }
@@ -97,7 +102,9 @@ export const ContainerLogo = styled.div`
 `;
 
 export const LogoHome = styled.img`
+  color: ${props => props.theme.color.title};
   width: 50vw;
+
   @media (max-width: 959px) {
     width: 50vw;
     height: 100%;
@@ -110,38 +117,11 @@ export const LogoHome = styled.img`
 
 export const LogoImage = styled.img`
   width: 20vw;
+  margin-bottom: 30px;
   @media (max-width: 959px) {
     width: 30vw;
   }
   @media (max-width: 570px) {
     width: 40vw;
-  }
-`;
-export const ContainerWhatsApp = styled.div`
-  width: 100vw;
-`;
-
-export const ButtonWhatsApp = styled.a`
-  padding: 0.75rem 1.75rem;
-  margin-top: 3rem;
-  font-family: 'romantisch';
-  font-size: 1.6rem;
-  font-weight: 400;
-  color: ${props => props.theme.color.buttonText};
-  border-radius: 49px;
-  background-color: ${props => props.theme.color.button};
-  text-decoration: none;
-  transition: 0.3s;
-  display: inline-block;
-  cursor: pointer;
-
-  > svg {
-    margin-top: 3px;
-    margin-right: 1rem;
-    vertical-align: top;
-  }
-
-  &:hover {
-    background-color: ${props => props.theme.color.buttonHover};
   }
 `;

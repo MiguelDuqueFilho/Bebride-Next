@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { ContainerItem, ContainerIcon } from './styles';
 import { PlanType } from '../../interfaces';
@@ -23,7 +23,6 @@ function Types({ item }: Props) {
         <Icon iconName={item.icon} />
         <h4>{`${item.title}`}</h4>
         <p>{item.resume}</p>
-        <a href={item.url}>Saiba Mais</a>
       </ContainerIcon>
     </ContainerItem>
   );

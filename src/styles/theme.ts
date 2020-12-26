@@ -30,9 +30,10 @@ export const themeLight = {
   title: 'light',
   color: {
     background: '#ffffff',
+    // background2: '#d8d3ee',
     toggle: '#533fa2',
     primary: '#c7bfe6',
-    title: '#555',
+    title: '#4d495d',
     text: '#777',
     socialText: '#acacac',
     socialTextHover: '#644fba',

@@ -4,7 +4,7 @@ export const Container = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: ${props => props.theme.color.background};
+  background-color: ${props => props.theme.color.background2};
 `;
 
 export const ContainerContent = styled.div`
@@ -13,6 +13,7 @@ export const ContainerContent = styled.div`
   align-items: center;
   flex-direction: column;
   font-family: 'Cormorant Garamond', serif;
+  margin-top: 10px;
 `;
 
 export const ContainerItens = styled.div`
@@ -42,7 +43,16 @@ export const ContainerTitle = styled.div`
     color: ${props => props.theme.color.title};
     text-transform: uppercase;
     font-weight: 300;
-    font-size: 1.5rem;
+    font-size: 1.3em;
+    text-align: justify;
+
+    @media (max-width: 959px) {
+      font-size: 1.1em;
+    }
+
+    @media (max-width: 570px) {
+      font-size: 1em;
+    }
   }
 `;
 
