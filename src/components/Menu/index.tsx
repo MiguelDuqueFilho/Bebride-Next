@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 
 import {
   ContainerMenu,
+  ContainerToggle,
   Toggler,
   Hamburger,
   MenuData,
@@ -23,11 +24,16 @@ function Menu() {
 
   return (
     <ContainerMenu className="menu-container">
-      <Toggler type="checkbox" className="toggler" onChange={handeChangeMenu} />
-      <Hamburger className={`hamburger ${toggle ? 'checked' : ''}`}>
-        <div></div>
-      </Hamburger>
-
+      <ContainerToggle>
+        <Toggler
+          type="checkbox"
+          className="toggler"
+          onChange={handeChangeMenu}
+        />
+        <Hamburger className={`hamburger ${toggle ? 'checked' : ''}`}>
+          <div></div>
+        </Hamburger>
+      </ContainerToggle>
       <MenuData className={`menu ${toggle ? 'checked' : ''}`}>
         <MenuItens className={`${toggle ? 'checked' : ''}`}>
           <div>
@@ -44,7 +50,7 @@ function Menu() {
               </li>
               <li>
                 <Link href="/login">
-                  <a onClick={handeClickMenu}>Login/Registro</a>
+                  <a onClick={handeClickMenu}>Login/Registrar</a>
                 </Link>
               </li>
               <li>

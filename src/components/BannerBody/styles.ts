@@ -82,7 +82,7 @@ export const ContainerLogo = styled.div`
 
   @media (max-width: 959px) {
     width: 100vw;
-    height: 100%;
+    height: 75%;
   }
   @media (max-width: 570px) {
     width: 100vw;

@@ -52,12 +52,19 @@ export const TeamSocial = styled.div`
   justify-content: space-evenly;
   align-items: center;
   flex-direction: row;
-  width: 40%;
+  width: 30%;
   margin-top: 2rem;
   margin-bottom: 30px;
   margin-left: 15px;
   color: ${props => props.theme.color.text};
   text-align: center;
+  @media (max-width: 959px) {
+    width: 30%;
+  }
+
+  @media (max-width: 570px) {
+    width: 60%;
+  }
   > i {
     color: ${props => props.theme.color.text};
     font-size: 32px;
@@ -77,12 +84,12 @@ export const SocialIcon = styled.a`
 `;
 
 export const LogoImage = styled.img`
-  width: 60vw;
+  width: 30vw;
   margin-bottom: 30px;
   @media (max-width: 959px) {
-    width: 70vw;
+    width: 40vw;
   }
   @media (max-width: 570px) {
-    width: 70vw;
+    width: 40vw;
   }
 `;

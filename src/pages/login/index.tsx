@@ -127,7 +127,7 @@ const SignInOut: React.FC = () => {
           <PanelLeft className={`panel left-panel ${mode}`}>
             <PanelContentLeft className={`content ${mode}`}>
               <h3>Novo aqui?</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+              <p>Click para se registrar. Vamos Juntas.</p>
               <BtnTransparent
                 type="button"
                 className="btn transparent"
@@ -140,7 +140,7 @@ const SignInOut: React.FC = () => {
           <PanelRight className={`panel right-panel ${mode}`}>
             <PanelContentRight className={`content ${mode}`}>
               <h3>Um de nós?</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+              <p>O login terá um tempo de 30 minutos de inatividade.</p>
               <BtnTransparent
                 type="button"
                 className="btn transparent"
