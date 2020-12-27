@@ -21,7 +21,7 @@ function Types({ item }: Props) {
     <ContainerItem>
       <ContainerIcon>
         <Icon iconName={item.icon} />
-        <h4>{`${item.title}`}</h4>
+        <h2>{`${item.title}`}</h2>
         <p>{item.resume}</p>
       </ContainerIcon>
     </ContainerItem>

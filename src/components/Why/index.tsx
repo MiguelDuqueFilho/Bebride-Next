@@ -24,9 +24,11 @@ const Why: React.FC = () => {
     <Container>
       <ContainerWhyTitle className="why-block ">
         <h2>
-          Por que nos contratar?{' '}
-          <FaHeart size={28} className="text-primary align-baseline " />
+          <p>
+            Por que nos contratar? <FaHeart size={28} />
+          </p>
         </h2>
+
         <span>
           (MOTIVOS PARA TER A GENTE COMO MELHORES AMIGAS, OPS... ASSESSORAS!)
         </span>

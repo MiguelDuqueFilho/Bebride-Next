@@ -28,7 +28,7 @@ export const ContainerIcon = styled.div`
     color: ${props => props.theme.color.primary};
   }
 
-  > h4 {
+  > h2 {
     color: ${props => props.theme.color.title};
     font-size: 1.3rem;
     padding-top: 1rem;
@@ -41,5 +41,12 @@ export const ContainerIcon = styled.div`
     padding-top: 1rem;
     min-height: 8rem;
     text-align: justify;
+    @media (max-width: 959px) {
+      font-size: 20px;
+    }
+
+    @media (max-width: 570px) {
+      font-size: 19px;
+    }
   }
 `;

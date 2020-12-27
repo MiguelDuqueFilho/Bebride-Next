@@ -11,8 +11,6 @@ export const Container = styled.div`
   align-content: center;
   background-color: ${props => props.theme.color.background};
   font-family: 'Cormorant Garamond', serif;
-
-  width: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -126,6 +124,6 @@ export const TeamDescr = styled.p`
   }
 
   @media (max-width: 570px) {
-    font-size: 18px;
+    font-size: 19px;
   }
 `;

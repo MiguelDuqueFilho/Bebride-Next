@@ -12,7 +12,7 @@ export const ContainerTitle = styled.div`
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  margin: 2.5rem 15px;
+  padding: 2.5rem 15px;
 
   text-align: center;
   font-size: 1.2rem;
@@ -29,6 +29,9 @@ export const ContainerTitle = styled.div`
       font-size: 1.2rem;
     }
     > span {
+      font-size: 1.4rem;
+      text-align: center;
+      color: ${props => props.theme.color.title};
     }
     > p {
       margin: 2rem 15px;

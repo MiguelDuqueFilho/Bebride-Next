@@ -12,7 +12,7 @@ export const ContainerContent = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: 'Cormorant Garamond', serif;
+
   margin-top: 10px;
 `;
 
@@ -30,29 +30,39 @@ export const ContainerTitle = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 2rem 6rem;
-
+  font-family: 'Cormorant Garamond', serif;
   > h2 {
-    font-size: 2.7rem;
-    line-height: 1.5em;
-    color: ${props => props.theme.color.primary};
-    text-align: center;
+    text-align: start;
+    font-size: 1.7em;
+    @media (max-width: 959px) {
+      text-align: center;
+      font-size: 1.8em;
+    }
+    > p {
+      margin: 2rem 6rem;
+      font-size: 2.7rem;
+      line-height: 1.5em;
+      color: ${props => props.theme.color.primary};
+      text-align: center;
+      @media (max-width: 959px) {
+        font-size: 2rem;
+        line-height: 1.5em;
+        padding-left: 0;
+        margin: 2rem 4rem;
+      }
+
+      @media (max-width: 570px) {
+        margin: 2rem 2rem;
+      }
+    }
   }
+
   > span {
-    margin-top: 3rem;
+    margin: 1rem 3rem;
+    font-size: 1.4rem;
+    text-align: center;
     color: ${props => props.theme.color.title};
     text-transform: uppercase;
-    font-weight: 300;
-    font-size: 1.3em;
-    text-align: justify;
-
-    @media (max-width: 959px) {
-      font-size: 1.1em;
-    }
-
-    @media (max-width: 570px) {
-      font-size: 1em;
-    }
   }
 `;
 

@@ -16,6 +16,6 @@ export default createGlobalStyle`
   }
 
   body, input {
-    font-family: 'Times New Roman', Times, serif
+    font-family: 'Cormorant Garamond', 'Times New Roman', Times, serif
   }
 `;

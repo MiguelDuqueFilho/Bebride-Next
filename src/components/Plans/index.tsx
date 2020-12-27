@@ -28,12 +28,14 @@ function Plans({ items }: Props) {
   return (
     <Container>
       <ContainerContent>
-        <ContainerTitle>
-          <h2 className="title text-center">
-            Noiva tranquila é noiva organizada.{' '}
-            <FaHeart size={28} className="text-primary" />
+        <ContainerTitle className="why-block ">
+          <h2>
+            <p>
+              Noiva tranquila é noiva organizada.{' '}
+              <FaHeart size={28} className="text-primary" />
+            </p>
           </h2>
-          <span className="description text-center">
+          <span>
             Cada dia da organização do seu casamento deve ser celebrado.
           </span>
         </ContainerTitle>

@@ -27,6 +27,16 @@ export const ContainerContent = styled.div`
   align-items: center;
   flex-direction: column;
 
+  @media (max-width: 959px) {
+    width: 100%;
+    height: 50vh;
+  }
+
+  @media (max-width: 570px) {
+    width: 100%;
+    height: 50vh;
+  }
+
   > p {
     font-family: 'romantisch';
     font-size: 5.6em;
@@ -35,13 +45,12 @@ export const ContainerContent = styled.div`
 
     @media (max-width: 959px) {
       width: 100vw;
-      font-size: 4rem;
+      font-size: 5rem;
       margin: -30px 0;
     }
     @media (max-width: 570px) {
       width: 100vw;
-      font-size: 3rem;
-      margin: -30px 0;
+      font-size: 4rem;
     }
   }
   > span {
@@ -53,15 +62,12 @@ export const ContainerContent = styled.div`
     letter-spacing: 0.13em;
     text-align: left;
     margin-bottom: 20px;
-
     color: ${props => props.theme.color.title};
     @media (max-width: 959px) {
       font-size: 0.78rem;
-      justify-content: flex-end;
     }
     @media (max-width: 570px) {
-      font-size: 0.5rem;
-      justify-content: flex-end;
+      font-size: 0.7rem;
     }
   }
 `;
@@ -80,7 +86,7 @@ export const ContainerLogo = styled.div`
   }
   @media (max-width: 570px) {
     width: 100vw;
-    height: 100%;
+    height: 50vh;
   }
   background: linear-gradient(
     -45deg,
@@ -106,12 +112,12 @@ export const LogoHome = styled.img`
   width: 50vw;
 
   @media (max-width: 959px) {
-    width: 50vw;
+    width: 100vw;
     height: 100%;
   }
   @media (max-width: 570px) {
-    width: 40vw;
     width: 100vw;
+    height: 100%;
   }
 `;
 
