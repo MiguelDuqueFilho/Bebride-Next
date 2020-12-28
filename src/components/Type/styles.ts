@@ -29,14 +29,14 @@ export const ContainerIcon = styled.div`
   }
 
   > h2 {
-    color: ${props => props.theme.color.title};
+    color: ${props => props.theme.color.white};
     font-size: 1.3rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
 
   > p {
-    color: ${props => props.theme.color.text};
+    color: ${props => props.theme.color.light};
     font-size: 1rem;
     padding-top: 1rem;
     min-height: 8rem;

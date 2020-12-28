@@ -45,7 +45,7 @@ function Menu() {
               </li>
               <li>
                 <Link href="/pagesample">
-                  <a onClick={handeClickMenu}>Page Sample</a>
+                  <a onClick={handeClickMenu}>Área Cliente</a>
                 </Link>
               </li>
               <li>

@@ -90,6 +90,6 @@ export const LogoImage = styled.img`
     width: 40vw;
   }
   @media (max-width: 570px) {
-    width: 40vw;
+    width: 60vw;
   }
 `;

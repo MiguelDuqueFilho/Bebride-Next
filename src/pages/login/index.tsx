@@ -77,9 +77,9 @@ const SignInOut: React.FC = () => {
                 <SocialIcon href="#" className="social-icon">
                   <FaGoogle />
                 </SocialIcon>
-                <SocialIcon href="#" className="social-icon">
+                {/* <SocialIcon href="#" className="social-icon">
                   <FaLinkedinIn />
-                </SocialIcon>
+                </SocialIcon> */}
               </SocialMedia>
             </FormSignin>
             <FormSignup action="#" className={`signin-up-form ${mode}`}>
@@ -116,9 +116,9 @@ const SignInOut: React.FC = () => {
                 <SocialIcon href="#" className="social-icon">
                   <FaGoogle />
                 </SocialIcon>
-                <SocialIcon href="#" className="social-icon">
+                {/* <SocialIcon href="#" className="social-icon">
                   <FaLinkedinIn />
-                </SocialIcon>
+                </SocialIcon> */}
               </SocialMedia>
             </FormSignup>
           </SigninUp>
@@ -135,7 +135,7 @@ const SignInOut: React.FC = () => {
                 onClick={handleClickRegister}
               />
             </PanelContentLeft>
-            <ImageLeft className={`image ${mode}`} src="/images/love.svg" />
+            <ImageLeft className={`image ${mode}`} src="/images/wedding.svg" />
           </PanelLeft>
           <PanelRight className={`panel right-panel ${mode}`}>
             <PanelContentRight className={`content ${mode}`}>

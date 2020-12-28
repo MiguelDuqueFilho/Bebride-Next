@@ -4,7 +4,7 @@ export const Container = styled.div`
   position: relative;
   width: 100vw;
   height: 80vh;
-  background-color: ${props => props.theme.color.background};
+
   display: flex;
   justify-content: stretch;
   align-items: center;
@@ -39,23 +39,23 @@ export const ContainerContent = styled.div`
 
   > p {
     font-family: 'romantisch';
-    font-size: 5.6em;
+    font-size: 6em;
     margin-bottom: -40px;
     color: ${props => props.theme.color.title};
 
     @media (max-width: 959px) {
       width: 100vw;
-      font-size: 5rem;
+      font-size: 6rem;
       margin: -30px 0;
     }
     @media (max-width: 570px) {
       width: 100vw;
-      font-size: 4rem;
+      font-size: 5rem;
     }
   }
   > span {
     font-family: Times New Roman;
-    font-size: 0.95em;
+    font-size: 1em;
     font-style: normal;
     font-weight: 700;
     line-height: 40px;
@@ -64,10 +64,10 @@ export const ContainerContent = styled.div`
     margin-bottom: 20px;
     color: ${props => props.theme.color.title};
     @media (max-width: 959px) {
-      font-size: 0.78rem;
+      font-size: 1rem;
     }
     @media (max-width: 570px) {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
     }
   }
 `;
@@ -109,23 +109,23 @@ export const ContainerLogo = styled.div`
 
 export const LogoHome = styled.img`
   color: ${props => props.theme.color.title};
-  width: 50vw;
-
+  width: 40vw;
+  padding-left: 3rem;
   @media (max-width: 959px) {
-    width: 100vw;
+    width: 70vw;
     height: 100%;
   }
   @media (max-width: 570px) {
-    width: 100vw;
+    width: 90vw;
     height: 100%;
   }
 `;
 
 export const LogoImage = styled.img`
-  width: 20vw;
+  width: 30vw;
   margin-bottom: 30px;
   @media (max-width: 959px) {
-    width: 30vw;
+    width: 40vw;
   }
   @media (max-width: 570px) {
     width: 40vw;

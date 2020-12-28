@@ -9,6 +9,7 @@ import Plans from '../components/Plans';
 import Why from '../components/Why';
 import Depositions from '../components/Depositions';
 import Final from '../components/Final';
+import Footer from '../components/Footer/index';
 
 type Props = {
   items: PlanType[];
@@ -24,6 +25,7 @@ function Home({ items, depositionItens }: Props) {
       <Plans items={items} />
       <Depositions depositionItens={depositionItens} />
       <Final />
+      <Footer />
     </Container>
   );
 }

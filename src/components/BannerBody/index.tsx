@@ -1,12 +1,6 @@
 import React from 'react';
 
-import {
-  Container,
-  ContainerContent,
-  ContainerLogo,
-  LogoHome,
-  LogoImage
-} from './styles';
+import { Container, ContainerContent, ContainerLogo, LogoHome } from './styles';
 
 const BannerBody: React.FC = () => {
   return (
@@ -16,7 +10,7 @@ const BannerBody: React.FC = () => {
         <span>ASSESSORIA E CERIMONIAL</span>
       </ContainerContent>
       <ContainerLogo>
-        <LogoHome src="/images/wedding.svg" />
+        <LogoHome src="/images/love.svg" />
       </ContainerLogo>
     </Container>
   );

@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  position: relative;
   width: 100%;
   height: 100%;
-  background-color: ${props => props.theme.color.background2};
+  padding: 3rem 0;
+  margin: 3rem 0;
+  background-color: ${props => props.theme.color.toggle};
 `;
 
 export const ContainerContent = styled.div`
@@ -12,7 +13,6 @@ export const ContainerContent = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
   margin-top: 10px;
 `;
 
@@ -42,7 +42,7 @@ export const ContainerTitle = styled.div`
       margin: 2rem 6rem;
       font-size: 2.7rem;
       line-height: 1.5em;
-      color: ${props => props.theme.color.primary};
+      color: ${props => props.theme.color.white};
       text-align: center;
       @media (max-width: 959px) {
         font-size: 2rem;
@@ -61,7 +61,7 @@ export const ContainerTitle = styled.div`
     margin: 1rem 3rem;
     font-size: 1.4rem;
     text-align: center;
-    color: ${props => props.theme.color.title};
+    color: ${props => props.theme.color.light};
     text-transform: uppercase;
   }
 `;
