@@ -4,8 +4,7 @@ export const themeLight = {
     background: '#ffffff',
     toggle: '#533fa2',
     primary: '#c7bfe6',
-    // section: '#f9f9f9',
-    section: '#ff00ff',
+    section: '#E78F8E',
     title: '#4d495d',
     text: '#777',
     socialText: '#acacac',
@@ -18,7 +17,7 @@ export const themeLight = {
     boxShadow:
       '0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)',
 
-    light: '#fcfafe',
+    light: '#757575',
     white: '#fff',
     black: '#000',
 
@@ -50,7 +49,7 @@ export const themeDark = {
     boxShadow:
       '0 16px 24px 2px rgba(255, 255, 255, 0.12), 0 6px 30px 5px rgba(255, 255, 255,  0.10), 0 8px 10px -5px rgba(255, 255, 255,  0.2)',
 
-    light: '#fcfafe',
+    light: '#757575',
     white: '#fff',
     black: '#000',
 

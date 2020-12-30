@@ -1,4 +1,4 @@
-import React from 'react';
+import Link from 'next/link';
 
 import {
   Container,
@@ -24,27 +24,15 @@ const Footer: React.FC = () => {
             <FooterTitle>Conheça-nos</FooterTitle>
             <ul>
               <li>
-                <a href="#" title="Informações Corporativas">
-                  Informações Corporativas
-                </a>
+                <p title="Informações Corporativas">Informações Corporativas</p>
               </li>
               <li>
-                <a href="#" title="Mapa">
-                  Mapa
-                </a>
+                <p>Razão Social</p>
               </li>
               <li>
-                <a href="#" title="Razão Social">
-                  Razão Social
-                </a>
-              </li>
-              <li>
-                <a href="#" title="CNPJ">
-                  CNPJ
-                </a>
-              </li>
-              <li>
-                <a title="Celular">Celular</a>
+                <p title="CNPJ">
+                  CNPJ: <span>00.000.000/0001-00</span>
+                </p>
               </li>
             </ul>
           </WrapContainer>
@@ -88,9 +76,9 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="#" title="Sobre">
-                  Sobre
-                </a>
+                <Link href="/about">
+                  <a>Sobre</a>
+                </Link>
               </li>
               <li>
                 <a href="#" title="Login">
@@ -114,7 +102,7 @@ const Footer: React.FC = () => {
       </Container>
       <Foot>
         <FootWrap>
-          MDuque &copy; 2020
+          MDuque &copy; 2021
           {/* <a href="#">MDUQUE</a> */}
         </FootWrap>
       </Foot>

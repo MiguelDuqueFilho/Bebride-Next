@@ -21,7 +21,7 @@ export const ContainerTitle = styled.div`
   > h2 {
     font-family: 'Cormorant Garamond', serif;
 
-    @media (max-width: 959px) {
+    @media (max-width: 870px) {
       font-size: 1.5rem;
     }
 
@@ -58,7 +58,7 @@ export const TeamSocial = styled.div`
   margin-left: 15px;
   color: ${props => props.theme.color.text};
   text-align: center;
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     width: 30%;
   }
 
@@ -86,7 +86,7 @@ export const SocialIcon = styled.a`
 export const LogoImage = styled.img`
   width: 30vw;
   margin-bottom: 30px;
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     width: 40vw;
   }
   @media (max-width: 570px) {

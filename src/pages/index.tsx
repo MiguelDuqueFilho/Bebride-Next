@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next';
+
 import { Container } from '../styles/pages/home';
 
 import { PlanTypes, DepositionItens } from '../utils/sampdata';

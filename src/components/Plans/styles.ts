@@ -34,7 +34,7 @@ export const ContainerTitle = styled.div`
   > h2 {
     text-align: start;
     font-size: 1.7em;
-    @media (max-width: 959px) {
+    @media (max-width: 870px) {
       text-align: center;
       font-size: 1.8em;
     }
@@ -44,7 +44,7 @@ export const ContainerTitle = styled.div`
       line-height: 1.5em;
       color: ${props => props.theme.color.white};
       text-align: center;
-      @media (max-width: 959px) {
+      @media (max-width: 870px) {
         font-size: 2rem;
         line-height: 1.5em;
         padding-left: 0;

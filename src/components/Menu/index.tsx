@@ -44,6 +44,11 @@ function Menu() {
                 </Link>
               </li>
               <li>
+                <Link href="/about">
+                  <a onClick={handeClickMenu}>Sobre</a>
+                </Link>
+              </li>
+              <li>
                 <Link href="/pagesample">
                   <a onClick={handeClickMenu}>Área Cliente</a>
                 </Link>
@@ -52,11 +57,6 @@ function Menu() {
                 <Link href="/login">
                   <a onClick={handeClickMenu}>Login/Registrar</a>
                 </Link>
-              </li>
-              <li>
-                <a onClick={handeClickMenu} href="#">
-                  Sobre
-                </a>
               </li>
               <li>
                 <a onClick={handeClickMenu} href="#">

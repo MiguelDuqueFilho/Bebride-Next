@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import {} from 'next';
+import React from 'react';
+import { Provider } from 'next-auth/client';
 
 import Head from 'next/head';
 import { AppProps } from 'next/app';
@@ -25,7 +25,9 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
       </Head>
       <Menu />
       <Theme toggleTheme={toggleTheme} themeTitle={theme.title} />
-      <Component {...pageProps} />
+      <Provider session={pageProps.session}>
+        <Component {...pageProps} />
+      </Provider>
       <GlobalStyle />
     </ThemeProvider>
   );

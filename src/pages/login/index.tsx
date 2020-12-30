@@ -1,3 +1,6 @@
+import { FormEvent, useState } from 'react';
+import { getSession, signIn } from 'next-auth/client';
+
 import {
   Container,
   FormContainer,
@@ -32,10 +35,11 @@ import {
   FaEnvelope
 } from 'react-icons/fa';
 
-import { useState } from 'react';
-
-const SignInOut: React.FC = () => {
+const SignInOut: React.FC = ({ content, session }) => {
   const [mode, setMode] = useState('');
+  const [username, setUsername] = useState('');
+  const [account, setAccount] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleClickRegister = () => {
     setMode('sign-up-mode');
@@ -44,24 +48,53 @@ const SignInOut: React.FC = () => {
     setMode('');
   };
 
+  function onSubmitSignIn(e: FormEvent) {
+    e.preventDefault();
+    console.log('onSubmit');
+    console.log(e);
+    signIn('credentials', { account, password, isNewUser: false });
+  }
+
+  function onSubmitSignUp(e: FormEvent) {
+    e.preventDefault();
+    console.log('onSubmit');
+    console.log(e);
+    signIn('credentials', { username, account, password, isNewUser: true });
+  }
+
   return (
     <>
       <Container className={mode}>
         <FormContainer className="forms-container">
           <SigninUp className={`signin-sign-out ${mode}`}>
-            <FormSignin action="#" className={`signin-in-form ${mode}`}>
+            <FormSignin
+              method="post"
+              onSubmit={onSubmitSignIn}
+              className={`signin-in-form ${mode}`}
+            >
               <Title className="title">Login</Title>
+              <Input type="hidden" name="isNewUser" value={0} />
               <InputField className="input-field">
                 <ContainerIcon>
                   <FaUser />
                 </ContainerIcon>
-                <Input type="text" placeholder="Usuário" />
+                <Input
+                  name="account"
+                  type="email"
+                  placeholder="Usuário"
+                  onChange={e => setAccount(e.target.value)}
+                />
               </InputField>
               <InputField className="input-field">
                 <ContainerIcon>
                   <FaLock />
                 </ContainerIcon>
-                <Input type="password" placeholder="Senha" />
+                <Input
+                  name="password"
+                  type="password"
+                  placeholder="Senha"
+                  onChange={e => setPassword(e.target.value)}
+                />
               </InputField>
               <BtnSubmit type="submit" value="Login" className="btn solid" />
               <SocialText className="social-text">
@@ -77,30 +110,47 @@ const SignInOut: React.FC = () => {
                 <SocialIcon href="#" className="social-icon">
                   <FaGoogle />
                 </SocialIcon>
-                {/* <SocialIcon href="#" className="social-icon">
-                  <FaLinkedinIn />
-                </SocialIcon> */}
               </SocialMedia>
             </FormSignin>
-            <FormSignup action="#" className={`signin-up-form ${mode}`}>
+            <FormSignup
+              method="post"
+              onSubmit={onSubmitSignUp}
+              className={`signin-up-form ${mode}`}
+            >
               <Title className="title">Registrar</Title>
+              <Input type="hidden" name="isNewUser" value={1} />
               <InputField className="input-field">
                 <ContainerIcon>
                   <FaUser />
                 </ContainerIcon>
-                <Input type="text" placeholder="Usuário" />
+                <Input
+                  name="username"
+                  type="text"
+                  placeholder="Usuário"
+                  onChange={e => setUsername(e.target.value)}
+                />
               </InputField>
               <InputField className="input-field">
                 <ContainerIcon>
                   <FaEnvelope />
                 </ContainerIcon>
-                <Input type="text" placeholder="Email" />
+                <Input
+                  name="account"
+                  type="text"
+                  placeholder="Email"
+                  onChange={e => setAccount(e.target.value)}
+                />
               </InputField>
               <InputField className="input-field">
                 <ContainerIcon>
                   <FaLock />
                 </ContainerIcon>
-                <Input type="password" placeholder="Senha" />
+                <Input
+                  name="password"
+                  type="password"
+                  placeholder="Senha"
+                  onChange={e => setPassword(e.target.value)}
+                />
               </InputField>
               <BtnSubmit type="submit" className="btn" value="SignUp" />
               <SocialText>
@@ -116,9 +166,6 @@ const SignInOut: React.FC = () => {
                 <SocialIcon href="#" className="social-icon">
                   <FaGoogle />
                 </SocialIcon>
-                {/* <SocialIcon href="#" className="social-icon">
-                  <FaLinkedinIn />
-                </SocialIcon> */}
               </SocialMedia>
             </FormSignup>
           </SigninUp>
@@ -155,5 +202,27 @@ const SignInOut: React.FC = () => {
     </>
   );
 };
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  let content = null;
+
+  if (session) {
+    const hostname = process.env.NEXTAUTH_URL || 'http://localhost:3000';
+    const options = { headers: { cookie: context.req.headers.cookie } };
+    const res = await fetch(`${hostname}/api/examples/protected`, options);
+    const json = await res.json();
+    if (json.content) {
+      content = json.content;
+    }
+  }
+
+  return {
+    props: {
+      session,
+      content
+    }
+  };
+}
 
 export default SignInOut;

@@ -19,7 +19,7 @@ export const FooterWrap = styled.div`
   flex-direction: row;
   width: 80%;
 
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     flex-direction: row;
     justify-content: space-around;
     align-items: stretch;
@@ -36,7 +36,7 @@ export const WrapContainer = styled.div`
   position: relative;
   padding-top: 2rem;
   > a {
-    color: ${props => props.theme.color.text};
+    color: ${props => props.theme.color.light};
   }
   > ul {
     list-style: none;
@@ -47,9 +47,17 @@ export const WrapContainer = styled.div`
   }
   > ul > li > a {
     text-decoration: none;
-    color: ${props => props.theme.color.white};
+    color: ${props => props.theme.color.light};
     &:hover {
       color: ${props => props.theme.color.linkHover};
+    }
+  }
+  }
+  > ul > li > p {
+    color: ${props => props.theme.color.light};
+    > span {
+       font-family: 'Times New Roman', Times, serif;
+       font-size: .9rem;
     }
   }
 `;
@@ -69,13 +77,12 @@ export const FootWrap = styled.div`
   padding: 35px 0;
 
   > a {
-    color: ${props => props.theme.color.text};
+    color: ${props => props.theme.color.light};
   }
 `;
 
 export const FooterTitle = styled.h3`
-  font-family: Arial, Helvetica, sans-serif;
-  color: ${props => props.theme.color.white};
+  color: ${props => props.theme.color.light};
   font-size: 24px;
   padding: 0 0 18px 0;
   display: block;

@@ -11,8 +11,7 @@ export const Container = styled.div`
   background-color: ${props => props.theme.color.background};
   overflow: hidden;
   color: ${props => props.theme.color.title};
-
-  @media (max-width: 870px) {
+  top: 200px;
     min-height: 600px;
     height: 100vh;
   }

@@ -34,9 +34,14 @@ export const Container = styled.div`
       '${props => props.theme.color.gradientEnd}' 100%
     );
 
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="${props =>
-      props.theme.color.gradientStart}", endColorstr="${props =>
-      props.theme.color.gradientEnd}", GradientType=1 );
+    filter: {
+      progid: DXImageTransform
+        (
+          startColorstr= '${props => props.theme.color.gradientStart}',
+          endColorstr= '${props => props.theme.color.gradientEnd}',
+          GradientType=1
+        );
+    }
 
     top: -10%;
     right: 48%;

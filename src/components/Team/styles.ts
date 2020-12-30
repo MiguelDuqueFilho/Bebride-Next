@@ -36,7 +36,7 @@ export const ContainerText = styled.div`
   > h2 {
     text-align: start;
     font-size: 1.7em;
-    @media (max-width: 959px) {
+    @media (max-width: 870px) {
       text-align: center;
       font-size: 1.8em;
     }
@@ -46,7 +46,7 @@ export const ContainerText = styled.div`
       line-height: 1.5em;
       color: ${props => props.theme.color.primary};
       text-align: center;
-      @media (max-width: 959px) {
+      @media (max-width: 870px) {
         font-size: 2rem;
         line-height: 1.5em;
         padding-left: 0;
@@ -67,7 +67,7 @@ export const ContainerTeam = styled.div`
   align-content: center;
   margin: 1rem 6rem;
 
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     margin: 1rem 3rem;
     flex-direction: column;
   }
@@ -85,7 +85,7 @@ export const ContainerTeamImag = styled.div`
   align-items: center;
   flex: 0 0 50%;
   max-width: 100%;
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     flex: 0 0 50%;
     max-width: 80%;
     align-self: center;
@@ -100,7 +100,7 @@ export const ContainerTeamText = styled.div`
   flex: 0 0 50%;
   max-width: 50%;
   margin-top: 2rem;
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     flex: 0 0 100%;
     max-width: 100%;
   }
@@ -119,7 +119,7 @@ export const TeamDescr = styled.p`
   font-size: 24px;
   margin: 1rem;
 
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     font-size: 20px;
   }
 

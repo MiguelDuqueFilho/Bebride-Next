@@ -42,7 +42,7 @@ export const ContainerItem = styled.div`
   padding-top: 2rem;
   padding-bottom: 2rem;
 
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     width: 45%;
   }
 

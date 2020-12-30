@@ -7,7 +7,7 @@ export const ContainerItem = styled.div`
   align-items: center;
   width: 20%;
 
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     width: 40%;
   }
 
@@ -41,7 +41,7 @@ export const ContainerIcon = styled.div`
     padding-top: 1rem;
     min-height: 8rem;
     text-align: justify;
-    @media (max-width: 959px) {
+    @media (max-width: 870px) {
       font-size: 20px;
     }
 

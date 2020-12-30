@@ -10,7 +10,7 @@ export const Container = styled.div`
   align-items: center;
   text-align: center;
   flex-direction: row;
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     flex-direction: column-reverse;
   }
 
@@ -27,7 +27,7 @@ export const ContainerContent = styled.div`
   align-items: center;
   flex-direction: column;
 
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     width: 100%;
     height: 50vh;
   }
@@ -43,7 +43,7 @@ export const ContainerContent = styled.div`
     margin-bottom: -40px;
     color: ${props => props.theme.color.title};
 
-    @media (max-width: 959px) {
+    @media (max-width: 870px) {
       width: 100vw;
       font-size: 6rem;
       margin: -30px 0;
@@ -63,7 +63,7 @@ export const ContainerContent = styled.div`
     text-align: left;
     margin-bottom: 20px;
     color: ${props => props.theme.color.title};
-    @media (max-width: 959px) {
+    @media (max-width: 870px) {
       font-size: 1rem;
     }
     @media (max-width: 570px) {
@@ -80,7 +80,7 @@ export const ContainerLogo = styled.div`
   border-radius: 0 0 0 40vw;
   background: ${props => props.theme.color.gradientStart};
 
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     width: 100vw;
     height: 75%;
   }
@@ -88,6 +88,7 @@ export const ContainerLogo = styled.div`
     width: 100vw;
     height: 50vh;
   }
+
   background: linear-gradient(
     -45deg,
     '${props => props.theme.color.gradientStart}' 0%,
@@ -111,7 +112,7 @@ export const LogoHome = styled.img`
   color: ${props => props.theme.color.title};
   width: 40vw;
   padding-left: 3rem;
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     width: 70vw;
     height: 100%;
   }
@@ -124,7 +125,7 @@ export const LogoHome = styled.img`
 export const LogoImage = styled.img`
   width: 30vw;
   margin-bottom: 30px;
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     width: 40vw;
   }
   @media (max-width: 570px) {

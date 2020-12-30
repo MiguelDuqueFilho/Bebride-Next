@@ -22,7 +22,7 @@ export const ContainerContent = styled.div`
   justify-content: space-around;
   align-items: center;
   flex-direction: row;
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     flex-direction: column;
   }
 
@@ -40,7 +40,7 @@ export const ContainerWhyTitle = styled.div`
   > h2 {
     text-align: start;
     font-size: 1.7em;
-    @media (max-width: 959px) {
+    @media (max-width: 870px) {
       text-align: center;
       font-size: 1.8em;
     }
@@ -50,7 +50,7 @@ export const ContainerWhyTitle = styled.div`
       line-height: 1.5em;
       color: ${props => props.theme.color.primary};
       text-align: center;
-      @media (max-width: 959px) {
+      @media (max-width: 870px) {
         font-size: 2rem;
         line-height: 1.5em;
         padding-left: 0;
@@ -77,7 +77,7 @@ export const ContainerWhyText = styled.div`
   align-items: flex-start;
   width: 85vw;
   margin-top: 2rem;
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     flex: 0 0 100%;
     max-width: 100%;
   }
@@ -88,7 +88,7 @@ export const ContainerWhyText = styled.div`
     font-size: 24px;
     margin: 1rem;
 
-    @media (max-width: 959px) {
+    @media (max-width: 870px) {
       font-size: 20px;
     }
 
@@ -116,7 +116,7 @@ export const ContainerTeam2Imag = styled.div`
   flex: 0 0 50%;
   max-width: 100%;
   margin-top: 40px;
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     flex: 0 0 50%;
     max-width: 80%;
     align-self: center;

@@ -9,7 +9,7 @@ export const ContainerMenu = styled.div`
 
 export const ContainerToggle = styled.div`
   display: none;
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     display: block;
   }
 `;
@@ -71,7 +71,7 @@ export const Hamburger = styled.div`
     top: 8px;
     transition: 0.4s;
   }
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     &.checked {
       transform: rotate(135deg);
 
@@ -85,7 +85,7 @@ export const Hamburger = styled.div`
 `;
 
 export const MenuData = styled.div`
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     position: fixed;
     top: 0;
     left: 0;
@@ -101,7 +101,7 @@ export const MenuData = styled.div`
 `;
 
 export const MenuItens = styled.div`
-  @media (min-width: 959px) {
+  @media (min-width: 870px) {
     > div {
       position: absolute;
       top: 0;
@@ -135,7 +135,7 @@ export const MenuItens = styled.div`
       }
     }
   }
-  @media (max-width: 959px) {
+  @media (max-width: 870px) {
     position: absolute;
     width: 2400px;
     height: 1600px;
