@@ -6,7 +6,8 @@ export const themeLight = {
     primary: '#c7bfe6',
     section: '#E78F8E',
     title: '#4d495d',
-    text: '#777',
+    text: '#757575',
+
     socialText: '#acacac',
     socialTextHover: '#644fba',
     gradientStart: '#a598d7',
@@ -17,7 +18,7 @@ export const themeLight = {
     boxShadow:
       '0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)',
 
-    light: '#757575',
+    light: '#f8f9fa',
     white: '#fff',
     black: '#000',
 

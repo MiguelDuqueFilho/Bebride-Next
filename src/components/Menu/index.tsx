@@ -1,6 +1,6 @@
-import Link from 'next/link';
-
 import React, { useState } from 'react';
+import { useSession, signIn, signOut } from 'next-auth/client';
+import Link from 'next/link';
 
 import {
   ContainerMenu,
@@ -12,6 +12,7 @@ import {
 } from './styles';
 
 function Menu() {
+  const [session, loading] = useSession();
   const [toggle, setToggle] = useState(false);
 
   const handeChangeMenu = () => {
@@ -21,6 +22,8 @@ function Menu() {
   const handeClickMenu = (e: React.MouseEvent) => {
     setToggle(false);
   };
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <ContainerMenu className="menu-container">
@@ -48,16 +51,47 @@ function Menu() {
                   <a onClick={handeClickMenu}>Sobre</a>
                 </Link>
               </li>
-              <li>
-                <Link href="/pagesample">
-                  <a onClick={handeClickMenu}>Área Cliente</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/login">
-                  <a onClick={handeClickMenu}>Login/Registrar</a>
-                </Link>
-              </li>
+              {session && (
+                <li>
+                  <Link href="/admin">
+                    <a onClick={handeClickMenu}>Área Cliente</a>
+                  </Link>
+                </li>
+              )}
+              {!session && (
+                <li>
+                  <a
+                    href={`/api/auth/signin`}
+                    onClick={e => {
+                      e.preventDefault();
+                      if (toggle) setToggle(false);
+                      signIn();
+                    }}
+                  >
+                    Login/Registrar
+                  </a>
+                </li>
+              )}
+              {session && (
+                <li>
+                  <a>{session.user.name}</a>
+                </li>
+              )}
+              {session && (
+                <li>
+                  <a
+                    href={`/api/auth/signout`}
+                    onClick={e => {
+                      e.preventDefault();
+                      if (toggle) setToggle(false);
+                      signOut();
+                    }}
+                  >
+                    Logoff
+                  </a>
+                </li>
+              )}
+
               <li>
                 <a onClick={handeClickMenu} href="#">
                   Contato

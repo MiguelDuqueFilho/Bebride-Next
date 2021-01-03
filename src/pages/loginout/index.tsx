@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react';
-import { getSession, signIn } from 'next-auth/client';
+import { signIn } from 'next-auth/client';
 
 import {
   Container,
@@ -35,10 +35,10 @@ import {
   FaEnvelope
 } from 'react-icons/fa';
 
-const SignInOut: React.FC = ({ content, session }) => {
+export default function LogInOut() {
   const [mode, setMode] = useState('');
-  const [username, setUsername] = useState('');
-  const [account, setAccount] = useState('');
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleClickRegister = () => {
@@ -52,14 +52,56 @@ const SignInOut: React.FC = ({ content, session }) => {
     e.preventDefault();
     console.log('onSubmit');
     console.log(e);
-    signIn('credentials', { account, password, isNewUser: false });
+    signIn('credentials', { userEmail, password, isNewUser: false });
+  }
+
+  function onFacebookSignIn(e: FormEvent) {
+    e.preventDefault();
+    console.log('onSubmit');
+    console.log(e);
+    signIn('facebook', { userEmail, isNewUser: false });
+  }
+
+  function onTwitterSignIn(e: FormEvent) {
+    e.preventDefault();
+    console.log('onSubmit');
+    console.log(e);
+    signIn('twitter', { userEmail, isNewUser: false });
+  }
+
+  function onGoogleSignIn(e: FormEvent) {
+    e.preventDefault();
+    console.log('onSubmit');
+    console.log(e);
+    signIn('google', { userEmail, isNewUser: false });
   }
 
   function onSubmitSignUp(e: FormEvent) {
     e.preventDefault();
     console.log('onSubmit');
     console.log(e);
-    signIn('credentials', { username, account, password, isNewUser: true });
+    signIn('credentials', { userName, userEmail, password, isNewUser: true });
+  }
+
+  function onFacebookSignUp(e: FormEvent) {
+    e.preventDefault();
+    console.log('onSubmit');
+    console.log(e);
+    signIn('facebook', { userEmail, isNewUser: true });
+  }
+
+  function onTwitterSignUp(e: FormEvent) {
+    e.preventDefault();
+    console.log('onSubmit');
+    console.log(e);
+    signIn('twitter', { userEmail, isNewUser: true });
+  }
+
+  function onGoogleSignUp(e: FormEvent) {
+    e.preventDefault();
+    console.log('onSubmit');
+    console.log(e);
+    signIn('google', { userEmail, isNewUser: true });
   }
 
   return (
@@ -73,16 +115,17 @@ const SignInOut: React.FC = ({ content, session }) => {
               className={`signin-in-form ${mode}`}
             >
               <Title className="title">Login</Title>
+              {/* <input name="csrfToken" type="hidden" defaultValue={csrfToken} /> */}
               <Input type="hidden" name="isNewUser" value={0} />
               <InputField className="input-field">
                 <ContainerIcon>
                   <FaUser />
                 </ContainerIcon>
                 <Input
-                  name="account"
+                  name="userEmail"
                   type="email"
                   placeholder="Usuário"
-                  onChange={e => setAccount(e.target.value)}
+                  onChange={e => setUserEmail(e.target.value)}
                 />
               </InputField>
               <InputField className="input-field">
@@ -101,13 +144,13 @@ const SignInOut: React.FC = ({ content, session }) => {
                 ou Login com plataforma de mídia social
               </SocialText>
               <SocialMedia className="social-media">
-                <SocialIcon href="#" className="social-icon">
+                <SocialIcon onClick={onFacebookSignIn} className="social-icon">
                   <FaFacebook />
                 </SocialIcon>
-                <SocialIcon href="#" className="social-icon">
+                <SocialIcon onClick={onTwitterSignIn} className="social-icon">
                   <FaTwitter />
                 </SocialIcon>
-                <SocialIcon href="#" className="social-icon">
+                <SocialIcon onClick={onGoogleSignIn} className="social-icon">
                   <FaGoogle />
                 </SocialIcon>
               </SocialMedia>
@@ -124,10 +167,10 @@ const SignInOut: React.FC = ({ content, session }) => {
                   <FaUser />
                 </ContainerIcon>
                 <Input
-                  name="username"
+                  name="userName"
                   type="text"
                   placeholder="Usuário"
-                  onChange={e => setUsername(e.target.value)}
+                  onChange={e => setUserName(e.target.value)}
                 />
               </InputField>
               <InputField className="input-field">
@@ -135,10 +178,10 @@ const SignInOut: React.FC = ({ content, session }) => {
                   <FaEnvelope />
                 </ContainerIcon>
                 <Input
-                  name="account"
+                  name="userEmail"
                   type="text"
                   placeholder="Email"
-                  onChange={e => setAccount(e.target.value)}
+                  onChange={e => setUserEmail(e.target.value)}
                 />
               </InputField>
               <InputField className="input-field">
@@ -157,13 +200,13 @@ const SignInOut: React.FC = ({ content, session }) => {
                 ou Registre com plataforma de mídia social
               </SocialText>
               <SocialMedia className="social-media">
-                <SocialIcon href="#" className="social-icon">
+                <SocialIcon onClick={onFacebookSignUp} className="social-icon">
                   <FaFacebook />
                 </SocialIcon>
-                <SocialIcon href="#" className="social-icon">
+                <SocialIcon onClick={onTwitterSignUp} className="social-icon">
                   <FaTwitter />
                 </SocialIcon>
-                <SocialIcon href="#" className="social-icon">
+                <SocialIcon onClick={onGoogleSignUp} className="social-icon">
                   <FaGoogle />
                 </SocialIcon>
               </SocialMedia>
@@ -201,28 +244,4 @@ const SignInOut: React.FC = ({ content, session }) => {
       </Container>
     </>
   );
-};
-
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
-  let content = null;
-
-  if (session) {
-    const hostname = process.env.NEXTAUTH_URL || 'http://localhost:3000';
-    const options = { headers: { cookie: context.req.headers.cookie } };
-    const res = await fetch(`${hostname}/api/examples/protected`, options);
-    const json = await res.json();
-    if (json.content) {
-      content = json.content;
-    }
-  }
-
-  return {
-    props: {
-      session,
-      content
-    }
-  };
 }
-
-export default SignInOut;

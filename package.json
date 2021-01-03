@@ -5,16 +5,40 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "verify": "ate aqui",
+    "g:entity": "yarn typeorm entity:create --name ",
+    "g:migration": "yarn typeorm migration:generate --name ",
+    "db:migrate": "yarn typeorm migration:run ",
+    "db:setup": "yarn db:create:dev",
+    "db:create:dev": "createdb --owner=mysql next_now_dev",
+    "db:drop:dev": "yarn typeorm:dev schema:drop",
+    "db:drop:prod": "yarn typeorm:prod schema:drop",
+    "db:migrate:prod": "yarn typeorm:prod migration:run",
+    "db:revert:dev": "yarn typeorm:dev migration:revert",
+    "db:revert:prod": "yarn typeorm:prod migration:revert",
+    "db:seed": "yarn hygen seed run",
+    "db:seeds:up": "yarn local seeds/dev/seedsUp.ts",
+    "typeorm:local": "yarn local ./node_modules/typeorm/cli.js",
+    "typeorm:dev": "yarn development ./node_modules/typeorm/cli.js",
+    "local": "DOTENV_CONFIG_PATH=./.env ts-node -P ./tsconfig.yarn.json -r dotenv/config",
+    "development": "DOTENV_CONFIG_PATH=.env.development ts-node -P ./tsconfig.yarn.json -r dotenv/config",
+    "production": "DOTENV_CONFIG_PATH=.env.prod ts-node -P ./tsconfig.yarn.json -r dotenv/config",
+    "deploy:prod": "now -A prod.now.json --target=production --scope=mthomps4 && now alias -A prod.now.json"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "mysql2": "^2.2.5",
     "next": "10.0.3",
     "next-auth": "^3.1.0",
     "next-images": "^1.6.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-icons": "^4.1.0",
-    "styled-components": "^5.2.1"
+    "reflect-metadata": "^0.1.13",
+    "styled-components": "^5.2.1",
+    "typeorm": "^0.2.29"
   },
   "devDependencies": {
     "@types/next-auth": "^3.1.19",

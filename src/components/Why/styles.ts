@@ -81,30 +81,30 @@ export const ContainerWhyText = styled.div`
     flex: 0 0 100%;
     max-width: 100%;
   }
+`;
 
-  > p {
-    color: ${props => props.theme.color.text};
-    text-align: justify;
-    font-size: 24px;
-    margin: 1rem;
+export const ContainerWhyDescr = styled.p`
+  color: ${props => props.theme.color.text};
+  text-align: justify;
+  font-size: 24px;
+  margin: 1rem;
 
-    @media (max-width: 870px) {
-      font-size: 20px;
-    }
+  @media (max-width: 870px) {
+    font-size: 20px;
+  }
 
-    @media (max-width: 570px) {
-      font-size: 19px;
-      > svg {
-        color: ${props => props.theme.color.primary};
-        margin-right: 2rem;
-        font-size: 1.2rem;
-      }
-    }
-
+  @media (max-width: 570px) {
+    font-size: 19px;
     > svg {
       color: ${props => props.theme.color.primary};
       margin-right: 2rem;
+      font-size: 1.2rem;
     }
+  }
+
+  > svg {
+    color: ${props => props.theme.color.primary};
+    margin-right: 2rem;
   }
 `;
 

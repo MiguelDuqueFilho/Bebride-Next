@@ -110,7 +110,6 @@ export const ImageTeam = styled.img`
   max-width: 100%;
   height: auto;
   border-radius: 12px;
-  /* box-shadow: ${props => props.theme.color.boxShadow}; */
 `;
 
 export const TeamDescr = styled.p`

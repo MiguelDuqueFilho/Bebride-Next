@@ -12,9 +12,8 @@ export const Container = styled.div`
   overflow: hidden;
   color: ${props => props.theme.color.title};
   top: 200px;
-    min-height: 600px;
-    height: 100vh;
-  }
+  min-height: 600px;
+  height: 100vh;
 
   @media (max-width: 570px) {
     min-height: 400px;
@@ -32,10 +31,10 @@ export const ContainerText = styled.div`
   background-color: ${props => props.theme.color.backgroundTitle};
 `;
 
-export const Title = styled.h2`
+export const Title = styled.p`
   font-size: 2.2rem;
   color: ${props => props.theme.color.title};
-  margin-top: 10px;
+  margin: 30px;
 `;
 
 export const PanelContent = styled.div`
@@ -46,7 +45,7 @@ export const PanelContent = styled.div`
   height: 300px;
   width: 80vw;
   background: transparent;
-  margin-top: 10px;
+  margin-top: 200px;
 
   color: ${props => props.theme.color.text};
 

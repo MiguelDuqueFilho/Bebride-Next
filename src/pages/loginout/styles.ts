@@ -250,7 +250,7 @@ export const SocialMedia = styled.p`
   justify-content: center;
 `;
 
-export const SocialIcon = styled.a`
+export const SocialIcon = styled.i`
   height: 46px;
   width: 46px;
 
@@ -262,6 +262,7 @@ export const SocialIcon = styled.a`
   font-size: 1.1rem;
   border-radius: 50%;
   transition: 0.3s;
+  background-color: ${props => props.theme.color.background};
 
   color: ${props => props.theme.color.socialText};
   border: 2px solid ${props => props.theme.color.socialText};

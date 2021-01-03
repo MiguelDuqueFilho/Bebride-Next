@@ -1,34 +1,15 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
-import { Url } from 'url';
+import { NextApiHandler } from 'next';
 
-type UserCredentials = {
-  username?: string;
-  account: string;
-  password: string;
-  csrfToken: string;
-  callbackUrl?: string;
-  isNewUser: boolean;
-  json: string;
-};
+import api from '../../../services/api';
 
-// For more information on each option (and a full list of options) go to
-// https://next-auth.js.org/configuration/options
 const options = {
-  // https://next-auth.js.org/configuration/providers
+  site: process.env.NEXTAUTH_URL,
   providers: [
-    Providers.Email({
-      server: process.env.EMAIL_SERVER,
-      from: process.env.EMAIL_FROM
-    }),
     Providers.Facebook({
       clientId: process.env.FACEBOOK_ID,
       clientSecret: process.env.FACEBOOK_SECRET
-    }),
-    Providers.GitHub({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET
     }),
     Providers.Google({
       clientId: process.env.GOOGLE_ID,
@@ -39,160 +20,265 @@ const options = {
       clientSecret: process.env.TWITTER_SECRET
     }),
     Providers.Credentials({
-      // The name to display on the sign in form (e.g. 'Sign in with...')
       id: 'credentials',
       name: 'credentials',
       credentials: {},
       authorize: async credentials => {
-        const user = {
-          username: credentials.username,
-          account: credentials.account,
+        const data = {
+          name: credentials.userName,
+          email: credentials.userEmail,
+          image: null,
           password: credentials.password,
           isNewUser: Boolean(credentials.isNewUser)
         };
+        try {
+          // const user = await login(data);
 
-        if (user) {
-          console.log(credentials);
-          // Any object returned will be saved in `user` property of the JWT
-          console.log(
-            'Any object returned will be saved in `user` property of the JWT'
-          );
-          return Promise.resolve(user);
-        } else {
-          // If you return null or false then the credentials will be rejected
-          return Promise.resolve(null);
-          // You can also Reject this callback with an Error or with a URL:
-          // return Promise.reject(new Error('error message')) // Redirect to error page
-          // return Promise.reject('/path/to/redirect')        // Redirect to a URL
+          if (data) {
+            console.log(credentials);
+            console.log(
+              'Any object returned will be saved in `user` property of the JWT'
+            );
+            return Promise.resolve(data);
+          } else {
+            return Promise.resolve(null);
+          }
+        } catch (error) {
+          if (error.response) {
+            console.log(error.response);
+            Promise.reject(new Error('Userid e/ou Senha Invalida.'));
+          }
         }
       }
     })
   ],
-  // Database optional. MySQL, Maria DB, Postgres and MongoDB are supported.
-  // https://next-auth.js.org/configuration/database
-  //
-  // Notes:
-  // * You must to install an appropriate node_module for your database
-  // * The Email provider requires a database (OAuth providers do not)
-  // database: process.env.DATABASE_URL,
-  database: null,
 
-  // The secret should be set to a reasonably long random string.
-  // It is used to sign cookies and to sign and encrypt JSON Web Tokens, unless
-  // a seperate secret is defined explicitly for encrypting the JWT.
+  database: process.env.DATABASE_URL,
+
   secret: process.env.NEXTAUTH_SECRET,
 
   session: {
-    // Use JSON Web Tokens for session instead of database sessions.
-    // This option can be used with or without a database for users/accounts.
-    // Note: `jwt` is automatically set to `true` if no database is specified.
     jwt: true,
-
-    // Seconds - How long until an idle session expires and is no longer valid.
-    maxAge: 1 * 3 * 60 * 60, // 30 days
-
-    // Seconds - Throttle how frequently to write to database to extend a session.
-    // Use it to limit write operations. Set to 0 to always update the database.
-    // Note: This option is ignored if using JSON Web Tokens
+    maxAge: 1 * 3 * 60 * 60, // 3 hours
     updateAge: 24 * 60 * 60 // 24 hours
   },
 
-  // JSON Web tokens are only used for sessions if the `jwt: true` session
-  // option is set - or by default if no database is specified.
-  // https://next-auth.js.org/configuration/options#jwt
   jwt: {
-    // A secret to use for key generation (you should set this explicitly)
-    // secret: process.env.NEXT_PUBLIC_JWT_SECRET
-    // Set to true to use encryption (default: false)
-    // encryption: true,
-    // You can define your own encode/decode functions for signing and encryption
-    // if you want to override the default behaviour.
+    secret: process.env.JWT_SECRET,
+    encryption: true
     // encode: async ({ secret, token, maxAge }) => {},
-    // decode: async ({ secret, token, maxAge }) => {},
-    secret: process.env.NEXTAUTH_SECRET,
-    encryption: true // Ve
+    // decode: async ({ secret, token, maxAge }) => {}
   },
 
-  // You can define custom pages to override the built-in pages.
-  // The routes shown here are the default URLs that will be used when a custom
-  // pages is not specified for that route.
-  // https://next-auth.js.org/configuration/pages
   pages: {
-    // signIn: '/api/auth/signin', // Displays signin buttons
-    // signOut: '/api/auth/signout', // Displays form with sign out button
-    // error: '/api/auth/error', // Error code passed in query string as ?error=
-    // verifyRequest: '/api/auth/verify-request', // Used for check email page
-    // newUser: null // If set, new users will be directed here on first sign in
+    signIn: '/loginout'
+    //signOut: '/api/auth/signout',
+    //error: '/api/auth/error', // Error code passed in query string as ?error=
+    //verifyRequest: '/api/auth/verify-request', // (used for check email message)
+    //newUser: null // If set, new users will be directed here on first sign in
   },
 
-  // Callbacks are asynchronous functions you can use to control what happens
-  // when an action is performed.
-  // https://next-auth.js.org/configuration/callbacks
   callbacks: {
-    signIn: async (username: string, account: String, profile: String) => {
-      console.log('signIn');
-      console.log(username);
+    signIn: async (user: Object, account: Object, profile: Object) => {
+      /**
+       * @param  {object} user  User profile (e.g. user id, name, email)
+       * {
+       *  name: 'Miguel Duque Filho',
+       *  email: 'miguel.duque@globo.com',
+       *  image: 'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10218237314981287&height=50&width=50&ext=1612181976&hash=AeSniyrvFaDZClIqx84'
+       * }
+       * @param  {object} account  Account used to sign in (e.g. OAuth account)
+       *    {
+       *   provider: 'facebook',
+       *   type: 'oauth',
+       *   id: '10218237314981287',
+       *  refreshToken: undefined,
+       *  accessToken: 'EAAMB0ZAA3ZCZCoBACLZAsDhoFXV9Y7RepFgKFrxnb8HFdvs8nPoxX1ZBSfITXP7uSYYgGj1RO81ZBPYSQrLTzlrkZBkxG6mFRYt7FYaS9PYkLlXQHPU3q025aXDfvBcoZBbTMJjC9I1yd3xcWeadmPG8fs15eIa9nL0ZD',
+       *  accessTokenExpires: null
+       * }
+       * @param  {object} profile Provider specific metadata (e.g. OAuth Profile)
+       *    {
+       *   email: 'miguel.duque@globo.com',
+       *   name: 'Miguel Duque Filho',
+       *   picture: {
+       *     data: {
+       *       height: 50,
+       *       is_silhouette: false,
+       *       url: 'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10218237314981287&height=50&width=50&ext=1612181976&hash=AeSniyrvFaDZClIqx84',
+       *       width: 50
+       *     }
+       *   },
+       *   id: '10218237314981287'
+       * }
+       * @return {boolean|object}  Return `true` (or a modified JWT) to allow sign in
+       *                           Return `false` to deny access
+       */
+      console.log('==> callbacks signIn: async (user, account, profile)');
+      const isAllowedToSignIn = true;
+
+      console.log('===>>> user');
+      console.log(user);
+      console.log('===>>> account');
       console.log(account);
+      console.log('===>>> profile');
       console.log(profile);
-      return Promise.resolve(true);
+      if (isAllowedToSignIn) {
+        console.log('<== callbacks signIn:  Promise.resolve(true)');
+        return Promise.resolve(true);
+      } else {
+        console.log('<== callbacks signIn:  Promise.resolve(false)');
+        return Promise.resolve(false);
+      }
     },
-    redirect: async (url: Url, baseUrl: Url) => {
-      console.log('redirect');
-      console.log(url);
-      console.log(baseUrl);
-      return Promise.resolve(baseUrl);
+
+    redirect: async (url: string, baseUrl: string) => {
+      /**
+       * @param  {string} url      URL provided as callback URL by the client
+       * @param  {string} baseUrl  Default base URL of site (can be used as fallback)
+       * @return {string}          URL the client will be redirect to
+       */
+      console.log(`<==> redirect: async (url=${url}, baseUrl=${baseUrl})`);
+
+      return url.startsWith(baseUrl)
+        ? Promise.resolve(url)
+        : Promise.resolve(baseUrl);
     },
-    session: async (session: any, username: string, account: String) => {
-      console.log('session');
+
+    session: async (session: Object, user: Object) => {
+      /**
+       * @param  {object} session  Session object
+       * @param  {object} user     User profile (e.g. user id, name, email)
+       * @return {object}          Session that will be returned to the client
+       */
+      console.log('==> Callbacks session: async (session, user)');
+      console.log('===>>> session');
       console.log(session);
-      console.log(username);
-      console.log(account);
+      console.log('===>>> user');
+      console.log(user);
+      console.log('<== Callbacks session : return Promise.resolve(session)');
       return Promise.resolve(session);
     },
-    jwt: async (
-      token,
-      username: string,
-      account: String,
-      password: String,
-      profile: String,
-      isNewUser: boolean
-    ) => {
-      console.log('jwt');
-      console.log('token');
 
-      console.log('username');
-      console.log(username);
-      console.log('account');
+    jwt: async (
+      token: Object,
+      user: Object,
+      account: Object,
+      profile: Object,
+      isNewUser: Boolean = false
+    ) => {
+      /**
+       * @param  {object} token    Decrypted JSON Web Token
+       * {
+       *   name: 'Miguel Duque Filho',
+       *   email: 'miguel.duque@globo.com',
+       *   picture: 'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10218237314981287&height=50&width=50&ext=1612181976&hash=AeSniyrvFaDZClIqx84'
+       * }
+       * @param  {object} user     Profile - only available on sign in
+       * {
+       *  name: 'Miguel Duque Filho',
+       *  email: 'miguel.duque@globo.com',
+       *  image: 'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10218237314981287&height=50&width=50&ext=1612181976&hash=AeSniyrvFaDZClIqx84'
+       * }
+       * @param  {object} account  Account used to sign in (e.g. OAuth account)
+       * {
+       *   provider: 'facebook',
+       *   type: 'oauth',
+       *   id: '10218237314981287',
+       *   refreshToken: undefined,
+       *   accessToken: 'EAAMB0ZAA3ZCZCoBACLZAsDhoFXV9Y7RepFgKFrxnb8HFdvs8nPoxX1ZBSfITXP7uSYYgGj1RO81ZBPYSQrLTzlrkZBkxG6mFRYt7FYaS9PYkLlXQHPU3q025aXDfvBcoZBbTMJjC9I1yd3xcWeadmPG8fs15eIa9nL0ZD',
+       *   accessTokenExpires: null
+       * }
+       * @param  {object} profile  Provider specific metadata (e.g. OAuth Profile)
+       * {
+       *  email: 'miguel.duque@globo.com',
+       *  name: 'Miguel Duque Filho',
+       *  picture: {
+       *    data: {
+       *      height: 50,
+       *      is_silhouette: false,
+       *      url: 'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10218237314981287&height=50&width=50&ext=1612181976&hash=AeSniyrvFaDZClIqx84',
+       *       width: 50
+       *     }
+       *   },
+       *  id: '10218237314981287'
+       * }
+       * @param  {boolean} isNewUser True if new user (only available on sign in)
+       * @return {object}          JSON Web Token that will be saved
+       */
+      console.log('==> jwt: async (token, user, account, profile, isNewUser)');
+      console.log('===>>> token');
+      console.log(token);
+      console.log('===>>> user');
+      console.log(user);
+      console.log('===>>> account');
       console.log(account);
-      console.log('password');
-      console.log(password);
-      console.log('profile');
+      console.log('===>>> profile');
       console.log(profile);
-      console.log('isNewUser');
+      console.log('===>>> isNewUser');
       console.log(isNewUser);
 
-      const isSignIn = account ? true : false;
+      const isSignIn = user ? true : false;
       if (isSignIn) {
-        token.account = username;
-        token.password = password;
+        // token.user = user.username;
+        // token.password = password;
       }
+
+      console.log('<== jwt: return Promise.resolve(token)');
       return Promise.resolve(token);
     },
 
-    // Events are useful for logging
-    // https://next-auth.js.org/configuration/events
-    events: {},
+    events: {
+      /* on successful sign in */
+      // signIn: async message => {
+      //   console.log(`<==> Events Signin ${message}`);
+      // },
+      /* on signout */
+      // signOut: async message => {
+      //   console.log(`<==> Events signOut ${message}`);
+      // },
+      /* user created */
+      // createUser: async message => {
+      //   console.log(`<==> Events createUser ${message}`);
+      // },
+      /* account linked to a user */
+      // linkAccount: async message => {
+      //   console.log(`<==> Events linkAccount ${message}`);
+      // },
+      /* session is active */
+      // session: async message => {
+      //   console.log(`<==> Events session ${message}`);
+      // },
+      /* error in authentication flow */
+      // console.log(`<==> Events error ${message}`);
+      // error: async message => {
+      // }
+    },
 
-    // Enable debug messages in the console if you are having problems
-    debug: false
+    debug: process.env.NODE_ENV === 'development'
+
+    // true for HTTPS sites / false for HTTP sites
+    // useSecureCookies: true,
   }
 };
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
-  // console.log('req: NextApiRequest');
-  // console.log(req);
-  // console.log('res: NextApiResponse');
-  // console.log(res);
-  console.log('chamando NextAuth');
+const Auth: NextApiHandler = (req, res) => {
+  console.log('==> START [...nextauth] (req, res)');
+  console.log(`===>>> req - method:${req.method} url:${req.url}`);
+  console.log('===>>> req: query >>>>>>>>');
+  console.log(req.query);
+  console.log('===>>> req: body >>>>>>>>');
+  console.log(req.body);
+  console.log(`===>>> res - statusCode:${res.statusCode} url:${req.url}`);
+  console.log('===>>> start NextAuth(req, res, options)');
   NextAuth(req, res, options);
+  console.log('===>>> End NextAuth');
+  console.log('<== END [...nextauth]');
+};
+
+export default Auth;
+
+const login = async (data: any) => {
+  const result = await api.post(data);
+  console.log('<==> Login result', result);
+  return result;
 };

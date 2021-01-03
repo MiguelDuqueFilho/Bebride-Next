@@ -12,7 +12,7 @@ export const Container = styled.div`
 
   @media (max-width: 570px) {
   }
-
+  /*
   &:before {
     content: '';
     position: absolute;
@@ -45,7 +45,7 @@ export const Container = styled.div`
     transform: translatey(-50%);
     z-index: 6;
     transition: 1.8s ease-in-out;
-  }
+  } */
 `;
 
 export const ContainerContent = styled.div`

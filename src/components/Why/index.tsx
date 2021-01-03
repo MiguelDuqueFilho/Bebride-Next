@@ -7,6 +7,7 @@ import {
   ContainerContent,
   ContainerWhyTitle,
   ContainerWhyText,
+  ContainerWhyDescr,
   ContainerTeam2Imag,
   ImageTeam2
 } from './styles';
@@ -35,35 +36,35 @@ const Why: React.FC = () => {
       </ContainerWhyTitle>
       <ContainerContent className="row">
         <ContainerWhyText>
-          <p className="why-descr">
+          <ContainerWhyDescr>
             <FaTasks />
             Nós cuidamos de cada detalhe do seu Grande Dia como se fosse o
             nosso, com muito amor e respeito pela história do casal. Ouvimos
             cada ideia e trazemos juntas o seu sonho para a realidade.
-          </p>
-          <p className="why-descr">
+          </ContainerWhyDescr>
+          <ContainerWhyDescr className="why-descr">
             <FaProjectDiagram />
             Casamento é toda a trajetória, não somente um único dia e queremos
             que vocês aproveitem cada etapa dos preparativos. Por isso,
             orientamos passo a passo para que o casal se sinta amparado e
             seguro.
-          </p>
+          </ContainerWhyDescr>
 
-          <p className="why-descr">
+          <ContainerWhyDescr className="why-descr">
             <FaHeart />
             Amamos o que fazemos, por isso sempre estamos disponíveis para
             atender e ouvir nosso casal, inclusive papear sobre os detalhes é
             uma das coisas que mais gostamos de fazer!
-          </p>
-          <p className="why-descr">
+          </ContainerWhyDescr>
+          <ContainerWhyDescr className="why-descr">
             <FaVenus />É importante dizer que damos prioridade à indicação de
             mulheres como fornecedores do seu Grande Dia. Uma das nossas missões
             é fortalecer o empreendedorismo feminino.
-          </p>
-          <p className="why-descr">
+          </ContainerWhyDescr>
+          <ContainerWhyDescr className="why-descr">
             <FaMoneyBill />
             Conseguimos melhores preços junto aos fornecedores.
-          </p>
+          </ContainerWhyDescr>
         </ContainerWhyText>
         <ContainerTeam2Imag>
           <ImageTeam2 src={teamadesivo} alt="team" />

@@ -1,5 +1,5 @@
-import { getSession, signOut } from 'next-auth/client';
-import AccessDenied from '../../components/Auth/AccessDenied';
+import { signOut, useSession, getSession } from 'next-auth/client';
+import AccessDenied from '../../components/AccessDenied';
 
 import {
   Container,
@@ -10,11 +10,7 @@ import {
   Button
 } from './styles';
 
-function PageSample({ content, session }) {
-  function HandleLogoff() {
-    signOut();
-  }
-
+export default function Admin({ session }) {
   if (!session) {
     return <AccessDenied />;
   }
@@ -23,7 +19,10 @@ function PageSample({ content, session }) {
     <Container>
       <ContainerText>
         <Title className="title">
-          Page Sample Signed in as {session.user.name || session.user.email}
+          Page Sample Signed in as {session.user.name}
+        </Title>
+        <Title className="title">
+          Page Sample Signed in as {session.user.email}
         </Title>
       </ContainerText>
       <PanelContent className={`content`}>
@@ -38,12 +37,6 @@ function PageSample({ content, session }) {
           className="btn transparent"
           value="transparente"
         />
-        <Button
-          type="button"
-          className="btn transparent"
-          value="Logoff"
-          onClick={HandleLogoff}
-        />
       </PanelContent>
     </Container>
   );
@@ -51,24 +44,9 @@ function PageSample({ content, session }) {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
-  let content = null;
-
-  if (session) {
-    const hostname = process.env.NEXTAUTH_URL || 'http://localhost:3000';
-    const options = { headers: { cookie: context.req.headers.cookie } };
-    const res = await fetch(`${hostname}/api/examples/protected`, options);
-    const json = await res.json();
-    if (json.content) {
-      content = json.content;
-    }
-  }
-
   return {
     props: {
-      session,
-      content
+      session
     }
   };
 }
-
-export default PageSample;

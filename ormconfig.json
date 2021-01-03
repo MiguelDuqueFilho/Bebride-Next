@@ -1,0 +1,19 @@
+{
+  "name": "default",
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "usrbebride",
+  "password": "usrbebride",
+  "database": "bebride",
+  "synchronize": true,
+  "logging": false,
+  "entities": ["src/database/entity/*.js"],
+  "subscribers": ["src/database/subscriber/*.js"],
+  "migrations": ["src/database/migration/*.js"],
+  "cli": {
+    "entitiesDir": "src/database/entity",
+    "migrationsDir": "src/database/migration",
+    "subscribersDir": "src/database/subscriber"
+  }
+}

@@ -38,13 +38,16 @@ export const WrapContainer = styled.div`
   > a {
     color: ${props => props.theme.color.light};
   }
+
   > ul {
     list-style: none;
   }
+
   > ul > li {
     padding: 5px 0 5px 10px;
     background: url(${imgCatLi}) no-repeat left;
   }
+
   > ul > li > a {
     text-decoration: none;
     color: ${props => props.theme.color.light};
@@ -52,12 +55,12 @@ export const WrapContainer = styled.div`
       color: ${props => props.theme.color.linkHover};
     }
   }
-  }
+
   > ul > li > p {
     color: ${props => props.theme.color.light};
     > span {
-       font-family: 'Times New Roman', Times, serif;
-       font-size: .9rem;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 0.9rem;
     }
   }
 `;
@@ -87,7 +90,7 @@ export const FooterTitle = styled.h3`
   padding: 0 0 18px 0;
   display: block;
   > a {
-    color: ${props => props.theme.color.white};
+    color: ${props => props.theme.color.light};
   }
   > a:hover {
     text-decoration: none;

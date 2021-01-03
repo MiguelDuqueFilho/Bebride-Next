@@ -35,8 +35,9 @@ export const ContainerTitle = styled.div`
     }
     > p {
       margin: 2rem 15px;
-      font-size: 2rem;
+      font-size: 2.5rem;
       line-height: 1.5em;
+      font-family: 'romantisch', serif;
       color: ${props => props.theme.color.primary};
 
       > svg {
