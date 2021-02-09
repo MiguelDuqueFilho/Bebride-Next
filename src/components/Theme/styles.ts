@@ -4,7 +4,7 @@ export const ContainerTheme = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 12;
+  z-index: 18;
 `;
 
 export const ThemeSelect = styled.input`
@@ -30,14 +30,14 @@ export const ThemeSelected = styled.div`
   border-radius: 50%;
   border: 0;
   opacity: 1;
-  z-index: 13;
+  z-index: 17;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   transition: 0.4s;
-  z-index: 13;
+  z-index: 16;
   background-color: ${props => props.theme.color.toggle};
 
   > div {

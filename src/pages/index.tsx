@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next';
 
 import { Container } from '../styles/pages/home';
+import Menu from '../components/Menu';
 
 import { PlanTypes, DepositionItens } from '../utils/sampdata';
 import { PlanType, DepositionItem } from '../interfaces';
@@ -20,6 +21,7 @@ type Props = {
 function Home({ items, depositionItens }: Props) {
   return (
     <Container>
+      <Menu />
       <BannerBody />
       <Team />
       <Why />

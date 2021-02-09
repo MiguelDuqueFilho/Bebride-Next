@@ -22,7 +22,7 @@ export const Toggler = styled.input`
   height: 45px;
   border-radius: 50%;
   opacity: 0;
-  z-index: 13;
+  z-index: 15;
   cursor: pointer;
 `;
 
@@ -40,7 +40,7 @@ export const Hamburger = styled.div`
   align-items: center;
   flex-direction: column;
   transition: 0.4s;
-  z-index: 12;
+  z-index: 13;
 
   > div {
     position: absolute;

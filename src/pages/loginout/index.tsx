@@ -59,7 +59,7 @@ export default function LogInOut() {
     e.preventDefault();
     console.log('onSubmit');
     console.log(e);
-    signIn('facebook', { userEmail, isNewUser: false });
+    signIn('facebook');
   }
 
   function onTwitterSignIn(e: FormEvent) {
@@ -87,7 +87,7 @@ export default function LogInOut() {
     e.preventDefault();
     console.log('onSubmit');
     console.log(e);
-    signIn('facebook', { userEmail, isNewUser: true });
+    signIn('facebook');
   }
 
   function onTwitterSignUp(e: FormEvent) {
@@ -179,7 +179,7 @@ export default function LogInOut() {
                 </ContainerIcon>
                 <Input
                   name="userEmail"
-                  type="text"
+                  type="email"
                   placeholder="Email"
                   onChange={e => setUserEmail(e.target.value)}
                 />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSession, signIn, signOut } from 'next-auth/client';
+import { useSession, signOut } from 'next-auth/client';
 import Link from 'next/link';
 
 import {
@@ -60,16 +60,15 @@ function Menu() {
               )}
               {!session && (
                 <li>
-                  <a
-                    href={`/api/auth/signin`}
-                    onClick={e => {
-                      e.preventDefault();
-                      if (toggle) setToggle(false);
-                      signIn();
-                    }}
-                  >
-                    Login/Registrar
-                  </a>
+                  <Link href="/loginout">
+                    <a
+                      onClick={e => {
+                        if (toggle) setToggle(false);
+                      }}
+                    >
+                      Login/Registrar
+                    </a>
+                  </Link>
                 </li>
               )}
               {session && (

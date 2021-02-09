@@ -5,45 +5,28 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "verify": "ate aqui",
-    "g:entity": "yarn typeorm entity:create --name ",
-    "g:migration": "yarn typeorm migration:generate --name ",
-    "db:migrate": "yarn typeorm migration:run ",
-    "db:setup": "yarn db:create:dev",
-    "db:create:dev": "createdb --owner=mysql next_now_dev",
-    "db:drop:dev": "yarn typeorm:dev schema:drop",
-    "db:drop:prod": "yarn typeorm:prod schema:drop",
-    "db:migrate:prod": "yarn typeorm:prod migration:run",
-    "db:revert:dev": "yarn typeorm:dev migration:revert",
-    "db:revert:prod": "yarn typeorm:prod migration:revert",
-    "db:seed": "yarn hygen seed run",
-    "db:seeds:up": "yarn local seeds/dev/seedsUp.ts",
-    "typeorm:local": "yarn local ./node_modules/typeorm/cli.js",
-    "typeorm:dev": "yarn development ./node_modules/typeorm/cli.js",
-    "local": "DOTENV_CONFIG_PATH=./.env ts-node -P ./tsconfig.yarn.json -r dotenv/config",
-    "development": "DOTENV_CONFIG_PATH=.env.development ts-node -P ./tsconfig.yarn.json -r dotenv/config",
-    "production": "DOTENV_CONFIG_PATH=.env.prod ts-node -P ./tsconfig.yarn.json -r dotenv/config",
-    "deploy:prod": "now -A prod.now.json --target=production --scope=mthomps4 && now alias -A prod.now.json"
+    "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@prisma/client": "2.16.0",
     "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
-    "mysql2": "^2.2.5",
     "next": "10.0.3",
     "next-auth": "^3.1.0",
     "next-images": "^1.6.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-icons": "^4.1.0",
-    "reflect-metadata": "^0.1.13",
-    "styled-components": "^5.2.1",
-    "typeorm": "^0.2.29"
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/next-auth": "^3.1.19",
-    "@types/node": "^14.14.10",
-    "@types/react": "^17.0.0",
+    "@types/node": "^14.14.25",
+    "@types/react": "^17.0.1",
     "@types/react-icons": "^3.0.0",
     "@types/styled-components": "^5.1.4",
     "@typescript-eslint/eslint-plugin": "^4.9.0",
@@ -58,6 +41,7 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.2.1",
-    "typescript": "^4.1.2"
+    "prisma": "2.16.0",
+    "typescript": "^4.1.3"
   }
 }

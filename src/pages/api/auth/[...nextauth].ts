@@ -1,11 +1,19 @@
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 import { NextApiHandler } from 'next';
+import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcryptjs';
 
 import api from '../../../services/api';
 
+export interface UserCredentialsDB {
+  name?: string;
+  email: string;
+  password: string;
+  role: string;
+}
+
 const options = {
-  site: process.env.NEXTAUTH_URL,
   providers: [
     Providers.Facebook({
       clientId: process.env.FACEBOOK_ID,
@@ -24,58 +32,98 @@ const options = {
       name: 'credentials',
       credentials: {},
       authorize: async credentials => {
-        const data = {
-          name: credentials.userName,
-          email: credentials.userEmail,
-          image: null,
-          password: credentials.password,
-          isNewUser: Boolean(credentials.isNewUser)
-        };
-        try {
-          // const user = await login(data);
+        const prisma = new PrismaClient();
 
-          if (data) {
-            console.log(credentials);
-            console.log(
-              'Any object returned will be saved in `user` property of the JWT'
-            );
-            return Promise.resolve(data);
-          } else {
-            return Promise.resolve(null);
+        let getUser: UserCredentialsDB | null = await prisma.user.findUnique({
+          where: {
+            email: credentials.userEmail
+          },
+          select: {
+            email: true,
+            name: true,
+            password: true,
+            role: true
           }
-        } catch (error) {
-          if (error.response) {
-            console.log(error.response);
-            Promise.reject(new Error('Userid e/ou Senha Invalida.'));
+        });
+        console.log('prisma getUser');
+        console.log(getUser);
+
+        if (credentials.isNewUser === 'true') {
+          if (getUser) {
+            console.log('===> authorize END return Promise.reject(loginout)');
+            return Promise.reject('/loginout');
+          }
+
+          prisma.$use(async (params, next) => {
+            if (params.model === 'User' && params.action === 'create') {
+              const password = params.args.data.password;
+              params.args.data.password = await bcrypt.hash(password, 10);
+            }
+            return next(params);
+          });
+
+          const data = await prisma.user.create({
+            data: {
+              email: credentials.userEmail,
+              name: credentials.userName,
+              password: credentials.password
+            }
+          });
+          console.log('prisma data');
+          console.log(data);
+          console.log('===> authorize END return Promise.resolve(data);');
+          return Promise.resolve(data);
+        } else {
+          if (!getUser) {
+            console.log(
+              '===> authorize END return Promise.reject(loginout) !getUser'
+            );
+            return Promise.reject('/loginout');
+          }
+
+          const compare = await bcrypt.compare(
+            credentials.password,
+            getUser.password
+          );
+          console.log(
+            `===> authorize credentials.password ${credentials.password} getUser.password ${getUser.password}`
+          );
+          console.log(`===> authorize END Compare ${compare}`);
+
+          if (!compare) {
+            console.log('===> authorize END user or and password error');
+            return Promise.reject('/loginout');
+          } else {
+            console.log('===> authorize END return Promise.resolve(data);');
+            return Promise.resolve(getUser);
           }
         }
       }
     })
   ],
 
-  database: process.env.DATABASE_URL,
+  database: null,
 
   secret: process.env.NEXTAUTH_SECRET,
 
   session: {
     jwt: true,
-    maxAge: 1 * 3 * 60 * 60, // 3 hours
-    updateAge: 24 * 60 * 60 // 24 hours
+    maxAge: 1 * 3 * 60 * 60 // 3 hours
   },
 
   jwt: {
     secret: process.env.JWT_SECRET,
-    encryption: true
+    encryption: false
     // encode: async ({ secret, token, maxAge }) => {},
     // decode: async ({ secret, token, maxAge }) => {}
   },
 
   pages: {
-    signIn: '/loginout'
-    //signOut: '/api/auth/signout',
-    //error: '/api/auth/error', // Error code passed in query string as ?error=
-    //verifyRequest: '/api/auth/verify-request', // (used for check email message)
-    //newUser: null // If set, new users will be directed here on first sign in
+    signIn: '/auth/signin'
+    // signOut: '/auth/signin',
+    // error: '/auth/error', // Error code passed in query string as ?error=
+    // verifyRequest: '/auth/verify-request', // (used for check email message)
+    // newUser: '/auth/signin' // If set, new users will be directed here on first sign in
   },
 
   callbacks: {
@@ -113,7 +161,9 @@ const options = {
        * @return {boolean|object}  Return `true` (or a modified JWT) to allow sign in
        *                           Return `false` to deny access
        */
-      console.log('==> callbacks signIn: async (user, account, profile)');
+      console.log(
+        '==> callbacks - signIn: async (user: Object, account: Object, profile: Object)'
+      );
       const isAllowedToSignIn = true;
 
       console.log('===>>> user');
@@ -139,9 +189,11 @@ const options = {
        */
       console.log(`<==> redirect: async (url=${url}, baseUrl=${baseUrl})`);
 
-      return url.startsWith(baseUrl)
-        ? Promise.resolve(url)
-        : Promise.resolve(baseUrl);
+      return Promise.resolve(baseUrl);
+
+      // return url.startsWith(baseUrl)
+      //   ? Promise.resolve(url)
+      //   : Promise.resolve(baseUrl);
     },
 
     session: async (session: Object, user: Object) => {
@@ -160,7 +212,7 @@ const options = {
     },
 
     jwt: async (
-      token: Object,
+      token: any,
       user: Object,
       account: Object,
       profile: Object,
@@ -218,11 +270,12 @@ const options = {
       console.log(isNewUser);
 
       const isSignIn = user ? true : false;
+      // Add auth_time to token on signin in
       if (isSignIn) {
-        // token.user = user.username;
-        // token.password = password;
+        token.auth_time = Math.floor(Date.now() / 1000);
+        console.log('===>>> token after update');
+        console.log(token);
       }
-
       console.log('<== jwt: return Promise.resolve(token)');
       return Promise.resolve(token);
     },
@@ -261,7 +314,7 @@ const options = {
   }
 };
 
-const Auth: NextApiHandler = (req, res) => {
+const Auth: NextApiHandler = async (req, res) => {
   console.log('==> START [...nextauth] (req, res)');
   console.log(`===>>> req - method:${req.method} url:${req.url}`);
   console.log('===>>> req: query >>>>>>>>');
@@ -270,7 +323,7 @@ const Auth: NextApiHandler = (req, res) => {
   console.log(req.body);
   console.log(`===>>> res - statusCode:${res.statusCode} url:${req.url}`);
   console.log('===>>> start NextAuth(req, res, options)');
-  NextAuth(req, res, options);
+  await NextAuth(req, res, options);
   console.log('===>>> End NextAuth');
   console.log('<== END [...nextauth]');
 };
@@ -278,7 +331,8 @@ const Auth: NextApiHandler = (req, res) => {
 export default Auth;
 
 const login = async (data: any) => {
-  const result = await api.post(data);
-  console.log('<==> Login result', result);
+  console.log('==> START Login function');
+  const result = await api.post('api/login', data);
+  console.log('<== END Login function result', result);
   return result;
 };

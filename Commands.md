@@ -196,3 +196,13 @@ yarn add babel-plugin-inline-react-svg -D
 `Jest` para testes
 
 `SWR` para prover cache
+
+---
+
+## MYSQL
+
+```sql
+UPDATE mysql.user SET Host='%' WHERE Host='localhost' AND User='root';
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+FLUSH PRIVILEGES;
+```
