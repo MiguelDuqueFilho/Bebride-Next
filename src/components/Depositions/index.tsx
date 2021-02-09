@@ -10,7 +10,11 @@ import {
 } from './styles';
 
 import { DepositionItem } from '../../interfaces/index';
-import { ServerStyleSheet } from 'styled-components';
+import deposition1 from '../../assets/images/deposition_1.jpeg';
+import deposition2 from '../../assets/images/deposition_2.jpeg';
+import deposition3 from '../../assets/images/deposition_3.jpeg';
+
+import team from '../../assets/images/team-bebride.png';
 
 type Props = {
   depositionItens: DepositionItem[];
@@ -29,7 +33,7 @@ function Depositions({ depositionItens }: Props) {
               <ContainerItem key={list.id}>
                 <ContainerCard className="card ">
                   <StyledImage
-                    src={`/deposition_${list.id}.jpeg`}
+                    src={deposition1}
                     alt="depositions"
                     width={600}
                     height={400}

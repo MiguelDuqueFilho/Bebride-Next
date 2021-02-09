@@ -3,12 +3,16 @@ import React from 'react';
 
 import Head from 'next/head';
 import { AppProps } from 'next/app';
+
 import { ThemeProvider } from 'styled-components';
+// import { ThemeProvider } from '@material-ui/core/styles';
+import Theme from '../components/Theme';
+// import Theme from '../theme';
 
 import GlobalStyle from '../styles/global';
 
-import Theme from '../components/Theme';
 import { themeLight, themeDark } from '../styles/theme';
+
 import usePersistedState from '../utils/usePersistedState';
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {

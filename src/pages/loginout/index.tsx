@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { signIn } from 'next-auth/client';
+import Layout from '../../components/Layout';
 
 import {
   Container,
@@ -105,7 +106,7 @@ export default function LogInOut() {
   }
 
   return (
-    <>
+    <Layout>
       <Container className={mode}>
         <FormContainer className="forms-container">
           <SigninUp className={`signin-sign-out ${mode}`}>
@@ -242,6 +243,6 @@ export default function LogInOut() {
           </PanelRight>
         </PanelsContainer>
       </Container>
-    </>
+    </Layout>
   );
 }
