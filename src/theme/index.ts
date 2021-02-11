@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { colors } from '@material-ui/core';
-import { THEMES } from 'src/utils/constants';
+import { THEMES } from '../utils/constants';
 
 const themesOptions = [
   {
