@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import nextConnect from 'next-connect';
 import { PrismaClient } from '@prisma/client';
-import upload from '../../../utils/upload';
+import uploadS3 from '../../../utils/uploadS3';
 
 interface ExtendNextApiRequest extends NextApiRequest {
   body: {
@@ -11,7 +11,7 @@ interface ExtendNextApiRequest extends NextApiRequest {
     eventDate: string;
     finishDate: string;
   };
-  file: {
+  file?: {
     originalname: string;
     key: string;
     location: string;
@@ -19,7 +19,7 @@ interface ExtendNextApiRequest extends NextApiRequest {
 }
 
 const handler = nextConnect<NextApiRequest, NextApiResponse>()
-  .use(upload.single('file'))
+  .use(uploadS3.single('file'))
   .post(async (req: ExtendNextApiRequest, res: NextApiResponse) => {
     const {
       title,
@@ -29,28 +29,36 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>()
       finishDate = null
     } = req.body;
 
-    const { originalname = '', key = '', location = '' } = req.file;
     try {
       const prisma = new PrismaClient({
         errorFormat: 'minimal'
       });
 
-      const data = await prisma.event.create({
+      const createEvent = await prisma.event.create({
         data: {
           title,
           content,
           initialDate: new Date(initialDate),
           eventDate: new Date(eventDate),
           finishDate: new Date(finishDate),
-          fileKey: key,
-          fileLocation: location,
-          fileOriginalName: originalname
+          fileKey: req.file?.key,
+          fileLocation: req.file?.location,
+          fileOriginalName: req.file?.originalname
         }
       });
 
-      return res.status(201).json({ event: data });
+      const data = {
+        title: createEvent.title,
+        content: createEvent.content,
+        image: createEvent.fileLocation,
+        initialDate: createEvent.initialDate,
+        eventDate: createEvent.eventDate,
+        finishDate: createEvent.finishDate
+      };
+
+      return res.status(201).json({ event: data, message: 'Evento criado!' });
     } catch (error) {
-      return res.status(400).json({ Error: { message: error.message } });
+      return res.status(400).json({ message: { error: error.message } });
     }
   })
 
