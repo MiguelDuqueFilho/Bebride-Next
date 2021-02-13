@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import nextConnect from 'next-connect';
 import { PrismaClient } from '@prisma/client';
-import upload from '../../utils/upload';
+import upload from '../../../utils/upload';
 
 interface ExtendNextApiRequest extends NextApiRequest {
   body: {
