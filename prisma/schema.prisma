@@ -11,19 +11,22 @@ generator client {
 }
 
 enum Role {
-  USER
+  VISITOR
   ADMIN
+  CLIENT
+  PARTNER
 }
+
 
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   name      String?
   password  String?
-  role      Role     @default(USER)
-  // posts     Post[]?
-  // profile   Profile?
-  createdAt DateTime    @default(now())
+  role      Role     @default(VISITOR)
+  profile   Profile?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Profile {
@@ -31,15 +34,24 @@ model Profile {
   bio     String
   user    User    @relation(fields: [userId], references: [id])
   userId  Int
+
 }
 
 
 model Event {
   id        Int     @id @default(autoincrement())
   title     String
-  content   String?
-  users     User[]
-  published Boolean @default(false)
+  content   String
+  initialDate DateTime? @default(now())
+  eventDate DateTime? @default(now())
+  finishDate DateTime? @default(now())
+  fileKey    String?
+  fileLocation String?
+  fileOriginalName String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  // users     User[]
+  // published Boolean @default(false)
 }
 
 model UsersOnEvents {
@@ -52,12 +64,12 @@ model UsersOnEvents {
 
 model Post {
   id         Int         @id @default(autoincrement())
-  createdAt  DateTime    @default(now())
   title      String
   published  Boolean     @default(false)
   author     User        @relation(fields: [authorId], references: [id])
   authorId   Int
   categories Category[]  @relation(references: [id])
+  createdAt  DateTime    @default(now())
 }
 
 model Category {

@@ -15,13 +15,14 @@ async function main() {
   const miguel = await prisma.user.create({
     data: {
       email: 'miguel.duque@globo.com',
-      name: 'Miguel Duque',
+      name: 'Miguel Duque Filho',
       password: '123123123',
       role: 'ADMIN'
     }
   });
   console.log({ miguel });
 }
+
 main()
   .catch(e => {
     console.error(e);

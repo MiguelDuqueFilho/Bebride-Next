@@ -8,6 +8,7 @@
     "start": "next start",
     "create-only": "dotenv -e .env.development -c development -- yarn prisma migrate dev --create-only --preview-feature",
     "migrate": "dotenv -e .env.development -c development -- yarn prisma migrate dev --preview-feature",
+    "reset": "dotenv -e .env.development -c development -- yarn prisma migrate reset --preview-feature ",
     "migrate-prod": "dotenv -e .env.production -c production  -- yarn prisma migrate deploy --preview-feature",
     "seed": "dotenv -e .env.development -c development  -- yarn prisma db seed --preview-feature",
     "seed-prod": "dotenv -e .env.production -c production  -- yarn prisma db seed --preview-feature"
