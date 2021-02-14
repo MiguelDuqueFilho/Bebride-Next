@@ -17,6 +17,13 @@ enum Role {
   PARTNER
 }
 
+enum EventStatus {
+  INITIAL
+  ADMIN
+  CLIENT
+  PARTNER
+}
+
 
 model User {
   id        Int      @id @default(autoincrement())
@@ -42,6 +49,7 @@ model Event {
   id        Int     @id @default(autoincrement())
   title     String
   content   String
+  status    String
   initialDate DateTime? @default(now())
   eventDate DateTime? @default(now())
   finishDate DateTime? @default(now())
