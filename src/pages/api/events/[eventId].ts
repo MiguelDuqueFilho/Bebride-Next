@@ -38,8 +38,7 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>()
           fileLocation: true,
           initialDate: true,
           eventDate: true,
-          finishDate: true,
-          fileKey: true
+          finishDate: true
         }
       });
 

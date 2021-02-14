@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import nextConnect from 'next-connect';
 import { PrismaClient } from '@prisma/client';
 import uploadS3 from '../../../utils/uploadS3';
+import { pageSize } from '../../../utils/constants';
 
 interface ExtendNextApiRequest extends NextApiRequest {
   body: {
@@ -20,6 +21,41 @@ interface ExtendNextApiRequest extends NextApiRequest {
 
 const handler = nextConnect<NextApiRequest, NextApiResponse>()
   .use(uploadS3.single('file'))
+  .get(async (req: NextApiRequest, res: NextApiResponse) => {
+    const { page = 1 } = req.query;
+
+    try {
+      const prisma = new PrismaClient({
+        errorFormat: 'minimal'
+      });
+
+      const totalItems = await prisma.event.count();
+      const totalPages = Number(totalItems / pageSize);
+      const currentPage = Number(
+        page <= 0 ? 1 : page > totalPages ? totalPages : page
+      );
+
+      const findEvents = await prisma.event.findMany({
+        skip: currentPage * pageSize - pageSize,
+        take: pageSize,
+        select: {
+          title: true,
+          content: true,
+          fileLocation: true,
+          initialDate: true,
+          eventDate: true,
+          finishDate: true,
+          fileKey: true
+        }
+      });
+
+      return res
+        .status(200)
+        .json({ event: findEvents, totalItems, totalPages, currentPage });
+    } catch (error) {
+      return res.status(400).json({ message: { error: error.message } });
+    }
+  })
   .post(async (req: ExtendNextApiRequest, res: NextApiResponse) => {
     const {
       title,
@@ -61,7 +97,6 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>()
       return res.status(400).json({ message: { error: error.message } });
     }
   })
-
   .patch(async (req, res) => {
     throw new Error(
       'Não acredito que aconteceu! O erro pode ser detectado e tratado.'
