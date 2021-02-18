@@ -1,37 +1,37 @@
 import React from 'react';
-// import { Provider } from 'next-auth/client';
-
 import Head from 'next/head';
 import { AppProps } from 'next/app';
 
-import { ThemeProvider } from 'styled-components';
-// import { ThemeProvider } from '@material-ui/core/styles';
-import Theme from '../components/Theme';
-// import Theme from '../theme';
+import { Provider } from 'next-auth/client';
 
+/** Styled-components */
 import GlobalStyle from '../styles/global';
 
-import { themeLight, themeDark } from '../styles/theme';
-
-import usePersistedState from '../utils/usePersistedState';
+/** material-ui */
+import MyThemeProvider from '../components/Theme/MyThemeProvider';
+import { SettingsProvider, defaultSettings } from '../contexts/SettingsContext';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
-  const [theme, setTheme] = usePersistedState('theme', themeLight);
-
-  const toggleTheme = () => {
-    setTheme(theme.title === 'light' ? themeDark : themeLight);
-  };
-
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <Head>
         <title>BeBride Assessoria</title>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width"
+        />
       </Head>
-
-      <Theme toggleTheme={toggleTheme} themeTitle={theme.title} />
-      <Component {...pageProps} />
-      <GlobalStyle />
-    </ThemeProvider>
+      <Provider session={pageProps.session}>
+        <SettingsProvider settings={defaultSettings}>
+          <MyThemeProvider>
+            <CssBaseline />
+            <Component {...pageProps} />
+            <GlobalStyle />
+          </MyThemeProvider>
+        </SettingsProvider>
+      </Provider>
+    </>
   );
 };
 

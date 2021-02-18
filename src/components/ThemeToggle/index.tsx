@@ -3,17 +3,17 @@ import React, { useState, useEffect } from 'react';
 import { ContainerTheme, ThemeSelect, ThemeSelected } from './styles';
 
 type themeProps = {
-  toggleTheme: Function;
+  Theme: Function;
   themeTitle: string;
 };
 
-function Theme({ toggleTheme, themeTitle }: themeProps) {
+function ThemeToggle({ Theme, themeTitle }: themeProps) {
   const [theme, setTheme] = useState(themeTitle);
 
   const handeClickTheme = (e: React.MouseEvent) => {
     const changeTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(changeTheme);
-    toggleTheme(changeTheme);
+    Theme(changeTheme);
   };
 
   useEffect(() => {
@@ -36,4 +36,4 @@ function Theme({ toggleTheme, themeTitle }: themeProps) {
   );
 }
 
-export default Theme;
+export default ThemeToggle;

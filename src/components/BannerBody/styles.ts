@@ -1,5 +1,43 @@
 import styled from 'styled-components';
 
+import { makeStyles } from '@material-ui/core/styles';
+import Checkbox from '@material-ui/core/Checkbox';
+
+import Paper from '@material-ui/core/Paper';
+
+/**** styles from  @material-ui/core */
+
+export const useStyles = makeStyles(theme => ({
+  search: {
+    marginTop: '100px',
+
+    padding: '2px 4px',
+    display: 'flex',
+    alignItems: 'center',
+    height: 35,
+    width: 700,
+    backgroundColor: theme.palette.background.default
+  },
+  input: {
+    flex: 1
+  }
+}));
+
+export const MUiCheckbox = styled(Checkbox)`
+  border-color: yellowgreen;
+  align-self: center;
+  color: yellow;
+  width: 30px;
+  height: 30px;
+`;
+
+/**** styles from  styled-components */
+
+// export const Container = styled(Paper)`
+//   ${({ theme }) => `
+//   background-color: ${theme.palette.background.default};
+//   `};
+
 export const Container = styled.div`
   position: relative;
   width: 100vw;
@@ -36,7 +74,7 @@ export const ContainerContent = styled.div`
     width: 100%;
     height: 50vh;
   }
-
+  /*
   > p {
     font-family: 'romantisch';
     font-size: 6em;
@@ -52,7 +90,7 @@ export const ContainerContent = styled.div`
       width: 100vw;
       font-size: 5rem;
     }
-  }
+  } */
   > span {
     font-family: Times New Roman;
     font-size: 1em;
@@ -69,6 +107,23 @@ export const ContainerContent = styled.div`
     @media (max-width: 570px) {
       font-size: 0.8rem;
     }
+  }
+`;
+
+export const P = styled.p`
+  font-family: 'romantisch';
+  font-size: 7rem;
+  margin-bottom: -40px;
+  color: ${props => props.theme.color.title};
+
+  @media (max-width: 870px) {
+    width: 100vw;
+    font-size: 6rem;
+    margin: -30px 0;
+  }
+  @media (max-width: 570px) {
+    width: 100vw;
+    font-size: 5rem;
   }
 `;
 

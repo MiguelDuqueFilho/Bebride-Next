@@ -1,6 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { colors } from '@material-ui/core';
 import { THEMES } from '../utils/constants';
+import { defaultSettings } from '../contexts/SettingsContext';
 
 const themesOptions = [
   {
@@ -16,7 +17,6 @@ const themesOptions = [
       }
     },
     palette: {
-      type: 'light',
       action: {
         active: colors.blueGrey[600]
       },
@@ -26,10 +26,10 @@ const themesOptions = [
         paper: colors.common.white
       },
       primary: {
-        main: '#f44336'
+        main: '#a4a1fa'
       },
       secondary: {
-        main: '#3EA6FF'
+        main: '#7b6ffc'
       },
       text: {
         primary: colors.blueGrey[900],
@@ -40,7 +40,6 @@ const themesOptions = [
   {
     name: THEMES.DARK,
     palette: {
-      type: 'dark',
       action: {
         active: 'rgba(255, 255, 255, 0.54)',
         hover: 'rgba(255, 255, 255, 0.04)',
@@ -68,7 +67,7 @@ const themesOptions = [
   }
 ];
 
-export const createTheme = (config = {}) => {
+export const createTheme = (config = defaultSettings) => {
   let themeOptions = themesOptions.find(theme => theme.name === config.theme);
 
   if (!themeOptions) {

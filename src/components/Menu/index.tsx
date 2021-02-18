@@ -1,6 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSession, signOut } from 'next-auth/client';
 import Link from 'next/link';
+
+import ThemeToggle from '../ThemeToggle';
+import usePersistedState from '../../utils/usePersistedState';
+
+import { themeLight, themeDark } from '../../styles/theme';
+
+import useSettings from '../../hooks/useSettings';
+import { THEMES } from '../../utils/constants';
 
 import {
   ContainerMenu,
@@ -14,6 +22,8 @@ import {
 function Menu() {
   const [session, loading] = useSession();
   const [toggle, setToggle] = useState(false);
+  const [theme, setTheme] = usePersistedState('theme', themeLight);
+  const { settings, saveSettings } = useSettings();
 
   const handeChangeMenu = () => {
     setToggle(!toggle);
@@ -21,6 +31,18 @@ function Menu() {
 
   const handeClickMenu = (e: React.MouseEvent) => {
     setToggle(false);
+  };
+
+  useEffect(() => {}, [toggle]);
+
+  const toggleTheme = () => {
+    if (settings.theme === THEMES.LIGHT) {
+      saveSettings({ theme: THEMES.DARK });
+      setTheme(themeDark);
+    } else {
+      saveSettings({ theme: THEMES.LIGHT });
+      setTheme(themeLight);
+    }
   };
 
   if (loading) return <p>Loading...</p>;
@@ -100,6 +122,7 @@ function Menu() {
           </div>
         </MenuItens>
       </MenuData>
+      <ThemeToggle Theme={toggleTheme} themeTitle={theme.title} />
     </ContainerMenu>
   );
 }

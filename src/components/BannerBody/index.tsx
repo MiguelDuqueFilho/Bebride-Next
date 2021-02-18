@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Container, ContainerContent, ContainerLogo, LogoHome } from './styles';
-import styled from 'styled-components';
+import Paper from '@material-ui/core/Paper';
+import InputBase from '@material-ui/core/InputBase';
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
+
+import {
+  useStyles,
+  Container,
+  ContainerContent,
+  ContainerLogo,
+  LogoHome,
+  P
+} from './styles';
 
 const BannerBody: React.FC = () => {
+  const classes = useStyles();
+  const [checked, setChecked] = useState(false);
   // function parallax(element: EventTarget, distance: number, speed: number) {
   //   element.style.transform = translateY(`${distance - speed}px`);
   // }
@@ -19,11 +32,21 @@ const BannerBody: React.FC = () => {
     // <Container onScroll={handleScroll}>
     <Container>
       <ContainerContent className="content">
-        <p>be bride</p>
+        <P>be bride</P>
         <span>ASSESSORIA E CERIMONIAL</span>
       </ContainerContent>
       <ContainerLogo>
         <LogoHome src="/images/love.svg" />
+        <Paper component="form" className={classes.search}>
+          <InputBase
+            className={classes.input}
+            placeholder="Pesquisar"
+            inputProps={{ 'aria-label': 'search google maps' }}
+          />
+          <IconButton type="submit" aria-label="search">
+            <SearchIcon />
+          </IconButton>
+        </Paper>
       </ContainerLogo>
     </Container>
   );

@@ -17,7 +17,7 @@ async function main() {
       email: 'miguel.duque@globo.com',
       name: 'Miguel Duque Filho',
       password: '123123123',
-      role: 'ADMIN'
+      role: 'Admin'
     }
   });
   console.log({ miguel });

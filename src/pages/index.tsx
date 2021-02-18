@@ -33,7 +33,7 @@ function Home({ items, depositionItens }: Props) {
 export const getStaticProps: GetStaticProps = async () => {
   const items: PlanType[] = PlanTypes;
   const depositionItens: DepositionItem[] = DepositionItens;
-  return { props: { items, depositionItens } };
+  return { props: { items, depositionItens }, revalidate: 60 };
 };
 
 export default Home;
