@@ -6,7 +6,7 @@ import useSettings from '../../hooks/useSettings';
 
 /** Styled-components */
 import { ThemeProvider } from 'styled-components';
-import { themeLight, themeDark } from '../../styles/theme';
+// import { themeLight, themeDark } from '../../styles/theme';
 // import GlobalStyle from '../../styles/global';
 
 function MyThemeProvider({ children }) {

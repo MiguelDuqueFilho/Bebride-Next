@@ -12,7 +12,7 @@ export const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     height: 35,
     width: 700,
-    backgroundColor: theme.palette.primary.main
+    backgroundColor: theme.palette.background.default
   },
   input: {
     flex: 1

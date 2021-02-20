@@ -20,12 +20,12 @@ function Home({ items, depositionItens }: Props) {
   return (
     <Layout>
       <BannerBody />
-      {/* <Team />
+      <Team />
       <Why />
       <Plans items={items} />
       <Depositions depositionItens={depositionItens} />
       <Final />
-      <Footer /> */}
+      <Footer />
     </Layout>
   );
 }

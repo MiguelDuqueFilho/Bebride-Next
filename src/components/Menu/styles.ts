@@ -1,88 +1,138 @@
 import styled from 'styled-components';
+import MenuIcon from '@material-ui/icons/Menu';
+import MenuOpenIcon from '@material-ui/icons/MenuOpen';
 
 export const ContainerMenu = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 12;
+  z-index: 18;
+
+  /* max-height: 40px; */
+  /* background-color: ${props => props.theme.color.toggle}; */
+`;
+
+export const MyMenuIcon = styled(MenuIcon)`
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+
+  border-radius: 50%;
+  z-index: 17;
+  cursor: pointer;
+  color: ${props => props.theme.color.white};
+
+  opacity: 0;
+  transition: 0.4s;
+  &.checked {
+    opacity: 1;
+    z-index: 19;
+    &:hover {
+      transition: 0.4s;
+      background-color: ${props => props.theme.color.toggle};
+    }
+  }
+`;
+
+export const MyMenuOpenIcon = styled(MenuOpenIcon)`
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+
+  border-radius: 50%;
+  z-index: 17;
+  cursor: pointer;
+  color: ${props => props.theme.color.white};
+
+  opacity: 0;
+  transition: 0.4s;
+  &.checked {
+    opacity: 1;
+    z-index: 19;
+    &:hover {
+      transition: 0.4s;
+      background-color: ${props => props.theme.color.toggle};
+    }
+  }
 `;
 
 export const ContainerToggle = styled.div`
   display: none;
+  background-color: ${props => props.theme.color.toggle};
   @media (max-width: 870px) {
     display: block;
   }
 `;
 
-export const Toggler = styled.input`
-  position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  opacity: 0;
-  z-index: 15;
-  cursor: pointer;
-`;
+// export const Toggler = styled.input`
+//   position: absolute;
+//   top: 0.5rem;
+//   left: 0.5rem;
+//   width: 45px;
+//   height: 45px;
+//   border-radius: 50%;
+//   opacity: 0;
+//   z-index: 17;
+//   cursor: pointer;
+// `;
 
-export const Hamburger = styled.div`
-  position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background-color: ${props => props.theme.color.toggle};
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  transition: 0.4s;
-  z-index: 13;
+// export const Hamburger = styled.div`
+//   position: absolute;
+//   top: 0.5rem;
+//   left: 0.5rem;
+//   width: 45px;
+//   height: 45px;
+//   border-radius: 50%;
+//   background-color: ${props => props.theme.color.toggle};
+//   cursor: pointer;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   flex-direction: column;
+//   transition: 0.4s;
+//   z-index: 13;
 
-  > div {
-    position: absolute;
-    width: 50%;
-    height: 3px;
-    border-radius: 1.5px;
-    background-color: ${props => props.theme.color.white};
-    transition: 0.4s;
-  }
+//   > div {
+//     position: absolute;
+//     width: 50%;
+//     height: 3px;
+//     border-radius: 1.5px;
+//     background-color: ${props => props.theme.color.white};
+//     transition: 0.4s;
+//   }
 
-  > div:before,
-  > div:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 3px;
-    border-radius: 1.5px;
-    background-color: ${props => props.theme.color.white};
-    transition: 0.4s;
-  }
+//   > div:before,
+//   > div:after {
+//     content: '';
+//     position: absolute;
+//     width: 100%;
+//     height: 3px;
+//     border-radius: 1.5px;
+//     background-color: ${props => props.theme.color.white};
+//     transition: 0.4s;
+//   }
 
-  > div:before {
-    top: -8px;
-    transition: 0.4s;
-  }
+//   > div:before {
+//     top: -8px;
+//     transition: 0.4s;
+//   }
 
-  > div:after {
-    top: 8px;
-    transition: 0.4s;
-  }
-  @media (max-width: 870px) {
-    &.checked {
-      transform: rotate(135deg);
+//   > div:after {
+//     top: 8px;
+//     transition: 0.4s;
+//   }
+//   @media (max-width: 870px) {
+//     &.checked {
+//       transform: rotate(135deg);
 
-      > div:before,
-      > div:after {
-        transform: rotate(90deg);
-        top: 0;
-      }
-    }
-  }
-`;
+//       > div:before,
+//       > div:after {
+//         transform: rotate(90deg);
+//         top: 0;
+//       }
+//     }
+//   }
+// `;
 
 export const MenuData = styled.div`
   @media (max-width: 870px) {
@@ -101,19 +151,18 @@ export const MenuData = styled.div`
 `;
 
 export const MenuItens = styled.div`
+  position: absolute;
+  top: 0;
+  height: 40px;
   @media (min-width: 870px) {
+    background-color: ${props => props.theme.color.toggle};
+    width: 100vw;
+    opacity: 0.8;
     > div {
-      position: absolute;
-      top: 0;
-      height: 62px;
-      background-color: ${props => props.theme.color.background};
-      box-shadow: ${props => props.theme.color.boxShadow};
-      opacity: 0.8;
-      width: 100vw;
       > ul {
         position: absolute;
-        margin-top: 7px;
-        height: 45px;
+        top: 0;
+        margin-top: 8px;
         margin-left: 40px;
         width: 50vw;
         display: flex;
@@ -124,10 +173,10 @@ export const MenuItens = styled.div`
           list-style: none;
           > a {
             font-family: 'Times New Roman', Times, serif;
-            color: ${props => props.theme.color.text};
-            font-size: 1.2rem;
+            color: ${props => props.theme.color.white};
+            font-size: 0.8rem;
             font-weight: 900;
-            line-height: 2rem;
+            line-height: 1rem;
             text-decoration: none;
             /* text-transform: uppercase; */
           }

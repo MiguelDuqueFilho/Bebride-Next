@@ -154,7 +154,7 @@ export const Card = styled.div`
   border-radius: 1rem;
   margin: 1rem 0rem;
   padding: 2rem;
-  box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+  /* box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212); */
   justify-content: space-between;
 
   > .percentage {

@@ -30,23 +30,23 @@ export const ContainerIcon = styled.div`
 
   > h2 {
     color: ${props => props.theme.color.white};
-    font-size: 1.3rem;
+    font-size: 1.2em;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
 
   > p {
     color: ${props => props.theme.color.light};
-    font-size: 1rem;
+    font-size: 1em;
     padding-top: 1rem;
     min-height: 8rem;
     text-align: justify;
     @media (max-width: 870px) {
-      font-size: 20px;
+      font-size: 1em;
     }
 
     @media (max-width: 570px) {
-      font-size: 19px;
+      font-size: 1em;
     }
   }
 `;

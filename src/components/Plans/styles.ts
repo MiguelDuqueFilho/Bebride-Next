@@ -40,12 +40,12 @@ export const ContainerTitle = styled.div`
     }
     > p {
       margin: 2rem 6rem;
-      font-size: 2.7rem;
+      font-size: 1.6em;
       line-height: 1.5em;
       color: ${props => props.theme.color.white};
       text-align: center;
       @media (max-width: 870px) {
-        font-size: 2rem;
+        font-size: 1.6em;
         line-height: 1.5em;
         padding-left: 0;
         margin: 2rem 4rem;
@@ -59,7 +59,7 @@ export const ContainerTitle = styled.div`
 
   > span {
     margin: 1rem 3rem;
-    font-size: 1.4rem;
+    font-size: 1.4em;
     text-align: center;
     color: ${props => props.theme.color.light};
     text-transform: uppercase;

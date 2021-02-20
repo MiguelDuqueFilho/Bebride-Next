@@ -25,7 +25,9 @@ function Depositions({ depositionItens }: Props) {
     <Container>
       <ContainerContent>
         <ContainerTitle>
-          <h2>Depoimentos</h2>
+          <h2>
+            <p>Depoimentos</p>
+          </h2>
         </ContainerTitle>
         <ContainerItens className="itens-content">
           {depositionItens.map(list => {
@@ -40,7 +42,6 @@ function Depositions({ depositionItens }: Props) {
                   />
                   <CardBody className="card-body ">
                     <h4 className="card-title">{list.Events[0].eventName}</h4>
-
                     <p className="card-text">{list.depositionDescription}</p>
                   </CardBody>
                 </ContainerCard>

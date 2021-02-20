@@ -5,9 +5,12 @@ export const defaultSettings = {
   theme: THEMES.LIGHT
 };
 
+export interface settingsProps {
+  theme: string;
+}
 const SettingsContext = createContext({
   settings: defaultSettings,
-  saveSettings: () => {}
+  saveSettings: (theme: settingsProps) => {}
 });
 
 export const restoreSettings = () => {

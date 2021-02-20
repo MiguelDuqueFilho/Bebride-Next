@@ -19,8 +19,8 @@ export const ContainerTitle = styled.div`
   flex-direction: column;
   padding: 2rem 6rem;
 
-  > h2 > p {
-    font-size: 1.6em;
+  > h2 {
+    font-size: 2.7rem;
     line-height: 1.5em;
     color: ${props => props.theme.color.primary};
     text-align: center;
@@ -55,7 +55,7 @@ export const ContainerCard = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  /* box-shadow: ${props => props.theme.color.boxShadow}; */
+  /* box-useStyles: ${props => props.theme.color.boxuseStyles}; */
 `;
 
 export const StyledImage = styled(Image)`
@@ -66,15 +66,23 @@ export const StyledImage = styled(Image)`
 export const CardBody = styled.div`
   padding: 1rem 1rem;
   > h4 {
-    font-size: 1.4em;
+    font-size: 1.4rem;
     font-weight: bold;
     color: ${props => props.theme.color.title};
     text-align: center;
     padding-top: 1rem;
   }
 
+  > h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: ${props => props.theme.color.title};
+    text-align: left;
+    padding-top: 1rem;
+  }
+
   > p {
-    font-size: 1em;
+    font-size: 1rem;
 
     color: ${props => props.theme.color.text};
     text-align: justify;

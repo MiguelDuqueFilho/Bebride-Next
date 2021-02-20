@@ -317,6 +317,7 @@ export const PanelLeft = styled(Panel)`
   }
 
   @media (max-width: 870px) {
+    padding: 0 17% 2rem 12%;
     grid-row: 1 / 2;
   }
 `;
@@ -329,6 +330,7 @@ export const PanelRight = styled(Panel)`
   }
 
   @media (max-width: 870px) {
+    padding: 3rem 12% 1rem 17%;
     grid-row: 3 / 4;
   }
 `;

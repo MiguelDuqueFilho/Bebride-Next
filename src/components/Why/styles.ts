@@ -46,12 +46,12 @@ export const ContainerWhyTitle = styled.div`
     }
     > p {
       margin: 2rem 6rem;
-      font-size: 2.7rem;
+      font-size: 1.6em;
       line-height: 1.5em;
       color: ${props => props.theme.color.primary};
       text-align: center;
       @media (max-width: 870px) {
-        font-size: 2rem;
+        font-size: 1.6em;
         line-height: 1.5em;
         padding-left: 0;
         margin: 2rem 4rem;
@@ -86,19 +86,19 @@ export const ContainerWhyText = styled.div`
 export const ContainerWhyDescr = styled.p`
   color: ${props => props.theme.color.text};
   text-align: justify;
-  font-size: 24px;
+  font-size: 1.2em;
   margin: 1rem;
 
   @media (max-width: 870px) {
-    font-size: 20px;
+    font-size: 1.2em;
   }
 
   @media (max-width: 570px) {
-    font-size: 19px;
+    font-size: 1em;
     > svg {
       color: ${props => props.theme.color.primary};
       margin-right: 2rem;
-      font-size: 1.2rem;
+      font-size: 1em;
     }
   }
 
