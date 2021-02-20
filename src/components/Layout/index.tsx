@@ -3,13 +3,11 @@ import { Container } from '../../styles/pages/home';
 import Menu from '../Menu';
 
 const Layout: React.FC = ({ children }) => {
-  // const [session, loading] = useSession();
-
   return (
-    <Container>
+    <div>
       <Menu />
       {children}
-    </Container>
+    </div>
   );
 };
 

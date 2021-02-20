@@ -15,7 +15,7 @@ export default createGlobalStyle`
   }
 
   body, input {
-    font-family: 'Cormorant Garamond', serif;
+font-family: 'Cormorant Garamond', serif;
 
   }
 `;

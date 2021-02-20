@@ -19,28 +19,27 @@ export default class MyDocument extends Document {
       <Html lang="pt">
         <Head>
           <meta charSet="utf-8" />
-
           <link rel="icon" href="/favicon.ico" />
           <script
-            src="https://unpkg.com/@material-ui/core@latest/umd/material-ui.production.min.js"
+            src="https://unpkg.com/@material-ui/core@latest/umd/material-ui.development.js"
             crossOrigin="anonymous"
           ></script>
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
-          <link
+          {/* <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
+          /> */}
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
           />
-          <link
+          {/* <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
             rel="stylesheet"
-          />
+          /> */}
         </Head>
         <body>
           <Main />

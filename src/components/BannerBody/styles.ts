@@ -1,48 +1,30 @@
 import styled from 'styled-components';
-
 import { makeStyles } from '@material-ui/core/styles';
-import Checkbox from '@material-ui/core/Checkbox';
-
-import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
 
 /**** styles from  @material-ui/core */
 
 export const useStyles = makeStyles(theme => ({
   search: {
     marginTop: '100px',
-
     padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
     height: 35,
     width: 700,
-    backgroundColor: theme.palette.background.default
+    backgroundColor: theme.palette.primary.main
   },
   input: {
     flex: 1
   }
 }));
 
-export const MUiCheckbox = styled(Checkbox)`
-  border-color: yellowgreen;
-  align-self: center;
-  color: yellow;
-  width: 30px;
-  height: 30px;
-`;
-
 /**** styles from  styled-components */
 
-// export const Container = styled(Paper)`
-//   ${({ theme }) => `
-//   background-color: ${theme.palette.background.default};
-//   `};
-
-export const Container = styled.div`
+export const MyContainer = styled(Box)`
   position: relative;
   width: 100vw;
   height: 80vh;
-
   display: flex;
   justify-content: stretch;
   align-items: center;
@@ -57,7 +39,7 @@ export const Container = styled.div`
   }
 `;
 
-export const ContainerContent = styled.div`
+export const ContainerContent = styled(Box)`
   width: 50vw;
   height: 100%;
   display: flex;
@@ -74,35 +56,41 @@ export const ContainerContent = styled.div`
     width: 100%;
     height: 50vh;
   }
-  /*
+
   > p {
     font-family: 'romantisch';
-    font-size: 6em;
-    margin-bottom: -40px;
-    color: ${props => props.theme.color.title};
+    font-size: 5em;
+    margin-bottom: -20px;
+
+    ${({ theme }) => `
+      color:  ${theme.color.title};
+    `}
 
     @media (max-width: 870px) {
       width: 100vw;
-      font-size: 6rem;
+      font-size: 5rem;
       margin: -30px 0;
     }
     @media (max-width: 570px) {
       width: 100vw;
       font-size: 5rem;
     }
-  } */
+  }
   > span {
     font-family: Times New Roman;
-    font-size: 1em;
+    font-size: 0.9em;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 40px;
     letter-spacing: 0.13em;
     text-align: left;
     margin-bottom: 20px;
-    color: ${props => props.theme.color.title};
+    ${({ theme }) => `
+      color:  ${theme.color.title};
+    `}
+
     @media (max-width: 870px) {
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
     @media (max-width: 570px) {
       font-size: 0.8rem;
@@ -110,30 +98,16 @@ export const ContainerContent = styled.div`
   }
 `;
 
-export const P = styled.p`
-  font-family: 'romantisch';
-  font-size: 7rem;
-  margin-bottom: -40px;
-  color: ${props => props.theme.color.title};
-
-  @media (max-width: 870px) {
-    width: 100vw;
-    font-size: 6rem;
-    margin: -30px 0;
-  }
-  @media (max-width: 570px) {
-    width: 100vw;
-    font-size: 5rem;
-  }
-`;
-
-export const ContainerLogo = styled.div`
+export const ContainerLogo = styled(Box)`
   width: 50vw;
   height: 100%;
   display: flex;
 
   border-radius: 0 0 0 40vw;
-  background: ${props => props.theme.color.gradientStart};
+  ${({ theme }) => `
+      background:  ${theme.color.gradientStart};
+    `}
+  /* background: ${props => props.theme.color.gradientStart}; */
 
   @media (max-width: 870px) {
     width: 100vw;
@@ -144,23 +118,13 @@ export const ContainerLogo = styled.div`
     height: 50vh;
   }
 
-  background: linear-gradient(
+  ${({ theme }) => `
+      background: linear-gradient(
     -45deg,
-    '${props => props.theme.color.gradientStart}' 0%,
-    '${props => props.theme.color.gradientEnd}' 100%
-  );
-
-  background: -moz-linear-gradient(
-    -45deg,
-    '${props => props.theme.color.gradientStart}' 0%,
-    '${props => props.theme.color.gradientEnd}' 100%
-  );
-
-  background: -webkit-linear-gradient(
-    -45deg,
-    '${props => props.theme.color.gradientStart}' 0%,
-    '${props => props.theme.color.gradientEnd}' 100%
-  );
+    '${theme.color.gradientStart}' 0%,
+    '${theme.color.gradientEnd}' 100%
+    )
+    `}
 `;
 
 export const LogoHome = styled.img`

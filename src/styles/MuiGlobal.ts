@@ -7,8 +7,8 @@ export const theme = createMuiTheme({
         '@font-face': {
           fontFamily: 'romantisch',
           fontStyle: 'normal',
-          fontWeight: 'normal'
-          // fontSrc: 'url('/fonts/romantisch-Regular.ttf') format('truetype')'
+          fontWeight: 'normal',
+          src: `url('/fonts/romantisch-Regular.ttf') format('truetype')`
         },
         '*': {
           margin: '0',
@@ -25,10 +25,3 @@ export const theme = createMuiTheme({
     }
   }
 });
-
-// @font-face {
-//   font-family: 'romantisch';
-//   font-style: normal;
-//   font-weight: normal;
-//   src: url('/fonts/romantisch-Regular.ttf') format('truetype');
-// }

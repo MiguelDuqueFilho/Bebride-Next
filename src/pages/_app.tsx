@@ -4,13 +4,9 @@ import { AppProps } from 'next/app';
 
 import { Provider } from 'next-auth/client';
 
-/** Styled-components */
-import GlobalStyle from '../styles/global';
-
 /** material-ui */
 import MyThemeProvider from '../components/Theme/MyThemeProvider';
 import { SettingsProvider, defaultSettings } from '../contexts/SettingsContext';
-import CssBaseline from '@material-ui/core/CssBaseline';
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -25,9 +21,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
       <Provider session={pageProps.session}>
         <SettingsProvider settings={defaultSettings}>
           <MyThemeProvider>
-            <CssBaseline />
             <Component {...pageProps} />
-            <GlobalStyle />
           </MyThemeProvider>
         </SettingsProvider>
       </Provider>

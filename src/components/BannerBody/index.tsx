@@ -7,32 +7,19 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import {
   useStyles,
-  Container,
+  MyContainer,
   ContainerContent,
   ContainerLogo,
-  LogoHome,
-  P
+  LogoHome
 } from './styles';
 
 const BannerBody: React.FC = () => {
   const classes = useStyles();
-  const [checked, setChecked] = useState(false);
-  // function parallax(element: EventTarget, distance: number, speed: number) {
-  //   element.style.transform = translateY(`${distance - speed}px`);
-  // }
-
-  // function handleScroll(e: Event) {
-  //   let element = e.target;
-  //   parallax('header', window.scrollY, 1);
-  //   parallax('.small-rose', window.scrollY, 0.4);
-  //   parallax('.big-rose', window.scrollY, 0.2);
-  // }
 
   return (
-    // <Container onScroll={handleScroll}>
-    <Container>
-      <ContainerContent className="content">
-        <P>be bride</P>
+    <MyContainer>
+      <ContainerContent>
+        <p>be bride</p>
         <span>ASSESSORIA E CERIMONIAL</span>
       </ContainerContent>
       <ContainerLogo>
@@ -48,7 +35,7 @@ const BannerBody: React.FC = () => {
           </IconButton>
         </Paper>
       </ContainerLogo>
-    </Container>
+    </MyContainer>
   );
 };
 

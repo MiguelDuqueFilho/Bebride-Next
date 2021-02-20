@@ -6,16 +6,6 @@ import { defaultSettings } from '../contexts/SettingsContext';
 const themesOptions = [
   {
     name: THEMES.LIGHT,
-    overrides: {
-      MuiInputBase: {
-        input: {
-          '&::placeholder': {
-            opacity: 1,
-            color: colors.blueGrey[600]
-          }
-        }
-      }
-    },
     palette: {
       action: {
         active: colors.blueGrey[600]
@@ -35,10 +25,43 @@ const themesOptions = [
         primary: colors.blueGrey[900],
         secondary: colors.blueGrey[600]
       }
+    },
+
+    // styled-components
+
+    color: {
+      background: '#ffffff',
+      toggle: '#533fa2',
+      primary: '#c7bfe6',
+      section: '#E78F8E',
+      title: '#4d495d',
+      text: '#757575',
+
+      socialText: '#acacac',
+      socialTextHover: '#644fba',
+      gradientStart: '#a598d7',
+      gradientEnd: '#7a6ab9',
+      button: '#7e6cc6',
+      buttonHover: '#644fba',
+      buttonText: '#FAFAFA',
+      boxShadow:
+        '0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)',
+
+      light: '#f8f9fa',
+      white: '#fff',
+      black: '#000',
+
+      backgroundTitle: '#E78F8E',
+      input: '#333',
+      inputIcon: '#acacac',
+      inputBackgroud: '#f0f0f0',
+      inputPlaceHolder: '#aaa',
+      linkHover: '#ff7e20'
     }
   },
   {
     name: THEMES.DARK,
+
     palette: {
       action: {
         active: 'rgba(255, 255, 255, 0.54)',
@@ -63,6 +86,37 @@ const themesOptions = [
         primary: '#e6e5e8',
         secondary: '#adb0bb'
       }
+    },
+
+    // styled-componentes
+
+    color: {
+      background: '#000000',
+      toggle: '#2d2255',
+      primary: '#c7bfe6',
+      section: '#E78F8E',
+      title: '#FFFDFF',
+      text: '#FAFAFA',
+      socialText: '#acacac',
+      socialTextHover: '#644fba',
+      gradientStart: '#4b3993',
+      gradientEnd: '#1e1736',
+      button: '#443384',
+      buttonHover: '#644fba',
+      buttonText: '#FAFAFA',
+      boxShadow:
+        '0 16px 24px 2px rgba(255, 255, 255, 0.12), 0 6px 30px 5px rgba(255, 255, 255,  0.10), 0 8px 10px -5px rgba(255, 255, 255,  0.2)',
+
+      light: '#757575',
+      white: '#fff',
+      black: '#000',
+
+      backgroundTitle: '#585566',
+      input: '#333',
+      inputIcon: '#acacac',
+      inputBackgroud: '#f0f0f0',
+      inputPlaceHolder: '#aaa',
+      linkHover: '#ff7e20'
     }
   }
 ];
