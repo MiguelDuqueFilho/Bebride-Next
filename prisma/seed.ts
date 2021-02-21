@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
+import Admin from '../src/pages/admin/index';
 
 const prisma = new PrismaClient();
 
@@ -12,15 +13,16 @@ prisma.$use(async (params, next) => {
 });
 
 async function main() {
-  const miguel = await prisma.user.create({
+  const admin = await prisma.user.create({
     data: {
       email: 'miguel.duque@globo.com',
       name: 'Miguel Duque Filho',
       password: '123123123',
-      role: 'Admin'
+      role: 'Admin',
+      provider: 'credentials'
     }
   });
-  console.log({ miguel });
+  console.log({ admin });
 }
 
 main()

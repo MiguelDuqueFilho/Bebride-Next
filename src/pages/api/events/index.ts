@@ -8,6 +8,7 @@ interface ExtendNextApiRequest extends NextApiRequest {
   body: {
     title: string;
     content: string;
+    status: string;
     initialDate: string;
     eventDate: string;
     finishDate: string;
@@ -32,7 +33,7 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>()
       const totalItems = await prisma.event.count();
       const totalPages = Number(totalItems / pageSize);
       const currentPage = Number(
-        page <= 0 ? 1 : page > totalPages ? totalPages : page
+        page <= 1 ? 1 : page >= totalPages ? totalPages : page
       );
 
       const findEvents = await prisma.event.findMany({
@@ -41,6 +42,7 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>()
         select: {
           title: true,
           content: true,
+          status: true,
           fileLocation: true,
           initialDate: true,
           eventDate: true,
@@ -60,6 +62,7 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>()
     const {
       title,
       content,
+      status,
       initialDate = null,
       eventDate = null,
       finishDate = null
@@ -74,6 +77,7 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>()
         data: {
           title,
           content,
+          status,
           initialDate: new Date(initialDate),
           eventDate: new Date(eventDate),
           finishDate: new Date(finishDate),
@@ -86,6 +90,7 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>()
       const data = {
         title: createEvent.title,
         content: createEvent.content,
+        status: createEvent.status,
         image: createEvent.fileLocation,
         initialDate: createEvent.initialDate,
         eventDate: createEvent.eventDate,

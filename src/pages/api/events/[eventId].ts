@@ -8,6 +8,7 @@ interface ExtendNextApiRequest extends NextApiRequest {
   body: {
     title: string;
     content: string;
+    status: string;
     initialDate?: string;
     eventDate?: string;
     finishDate?: string;
@@ -35,6 +36,7 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>()
         select: {
           title: true,
           content: true,
+          status: true,
           fileLocation: true,
           initialDate: true,
           eventDate: true,
@@ -45,6 +47,7 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>()
       const data = {
         title: getEvent.title,
         content: getEvent.content,
+        status: getEvent.status,
         image: getEvent.fileLocation,
         initialDate: getEvent.initialDate,
         eventDate: getEvent.eventDate,
@@ -67,6 +70,7 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>()
       const {
         title,
         content,
+        status,
         initialDate = null,
         eventDate = null,
         finishDate = null
@@ -96,6 +100,7 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>()
         data: {
           title,
           content,
+          status,
           initialDate: new Date(initialDate),
           eventDate: new Date(eventDate),
           finishDate: new Date(finishDate),
@@ -108,6 +113,7 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>()
       const data = {
         title: updtEvent.title,
         content: updtEvent.content,
+        status: updtEvent.status,
         initialDate: updtEvent.initialDate,
         eventDate: updtEvent.eventDate,
         finishDate: updtEvent.finishDate,

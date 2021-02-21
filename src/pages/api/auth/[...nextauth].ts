@@ -6,11 +6,28 @@ import bcrypt from 'bcryptjs';
 
 import api from '../../../services/api';
 
-export interface UserCredentialsDB {
-  name?: string;
+interface userProviders {
+  name: string;
   email: string;
-  password: string;
+  image: string;
+}
+
+interface accountProvider {
+  provider: string;
+  type: string;
+  id: string;
+  refreshToken?: string;
+  accessToken: string;
+  accessTokenExpires?: string;
+}
+
+export interface UserCredentialsDB {
+  email: string;
+  name?: string;
+  password?: string;
   role: string;
+  provider: string;
+  image?: string;
 }
 
 const options = {
@@ -42,7 +59,9 @@ const options = {
             email: true,
             name: true,
             password: true,
-            role: true
+            role: true,
+            provider: true,
+            image: true
           }
         });
         console.log('prisma getUser');
@@ -57,6 +76,7 @@ const options = {
           prisma.$use(async (params, next) => {
             if (params.model === 'User' && params.action === 'create') {
               const password = params.args.data.password;
+
               params.args.data.password = await bcrypt.hash(password, 10);
             }
             return next(params);
@@ -66,7 +86,10 @@ const options = {
             data: {
               email: credentials.userEmail,
               name: credentials.userName,
-              password: credentials.password
+              password: credentials.password,
+              role: 'Visitor',
+              provider: 'credentials',
+              image: null
             }
           });
           console.log('prisma data');
@@ -127,7 +150,11 @@ const options = {
   },
 
   callbacks: {
-    signIn: async (user: Object, account: Object, profile: Object) => {
+    signIn: async (
+      user: userProviders,
+      account: accountProvider,
+      profile: Object
+    ) => {
       /**
        * @param  {object} user  User profile (e.g. user id, name, email)
        * {
@@ -164,7 +191,6 @@ const options = {
       console.log(
         '==> callbacks - signIn: async (user: Object, account: Object, profile: Object)'
       );
-      const isAllowedToSignIn = true;
 
       console.log('===>>> user');
       console.log(user);
@@ -172,6 +198,24 @@ const options = {
       console.log(account);
       console.log('===>>> profile');
       console.log(profile);
+
+      if (account.type !== 'credentials') {
+        const prisma = new PrismaClient();
+
+        const data = await prisma.user.create({
+          data: {
+            email: user.email,
+            name: user.email,
+            image: user.image,
+            role: 'Visitor',
+            provider: account.type
+          }
+        });
+        console.log('prisma data');
+        console.log(data);
+        console.log('===> authorize END return Promise.resolve(data);');
+      }
+      const isAllowedToSignIn = true;
       if (isAllowedToSignIn) {
         console.log('<== callbacks signIn:  Promise.resolve(true)');
         return Promise.resolve(true);
@@ -330,9 +374,9 @@ const Auth: NextApiHandler = async (req, res) => {
 
 export default Auth;
 
-const login = async (data: any) => {
-  console.log('==> START Login function');
-  const result = await api.post('api/login', data);
-  console.log('<== END Login function result', result);
-  return result;
-};
+// const login = async (data: any) => {
+//   console.log('==> START Login function');
+//   const result = await api.post('api/login', data);
+//   console.log('<== END Login function result', result);
+//   return result;
+// };
