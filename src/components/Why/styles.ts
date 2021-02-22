@@ -86,7 +86,7 @@ export const ContainerWhyText = styled.div`
 export const ContainerWhyDescr = styled.p`
   color: ${props => props.theme.color.text};
   text-align: justify;
-  font-size: 1.2em;
+  font-size: 1.5em;
   margin: 1rem;
 
   @media (max-width: 870px) {

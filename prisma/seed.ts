@@ -6,8 +6,11 @@ const prisma = new PrismaClient();
 
 prisma.$use(async (params, next) => {
   if (params.model === 'User' && params.action === 'create') {
-    const password = params.args.data.password;
-    params.args.data.password = await bcrypt.hash(password, 10);
+    params.args.data.password;
+    params.args.data.password = await bcrypt.hash(
+      `${params.args.data.password.trim()}-${params.args.data.email.trim()}`,
+      10
+    );
   }
   return next(params);
 });

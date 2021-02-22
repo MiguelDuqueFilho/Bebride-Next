@@ -49,6 +49,8 @@ const options = {
       name: 'credentials',
       credentials: {},
       authorize: async credentials => {
+        console.log('authorize: async credentials');
+        console.log(credentials);
         const prisma = new PrismaClient();
 
         let getUser: UserCredentialsDB | null = await prisma.user.findUnique({
@@ -75,9 +77,10 @@ const options = {
 
           prisma.$use(async (params, next) => {
             if (params.model === 'User' && params.action === 'create') {
-              const password = params.args.data.password;
-
-              params.args.data.password = await bcrypt.hash(password, 10);
+              params.args.data.password = await bcrypt.hash(
+                `${params.args.data.password.trim()}-${params.args.data.email.trim()}`,
+                10
+              );
             }
             return next(params);
           });
@@ -104,12 +107,14 @@ const options = {
             return Promise.reject('/loginout');
           }
 
+          credentials.password;
+
           const compare = await bcrypt.compare(
-            credentials.password,
+            `${credentials.password.trim()}-${credentials.userEmail.trim()}`,
             getUser.password
           );
           console.log(
-            `===> authorize credentials.password ${credentials.password} getUser.password ${getUser.password}`
+            `===> authorize credentials.email ${credentials.userEmail} credentials.password ${credentials.password} getUser.password ${getUser.password}`
           );
           console.log(`===> authorize END Compare ${compare}`);
 
@@ -142,9 +147,9 @@ const options = {
   },
 
   pages: {
-    signIn: '/auth/signin'
+    // signIn: '/auth/signin',
     // signOut: '/auth/signin',
-    // error: '/auth/error', // Error code passed in query string as ?error=
+    // error: '/error' // Error code passed in query string as ?error=
     // verifyRequest: '/auth/verify-request', // (used for check email message)
     // newUser: '/auth/signin' // If set, new users will be directed here on first sign in
   },
@@ -233,11 +238,9 @@ const options = {
        */
       console.log(`<==> redirect: async (url=${url}, baseUrl=${baseUrl})`);
 
-      return Promise.resolve(baseUrl);
-
-      // return url.startsWith(baseUrl)
-      //   ? Promise.resolve(url)
-      //   : Promise.resolve(baseUrl);
+      return url.startsWith(baseUrl)
+        ? Promise.resolve(baseUrl)
+        : Promise.resolve(baseUrl);
     },
 
     session: async (session: Object, user: Object) => {
@@ -326,29 +329,29 @@ const options = {
 
     events: {
       /* on successful sign in */
-      // signIn: async message => {
-      //   console.log(`<==> Events Signin ${message}`);
-      // },
+      signIn: async message => {
+        console.log(`<==> Events Signin ${message}`);
+      },
       /* on signout */
-      // signOut: async message => {
-      //   console.log(`<==> Events signOut ${message}`);
-      // },
+      signOut: async message => {
+        console.log(`<==> Events signOut ${message}`);
+      },
       /* user created */
-      // createUser: async message => {
-      //   console.log(`<==> Events createUser ${message}`);
-      // },
+      createUser: async message => {
+        console.log(`<==> Events createUser ${message}`);
+      },
       /* account linked to a user */
-      // linkAccount: async message => {
-      //   console.log(`<==> Events linkAccount ${message}`);
-      // },
+      linkAccount: async message => {
+        console.log(`<==> Events linkAccount ${message}`);
+      },
       /* session is active */
-      // session: async message => {
-      //   console.log(`<==> Events session ${message}`);
-      // },
+      session: async message => {
+        console.log(`<==> Events session ${message}`);
+      },
       /* error in authentication flow */
-      // console.log(`<==> Events error ${message}`);
-      // error: async message => {
-      // }
+      error: async message => {
+        console.log(`<==> Events error ${message}`);
+      }
     },
 
     debug: process.env.NODE_ENV === 'development'
@@ -373,10 +376,3 @@ const Auth: NextApiHandler = async (req, res) => {
 };
 
 export default Auth;
-
-// const login = async (data: any) => {
-//   console.log('==> START Login function');
-//   const result = await api.post('api/login', data);
-//   console.log('<== END Login function result', result);
-//   return result;
-// };

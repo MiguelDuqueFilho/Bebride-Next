@@ -1,6 +1,8 @@
 import { FormEvent, useState } from 'react';
 import { signIn } from 'next-auth/client';
+
 import Layout from '../../components/Layout';
+import { AppProps } from 'next/app';
 
 import {
   Container,
@@ -36,7 +38,16 @@ import {
   FaEnvelope
 } from 'react-icons/fa';
 
-export default function LogInOut() {
+// export interface SignInResponse {
+//   /** The reason for why the login process has stopped */
+//   error: string | null;
+//   /** @see https://developer.mozilla.org/en-US/docs/Web/API/Response/status */
+//   status: number;
+//   /** @see https://developer.mozilla.org/en-US/docs/Web/API/Response/ok */
+//   ok: boolean;
+// }
+
+export default function LogInOut(props: AppProps) {
   const [mode, setMode] = useState('');
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
@@ -49,11 +60,18 @@ export default function LogInOut() {
     setMode('');
   };
 
-  function onSubmitSignIn(e: FormEvent) {
+  async function onSubmitSignIn(e: FormEvent) {
     e.preventDefault();
     console.log('onSubmit');
     console.log(e);
     signIn('credentials', { userEmail, password, isNewUser: false });
+    // const response: SignInResponse = await signIn('credentials', {
+    //   userEmail,
+    //   password,
+    //   isNewUser: false,
+    //   redirect: false
+    // });
+    // console.log(response);
   }
 
   function onFacebookSignIn(e: FormEvent) {
@@ -67,7 +85,7 @@ export default function LogInOut() {
     e.preventDefault();
     console.log('onSubmit');
     console.log(e);
-    signIn('twitter', { userEmail, isNewUser: false });
+    signIn('twitter', { userEmail });
   }
 
   function onGoogleSignIn(e: FormEvent) {
