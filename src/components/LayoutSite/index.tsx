@@ -1,8 +1,7 @@
-import { MyContainer } from './styles';
 import Menu from '../Menu';
 import AccessNotification from '../AccessNotification';
 
-const Layout: React.FC = ({ children }) => {
+const LayoutSite: React.FC = ({ children }) => {
   return (
     <div>
       <AccessNotification />
@@ -12,4 +11,4 @@ const Layout: React.FC = ({ children }) => {
   );
 };
 
-export default Layout;
+export default LayoutSite;

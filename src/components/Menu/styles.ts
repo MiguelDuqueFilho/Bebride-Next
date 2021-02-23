@@ -7,9 +7,6 @@ export const ContainerMenu = styled.div`
   top: 0;
   left: 0;
   z-index: 18;
-
-  /* max-height: 40px; */
-  /* background-color: ${props => props.theme.color.toggle}; */
 `;
 
 export const MyMenuIcon = styled(MenuIcon)`
@@ -20,7 +17,7 @@ export const MyMenuIcon = styled(MenuIcon)`
   border-radius: 50%;
   z-index: 17;
   cursor: pointer;
-  color: ${props => props.theme.color.white};
+  color: ${props => props.theme.palette.text.primary};
 
   opacity: 0;
   transition: 0.4s;
@@ -162,9 +159,9 @@ export const MenuItens = styled.div`
       > ul {
         position: absolute;
         top: 0;
-        margin-top: 8px;
+        margin-top: 11px;
         margin-left: 40px;
-        width: 50vw;
+        width: 70vw;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -172,10 +169,10 @@ export const MenuItens = styled.div`
         > li {
           list-style: none;
           > a {
-            font-family: 'Times New Roman', Times, serif;
+            font-family: 'Roboto', Times, serif;
             color: ${props => props.theme.color.white};
-            font-size: 0.8rem;
-            font-weight: 900;
+            font-size: 1.1rem;
+            font-weight: 500;
             line-height: 1rem;
             text-decoration: none;
             /* text-transform: uppercase; */

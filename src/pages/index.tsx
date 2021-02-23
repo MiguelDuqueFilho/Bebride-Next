@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next';
 
 import { PlanTypes, DepositionItens } from '../utils/sampdata';
 import { PlanType, DepositionItem } from '../interfaces';
-import Layout from '../components/Layout';
+import LayoutSite from '../components/LayoutSite';
 import BannerBody from '../components/BannerBody';
 import Team from '../components/Team';
 import Plans from '../components/Plans';
@@ -18,7 +18,7 @@ type Props = {
 
 function Home({ items, depositionItens }: Props) {
   return (
-    <Layout>
+    <LayoutSite>
       <BannerBody />
       <Team />
       <Why />
@@ -26,7 +26,7 @@ function Home({ items, depositionItens }: Props) {
       <Depositions depositionItens={depositionItens} />
       <Final />
       <Footer />
-    </Layout>
+    </LayoutSite>
   );
 }
 

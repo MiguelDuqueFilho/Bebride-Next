@@ -16,10 +16,10 @@ export const theme = createMuiTheme({
           boxSizing: 'border-box'
         },
         body: {
-          fontFamily: 'Cormorant Garamond'
+          fontFamily: 'Roboto'
         },
         input: {
-          fontFamily: 'Cormorant Garamond'
+          fontFamily: 'Roboto'
         }
       }
     }

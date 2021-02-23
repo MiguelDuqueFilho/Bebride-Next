@@ -13,7 +13,7 @@ export const IconLight = styled(Brightness5Icon)`
   opacity: 0;
   z-index: 17;
   cursor: pointer;
-  color: ${props => props.theme.color.white};
+  color: ${props => props.theme.palette.text.primary};
   /* color: ${props => props.theme.color.toggle}; */
   opacity: 0;
   transition: 0.4s;
@@ -23,7 +23,6 @@ export const IconLight = styled(Brightness5Icon)`
     &:hover {
       transition: 0.4s;
       background-color: ${props => props.theme.color.toggle};
-      color: ${props => props.theme.color.white};
     }
   }
 `;
@@ -36,7 +35,7 @@ export const IconDark = styled(Brightness3Icon)`
   opacity: 0;
   z-index: 17;
   cursor: pointer;
-  color: ${props => props.theme.color.white};
+  color: ${props => props.theme.palette.text.primary};
   /* background-color: ${props => props.theme.color.white}; */
   &.checked {
     opacity: 1;
@@ -44,7 +43,6 @@ export const IconDark = styled(Brightness3Icon)`
     &:hover {
       transition: 0.4s;
       background-color: ${props => props.theme.color.toggle};
-      color: ${props => props.theme.color.white};
     }
   }
 `;

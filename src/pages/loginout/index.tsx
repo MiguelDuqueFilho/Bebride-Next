@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { signIn } from 'next-auth/client';
 
-import Layout from '../../components/Layout';
+import LayoutSite from '../../components/LayoutSite';
 import { AppProps } from 'next/app';
 
 import {
@@ -124,7 +124,7 @@ export default function LogInOut(props: AppProps) {
   }
 
   return (
-    <Layout>
+    <LayoutSite>
       <Container className={mode}>
         <FormContainer className="forms-container">
           <SigninUp className={`signin-sign-out ${mode}`}>
@@ -215,7 +215,7 @@ export default function LogInOut(props: AppProps) {
                 />
               </InputField>
               <BtnSubmit type="submit" className="btn" value="SignUp" />
-              <SocialText>
+              {/* <SocialText>
                 ou Registre com plataforma de mídia social
               </SocialText>
               <SocialMedia className="social-media">
@@ -228,7 +228,7 @@ export default function LogInOut(props: AppProps) {
                 <SocialIcon onClick={onGoogleSignUp} className="social-icon">
                   <FaGoogle />
                 </SocialIcon>
-              </SocialMedia>
+              </SocialMedia> */}
             </FormSignup>
           </SigninUp>
         </FormContainer>
@@ -261,6 +261,6 @@ export default function LogInOut(props: AppProps) {
           </PanelRight>
         </PanelsContainer>
       </Container>
-    </Layout>
+    </LayoutSite>
   );
 }

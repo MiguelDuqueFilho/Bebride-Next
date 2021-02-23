@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme, Theme, ThemeOptions } from '@material-ui/core/styles';
 import { colors } from '@material-ui/core';
 import { THEMES } from '../utils/constants';
 import { defaultSettings } from '../contexts/SettingsContext';
@@ -120,6 +120,9 @@ const themesOptions = [
     }
   }
 ];
+
+export type IThemeOptions = typeof themesOptions[0];
+export type Itheme = IThemeOptions & Theme;
 
 export const createTheme = (config = defaultSettings) => {
   let themeOptions = themesOptions.find(theme => theme.name === config.theme);

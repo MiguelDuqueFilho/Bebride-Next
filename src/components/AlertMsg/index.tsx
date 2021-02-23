@@ -18,9 +18,6 @@ const AlertMsg: React.FC = () => {
   const router = useRouter();
 
   useEffect(() => {
-    console.log(
-      `currentAlarm.open:${currentAlarm.open} alarm.open:${alarm.open}`
-    );
     setCurrentAlarm(alarm);
   }, [alarm]);
 
