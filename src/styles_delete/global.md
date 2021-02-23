@@ -14,8 +14,4 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body, input {
-font-family: 'Cormorant Garamond', serif;
-
-  }
 `;

@@ -71,7 +71,7 @@ export const ContainerWhatsApp = styled.div``;
 export const ButtonWhatsApp = styled.a`
   padding: 0.75rem 1.75rem;
   margin-top: 3rem;
-  font-family: 'romantisch';
+  font-family: 'romantisch', serif;
   font-size: 1.6rem;
   font-weight: 400;
   color: ${props => props.theme.color.buttonText};

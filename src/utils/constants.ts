@@ -6,7 +6,7 @@ export const THEMES = {
 };
 export default THEMES;
 
-export const pageSize = 2;
+export const pageSize = 8;
 
 export interface alarmProps {
   severity?: Color;

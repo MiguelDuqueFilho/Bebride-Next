@@ -11,8 +11,6 @@ import Document, {
 import { ServerStyleSheet } from 'styled-components';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 
-import theme from '../theme';
-
 export default class MyDocument extends Document {
   render(): JSX.Element {
     return (

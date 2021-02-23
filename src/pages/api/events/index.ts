@@ -31,7 +31,7 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>()
       });
 
       const totalItems = await prisma.event.count();
-      const totalPages = Number(totalItems / pageSize);
+      const totalPages = Math.round(Number(totalItems / pageSize));
       const currentPage = Number(
         page <= 1 ? 1 : page >= totalPages ? totalPages : page
       );
@@ -40,6 +40,7 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>()
         skip: currentPage * pageSize - pageSize,
         take: pageSize,
         select: {
+          id: true,
           title: true,
           content: true,
           status: true,
@@ -53,7 +54,7 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>()
 
       return res
         .status(200)
-        .json({ event: findEvents, totalItems, totalPages, currentPage });
+        .json({ events: findEvents, totalItems, totalPages, currentPage });
     } catch (error) {
       return res.status(400).json({ message: { error: error.message } });
     }

@@ -59,7 +59,7 @@ export const ContainerContent = styled(Box)`
   }
 
   > p {
-    font-family: 'romantisch';
+    font-family: 'romantisch', serif;
     font-size: 5em;
     margin-bottom: -20px;
 
@@ -78,7 +78,7 @@ export const ContainerContent = styled(Box)`
     }
   }
   > span {
-    font-family: Times New Roman;
+    font-family: 'Times New Roman';
     font-size: 0.9em;
     font-style: normal;
     font-weight: 600;

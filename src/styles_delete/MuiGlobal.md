@@ -14,12 +14,6 @@ export const theme = createMuiTheme({
           margin: '0',
           padding: '0',
           boxSizing: 'border-box'
-        },
-        body: {
-          fontFamily: 'Roboto'
-        },
-        input: {
-          fontFamily: 'Roboto'
         }
       }
     }

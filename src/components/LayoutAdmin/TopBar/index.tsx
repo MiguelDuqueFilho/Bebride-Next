@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
@@ -15,8 +14,8 @@ import VideoCall from '@material-ui/icons/VideoCall';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
-
 import MenuIcon from '@material-ui/icons/Menu';
+
 import { useStyles } from './styles';
 import useSettings from '../../../hooks/useSettings';
 import { THEMES } from '../../../utils/constants';

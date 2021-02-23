@@ -87,7 +87,6 @@ const themesOptions = [
         secondary: '#adb0bb'
       }
     },
-
     // styled-componentes
 
     color: {
@@ -132,7 +131,29 @@ export const createTheme = (config = defaultSettings) => {
     [themeOptions] = themesOptions;
   }
 
-  const theme = createMuiTheme(themeOptions);
+  let theme = createMuiTheme(themeOptions);
+
+  theme.overrides = {
+    MuiCssBaseline: {
+      '@global': {
+        '@font-face': {
+          fontFamily: 'romantisch',
+          fontStyle: 'normal',
+          fontWeight: 'normal',
+          src: `url('/fonts/romantisch-Regular.ttf') format('truetype')`
+        },
+        '*': {
+          margin: '0',
+          padding: '0',
+          boxSizing: 'border-box'
+        },
+        body: {
+          overflowY: 'auto',
+          overflowX: 'hidden'
+        }
+      }
+    }
+  };
 
   return theme;
 };

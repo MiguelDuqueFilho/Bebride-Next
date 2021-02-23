@@ -28,7 +28,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import { signIn, useSession } from 'next-auth/client';
 
 const primaryMenu = [
-  { id: 1, label: 'Início', path: '/', icon: HomeIcon },
+  { id: 1, label: 'Home', path: '/admin', icon: HomeIcon },
   { id: 2, label: 'Em alta', path: '/trendding', icon: Whatshot },
   {
     id: 3,
